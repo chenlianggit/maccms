@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{page:name}{page:class}{page:area}{page:lang}{page:letter}-{maccms:name}</title>
+    <meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:description}" /> {maccms:include}
+</head>
+
+<body class="apptop">
+    {maccms:head}
+    <div class="container">
+        <div class="row">
+            <div class="hy-cascade clearfix">
+                <div class="left-head hidden-sm hidden-xs">
+                    <ul class="clearfix">
+                        <li class="text"><span class="text-muted">选择频道</span></li>
+                        <!-- <li><a href="{page:linktype}" {if-A:{page:id}==0} class="active" {endif-A}>全部</a></li> -->{maccms:menu type=parent order=asc table=vod}
+                        <li><a href="{maccms:path}index.php?m=vod-list-id-[menu:id]-.html" {if-A:{maccms:curvodtypeid}==[menu:id]} class="active" {endif-A}{if-A:{maccms:curvodtypepid}==[menu:id]} class="active" {endif-A}>[menu:name]</a></li>{/maccms:menu}
+                    </ul>
+                </div>
+                <div class="content-meun clearfix">
+                <a class="head" href="javascript:;" data-toggle="collapse" data-target="#collapse" aria-expanded="false"><span class="text">已选择</span><span>{page:name}</span><span>{page:classname}</span><span>{page:area}</span><span>{page:year}</span><span>{page:lang}</span><span class="hidden-xs">{page:letter}</span></a>
+                    <div class="item collapse" id="collapse" aria-expanded="false">
+                        <ul class="clearfix">
+                            <li class="text"><span class="text-muted">按频道</span></li>
+                            <li> <a href="{page:linktype}" {if-A: "{page:pid}"="0" } class="active" {endif-A}>全部</a></li>{maccms:menu type=auto}
+                            <li><a href="[menu:link]" {if-A: "{page:id}"="[menu:id]" } class="active" {endif-A}>[menu:name]</a></li>{/maccms:menu}
+                        </ul>
+                        <ul class="clearfix">
+                            <li class="text"><span class="text-muted">按剧情</span></li>
+
+                            <li><a href="{page:linkclass}"{if-A:"{page:class}"=""} class="active"{endif-A}>全部</a></li>{maccms:class type=auto}
+                            <li><a href="[class:link]"{if-A:{page:class}==[class:id]} class="active"{endif-A}>[class:name]</a></li>{/maccms:class}
+                        </ul>
+                        <ul class="clearfix">
+                            <li class="text"><span class="text-muted">按地区</span></li>
+                            <li><a {if-A: "{page:lang}"="" } class="active" {endif-A} href="{page:linkarea}">全部</a></li>{maccms:area type=auto}
+                            <li><a{if-A:"{page:area}"="[area:name]"} class="active"{endif-A} href="[area:link]">[area:name]</a></li>{/maccms:area}
+                        </ul>
+                        <ul class="clearfix">
+                            <li class="text"><span class="text-muted">按年份</span></li>
+                            <li><a href="{page:linkyear}"{if-A:"{page:year}"=""} class="active"{endif-A}>全部</a></li>{maccms:year type=auto start=2002 end=2017 order=desc}
+                            <li><a href="[year:link]"{if-A:{page:year}==[year:name]} class="active"{endif-A} data="year-[year:name]">[year:name]</a></li>{/maccms:year}
+                        </ul>
+                        <ul class="clearfix">
+                            <li class="text"><span class="text-muted">按语言</span></li>
+                            <li><a{if-A:"{page:lang}"=""} class="active"{endif-A} href="{page:linklang}">全部</a></li>{maccms:lang type=auto}
+                            <li><a{if-A:"{page:lang}"="[lang:name]"} class="active"{endif-A} href="[lang:link]">[lang:name]</a></li>{/maccms:lang}
+                        </ul>
+                        <ul class="letter hidden-xs clearfix">{maccms:letter type=auto letter=all}
+                            <li><a href="[letter:link]"{if-A:{page:letter}==[letter:name]} class="active"{endif-A}>[letter:name]</a></li>{/maccms:letter}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hy-layout clearfix" style="margin-top: 0;">
+                <div class="hy-switch-tabs active clearfix"><span class="text-muted pull-right hidden-xs">共有<span class="text-color">“{page:datacount}”</span>个影片,当前第<span class="text-color">“{page:now}”</span>页</span>
+                    <ul class="nav nav-tabs">
+                        <li {if-A: "{page:by}"="time" } class="active" {endif-A}><a href="{page:linkbytime}">按更新</a></li>
+                        <li {if-A: "{page:by}"="score" } class="active" {endif-A}><a href="{page:linkbyscore}">按高分</a></li>
+                        <li {if-A: "{page:by}"="hits" } class="active" {endif-A}><a href="{page:linkbyhits}">按人气</a></li>
+                    </ul>
+                </div>
+                <div class="hy-video-list">
+                    <div class="item">
+                        <ul class="clearfix">{maccms:vod pagesize=36 order=desc by=time}
+                            <li class="col-md-2 col-sm-3 col-xs-4"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span></a>
+                                <div class="title">
+                                    <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                <div class="subtitle text-muted text-overflow hidden-xs">[vod:starring len=4]</div>
+                            </li>{/maccms:vod}
+                        </ul>
+                    </div>
+                </div>{if-A:{page:count}>1}
+                <div class="hy-page clearfix">{maccms:pages len=6}</div>{endif-A}
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var w = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
+    if (w > 640) {
+        $(".collapse").addClass("in");
+    }
+    </script>
+    <!--main-->
+    {maccms:foot}
+</body>
+
+</html>

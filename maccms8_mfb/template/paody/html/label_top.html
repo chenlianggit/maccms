@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8" />
+    <title>排行榜 - {maccms:name}</title>
+    <meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:des}" /> {maccms:include}
+</head>
+
+<body>
+{maccms:head}
+    <!--main-->
+<!-- 免费下载本源码： http://www.9if.cn/  -->
+    <div class="container">
+        <div class="row">{maccms:matrix type=all}
+            <div class="hy-layout clearfix" id="list-[matrix:id]">
+                <div class="hy-video-list cleafix">
+                    <div class="head">
+                        <a class="text-muted pull-right" href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html">更多 <i class="icon iconfont icon-right"></i></a>
+                        <h4><i class="icon iconfont icon-top text-color"></i> [matrix:name]排行榜</h4>
+                    </div>
+                    <div class="item">{maccms:vod type=[matrix:id] num=9 by=hits}
+                        <div class="col-md-2 col-sm-3 col-xs-4{if-A:[vod:num]>6} visible-sm hidden-md{if-B:[vod:num]>8} visible-sm hidden-md hidden-sm{endif-B}{endif-A}"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                            <div class="title">
+                                <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                            <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                        </div>{/maccms:vod}
+                    </div>
+                </div>
+                <div class="hy-video-text-list hidden-xs clearfix">
+                    <div class="item">
+                        <ul class="clearfix">{maccms:vod num=12 type=[matrix:id] by=hits start=9}
+                            <li>
+                                <div class="title text-overflow"><a href="[vod:link]" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
+                            </li>{/maccms:vod}
+                        </ul>
+                    </div>
+                </div>
+            </div>{/maccms:matrix}
+        </div>
+    </div>
+{maccms:foot}
+</body>
+
+</html>

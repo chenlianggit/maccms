@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>视频专题 - {maccms:name}</title>
+    <meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:des}" />
+    {maccms:include}
+</head>
+<body>
+{maccms:head}
+    <div class="container">
+        <div class="row">
+            <div class="hy-layout clearfix">
+                <div class="hy-topic-list clearfix">
+                    <div class="item">{maccms:topic pagesize=18 order=desc by=time}
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a class="videopic lazy" href="[topic:link]" title="[topic:name]" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;">
+                                <div class="details textbg">
+                                    <span class="text"><i class="icon iconfont icon-icon_special"></i> 专题</span><span class="name">[topic:name]</span><span class="count">—— [topic:count]个影片 ——</span>
+                                </div>
+                            </a>
+                        </div>{/maccms:topic}
+                    </div>
+                </div>{if-A:{page:count}>1}
+                <div class="hy-page clearfix">{maccms:pages len=6}</div>{endif-A}
+            </div>
+        </div>
+    </div>
+{maccms:foot}
+</body>
+</html>
