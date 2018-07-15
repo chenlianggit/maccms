@@ -1,2 +1,2 @@
-MacPlayer.Html = '<iframe width="100%" height="'+MacPlayer.Height+'" src="http://jx.aikansa.com/?url='+MacPlayer.PlayUrl+'" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="true"></iframe>';
+MacPlayer.Html = '<iframe width="100%" height="'+MacPlayer.Height+'" src="http://api.wheelhome.cn/api/?url='+MacPlayer.PlayUrl+'" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="true"></iframe>';
 MacPlayer.Show();
