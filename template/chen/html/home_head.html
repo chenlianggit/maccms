@@ -1,0 +1,68 @@
+﻿<div class="topall" >
+<div class="header hbd mb-r clearfix">
+<div class="wrap head">
+<div class="logo">
+<a class="logobg" href="{maccms:path}"><img src="{maccms:path_tpl}images/logo.png" alt="{maccms:name}logo"></a>
+</div>
+<div class="search">
+<form name="formsearch" id="formsearch" action="{maccms:link_search_vod}" method="post" target="_self" autocomplete="off">
+<input class="input" name="wd" type="text" id="keyword" placeholder="输入影片名或者主演、导演"/><input class="ico imgbt" type="submit" value=""/>
+</form>
+</div>
+<div class="dlzc">
+<ul>
+<li id="history"><a class="ico jl" href="javascript:void(0)" onmouseover="$MH.showHistory(0);">播放记录</a>
+<div class="jldown">
+<i class="ico sjxx"></i>
+
+</div>
+</li>
+<li><a class="ico dl" id="login" href="javascript:void(0)">登录/注册</a></li>
+
+</ul>
+</div>
+</div>
+</div>
+<div class="header clearfix">
+<div class="wrap menu clearfix">
+<div class="logo pc-r">
+<a class="logobg" href="{maccms:path}"><img src="{maccms:path_tpl}images/waplogo.png" alt="{maccms:name}logo"></a>
+</div>
+<ul class="ul-l mb-r">
+<li><a class="on" href="{maccms:path}">首页</a></li>
+{maccms:menu type=parent order=asc table=vod}
+<li><a class="{if-A:[menu:id]={maccms:curvodtypeid}}on{endif-A}" href="[menu:link]">[menu:name]</a></li>{/maccms:menu}
+
+</ul>
+<ul class="ul-r mb-r">
+<li><a href="{maccms:link_gbook}">留言</a></li>
+<li><a href="{maccms:path}index.php?m=label-new.html">最近更新</a></li>
+<li><a href="{maccms:path}index.php?m=label-hit.html">影片排行</a></li>
+</ul>
+<ul class="menu-r pc-r">
+<li class="ico ho"><a href="{maccms:path}"><span class="wb">首页</span></a></li>
+<li class="ico mjq lei"><span class="wb">分类</span></li>
+<li class="ico mjq sh"><span class="wb">搜索</span></li>
+</ul>
+</div>
+<div class="menu-down">
+<ul>
+{maccms:menu type=all order=asc table=vod}
+<li><a href="[menu:link]">[menu:name]</a></li>{/maccms:menu}
+
+</ul>
+</div>
+<div class="search-down clearfix">
+<div class="shall">
+<form name="formsearch" id="formsearch" action='/search.php' method="post" target="_self" autocomplete="off">
+<div class="shall1">
+<input class="input" name="searchword" type="text" id="keyword" placeholder="输入影片名或者主演、导演"/><input class="ico imgbt" type="submit" value=""/>
+</div>
+</form>
+</div>
+<div class="shclose">
+关闭
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>最新电影_最新电视剧-{maccms:name}</title>
+<meta name="keywords" content="最新电影,最新电视剧"/>
+<meta name="description" content="最新电影大全,最新电视剧大全！"/>
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+<div class="wrap">
+<div class="title1"><a href="{maccms:path}">首页</a> > 最新100个更新</div>
+<div class="top100">
+<div class="trip clearfix">
+<i class="name">最近100个更新</i>
+<i class="type">栏目</i>
+<i class="jq">类型</i>
+<i class="time">更新时间</i>
+</div>
+<ul class="ul clearfix">
+{maccms:vod num=100 order=desc by=days type=all} 
+<li>
+<a class="link" href="[vod:link]" title="[vod:name]">
+<i class="name"><i class="num">∷</i>[vod:name]</i>
+<i class="type">[vod:typepname]</i>
+<i class="jq">[vod:typename]</i>
+<i class="time">[vod:time style=m-d]</i>
+</a>
+</li>{/maccms:vod}
+</ul>
+</div>
+</div>
+{maccms:foot}
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html><html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>热门电影排行榜_热门电视剧排行榜-{maccms:name}</title>
+<meta name="keywords" content="热门电影,热门电视剧,电影排行榜,电视剧排行榜"/>
+<meta name="description" content="最新热门电影排行榜,最新热门电视剧排行榜！"/>
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+<div class="wrap">
+<div class="title1"><a href="{maccms:path}">首页</a> > 排行榜</div>
+{maccms:matrix type=parent table=vod}
+<div class="bang clearfix">
+<div class="trip">[matrix:name]排行榜</div>
+<ul class="ul clearfix">
+<div class="ulall">
+<div class="ult">总评分榜</div>
+{maccms:vod num=10 order=desc by=score type=[matrix:id]} 
+<li>
+<a class="link" href="[vod:link]" title="[vod:name]">
+<i class="score">[vod:score]</i>
+<i class="num">[vod:num].</i>
+[vod:name]
+</a>
+</li>{/maccms:vod}
+</div>
+</ul>
+<ul class="ul clearfix">
+<div class="ulall">
+<div class="ult">总点击榜</div>
+{maccms:vod num=10 order=desc by=hits type=[matrix:id]} 
+<li>
+<a class="link" href="[vod:link]" title="[vod:name]">
+<i class="score">[vod:score]</i>
+<i class="num">[vod:num].</i>
+[vod:name]
+</a>
+</li>{/maccms:vod}
+</div>
+</ul>
+<ul class="ul clearfix">
+<div class="ulall">
+<div class="ult">月点击榜</div>
+{maccms:vod num=10 order=desc by=monthhits type=[matrix:id]} 
+<li>
+<a class="link" href="[vod:link]" title="[vod:name]">
+<i class="score">[vod:score]</i>
+<i class="num">[vod:num].</i>
+[vod:name]
+</a>
+</li>{/maccms:vod}
+</div>
+</ul>
+</div>
+{/maccms:matrix}
+</div>
+{maccms:foot}
+</body>
+</html>
