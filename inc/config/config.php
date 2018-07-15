@@ -6,16 +6,16 @@ $MAC = array (
     'path' => '',
     'server' => '127.0.0.1',
     'port' => '3306',
-    'name' => 'maccms8',
-    'user' => 'root',
-    'pass' => 'root',
+    'name' => 'maccms',
+    'user' => 'maccms',
+    'pass' => 'cc123456',
     'tablepre' => 'mac_',
   ),
   'site' => 
   array (
-    'name' => '苹果CMS',
-    'installdir' => '/maccms8_mfb/',
-    'url' => 'localhost',
+    'name' => '饭否video',
+    'installdir' => '/',
+    'url' => 'vip.95uk.com',
     'keywords' => '免费在线电影',
     'description' => '提供最新最快的影视资讯和在线播放',
     'templatedir' => 'paody',
@@ -38,7 +38,7 @@ $MAC = array (
     'cacheid' => '',
     'memcachedhost' => '127.0.0.1',
     'memcachedport' => '11211',
-    'safecode' => 'maccms',
+    'safecode' => 'chen',
     'pagesize' => 18,
     'expandtype' => 0,
     'playersort' => 0,
@@ -167,7 +167,7 @@ $MAC = array (
   ),
   'interface' => 
   array (
-    'pass' => 'LFROBV',
+    'pass' => 'ZZN0G9',
   ),
   'pay' => 
   array (
