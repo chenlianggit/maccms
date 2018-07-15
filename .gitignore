@@ -1,7 +1,2 @@
-vendor
-storage
-cache
-app\config\config.php
-public\voice
-.idea/
-vendor/composer/
+.idea/*
+runtime/*
