@@ -97,5 +97,8 @@ return array (
   'sszyz7' => 39,
   'sszyz8' => 40,
   'sszyz9' => 41,
+  'tv6_com32' => 30,
+  'zuidazycom17' => 21,
+  'zuidazycom16' => 42,
 );
 ?>
