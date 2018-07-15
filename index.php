@@ -1,39 +1,55 @@
 <?php
-/*
-'软件名称：苹果CMS
-'开发作者：MagicBlack  QQ：479025  官方网站：http://www.maccms.com/
-'--------------------------------------------------------
-'适用本程序需遵循 CC BY-ND 许可协议
-'这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用；
-'不允许对程序代码以任何形式任何目的的再发布。
-'--------------------------------------------------------
-*/
-header('Content-Type:text/html;charset=utf-8');
-// 检测PHP环境
-if(version_compare(PHP_VERSION,'5.6.0','<'))  die('PHP版本过低，最少需要PHP5.6，请升级PHP版本！');
-//超时时间
-@set_time_limit(120);
-//内存限制 取消内存限制
-@ini_set("memory_limit",'-1');
-// 定义应用目录
-define('ROOT_PATH', __DIR__ . '/');
-define('APP_PATH', __DIR__ . '/application/');
-define('MAC_COMM', __DIR__.'/application/common/common/');
-define('MAC_HOME_COMM', __DIR__.'/application/index/common/');
-define('MAC_ADMIN_COMM', __DIR__.'/application/admin/common/');
-define('MAC_START_TIME', microtime(true) );
-define('IN_FILE',rtrim($_SERVER['SCRIPT_NAME'],'/'));
-define('BIND_MODULE','index');
-// 定义入口
-define('ENTRANCE', 'index');
+	/*
+	'软件名称：苹果CMS
+	'开发作者：MagicBlack    官方网站：http://www.maccms.com/
+	'--------------------------------------------------------
+	'适用本程序需遵循 CC BY-ND 许可协议
+	'这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用；
+	'不允许对程序代码以任何形式任何目的的再发布。
+	'--------------------------------------------------------
+	*/
+	if(!file_exists('inc/install.lock')) { echo '<script>location.href=\'install.php\';</script>';exit; }
+	define('MAC_MODULE','home');
+	require('inc/conn.php');
+	require(MAC_ROOT.'/inc/common/360_safe3.php');
+    $m = be('get','m');
+    if(strpos($m,'.')){ $m = substr($m,0,strpos($m,'.')); }
+    $par = explode('-',$m);
+    $parlen = count($par);
+    $ac = $par[0];
+    
+    if(empty($ac)){ $ac='vod'; $method='index'; }
+    
+    $col_num = array('id','pg','year','type','typeid','class','classid','src','level','num','aid','vid','uid');
+    $col_str = array('wd','ids','pinyin','area','lang','letter','starring','directed','tag','order','by','flag','clear','ref','s','t');
+    if($parlen>=2){
+    	$method = $par[1];
+    	 for($i=2;$i<$parlen;$i+=2){
+    	     if(in_array($par[$i],$col_num)){
+                 $tpl->P[trim($par[$i])] = intval($par[$i+1]);
+             }
+             elseif(in_array($par[$i],$col_str)){
+                 $tpl->P[trim($par[$i])] = chkSql(htmlspecialchars(urldecode(trim($par[$i+1]))));
+             }
+        }
+    }
+    if($tpl->P['pg']<1){ $tpl->P['pg']=1; }
+    if(!empty($tpl->P['cp'])){ $tpl->P['cp']=''; }
+    unset($col_num,$col_str);
 
-if(!is_file('./application/data/install/install.lock')) {
-    header("Location: ./install.php");
-    exit;
-}
-if (!@mb_check_encoding($_SERVER['PATH_INFO'], 'utf-8')){
-    $_SERVER['PATH_INFO']=@mb_convert_encoding($_SERVER['PATH_INFO'], 'UTF-8', 'GBK');
-}
-// 加载框架引导文件
-require __DIR__ . '/thinkphp/start.php';
-
+    $tpl->initData();
+    $acs = array('vod','art','map','user','gbook','comment','label');
+    if(in_array($ac,$acs)){
+    	$tpl->P['module'] = $ac;
+    	include MAC_ROOT.'/inc/module/'.$ac.'.php';
+    }
+    else{
+    	showErr('System','未找到指定系统模块');
+    }
+    unset($par);
+    unset($acs);
+    $tpl->ifex();
+    if(!empty($tpl->P['cp'])){ setPageCache($tpl->P['cp'],$tpl->P['cn'],$tpl->H); }
+	$tpl->run();
+	echo $tpl->H;
+?>

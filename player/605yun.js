@@ -1,0 +1,2 @@
+MacPlayer.Html = '<iframe width="100%" height="'+MacPlayer.Height+'" src="http://www.vrecf.com/api/link.php?url='+MacPlayer.PlayUrl+'" frameborder="0" allowtransparency="true" allowfullscreen="true" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>';
+MacPlayer.Show();

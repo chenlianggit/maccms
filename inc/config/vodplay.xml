@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plays>
+
+ <!--直链解析播放器-->
+ <play status="1" sort="101" from="mgtv" show="芒果TV" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="102" from="letv" show="乐视视频" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="103" from="sohu" show="搜狐视频" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="104" from="qiyi" show="奇艺视频" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="105" from="youku" show="优酷视频" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="106" from="qq" show="腾讯视频" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="107" from="pptv" show="PPTV" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+
+ <!--云转码播放器-->
+ <play status="1" sort="201" from="m3u8" show="云播①" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="202" from="ckm3u8" show="云播②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="203" from="kuyun" show="酷云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="204" from="kkyun" show="酷酷云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play> 
+ <play status="1" sort="205" from="yjyun" show="永久云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="206" from="yjm3u8" show="永久云②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="207" from="jsyun" show="极速云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="208" from="jsm3u8" show="极速云②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="209" from="ykyun" show="优酷云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play> 
+ <play status="1" sort="210" from="ykm3u8" show="优酷云②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play> 
+ <play status="1" sort="211" from="dbyun" show="豆瓣云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="212" from="dbm3u8" show="豆瓣云②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play> 
+ <play status="1" sort="213" from="33uu" show="UU云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>	
+ <play status="1" sort="214" from="33uuck" show="UU云②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="215" from="131zy" show="131云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="216" from="131m3u8" show="131云②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play> 
+ <play status="1" sort="217" from="605yun" show="605云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="218" from="605m3u8" show="605云②" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play> 
+ <play status="1" sort="219" from="27pan" show="27云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="220" from="yzm" show="云播A" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>	
+		
+ <!--其他播放器-->	
+ <play status="1" sort="301" from="mp4" show="高清MP4" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>		
+ <play status="1" sort="302" from="link" show="外链数据" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>	
+ <play status="1" sort="303" from="2mm" show="恋恋影视" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>	
+
+ <!--成人资源播放器-->
+ <play status="1" sort="401" from="91yun" show="91云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="402" from="ixx" show="XX云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="403" from="xhgzy" show="黄瓜云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+ <play status="1" sort="404" from="ckplayer" show="CK云" des="www.zidongcaiji.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+	
+</plays>

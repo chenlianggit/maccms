@@ -1,4 +1,0 @@
-更新日志,//www.maccms.com/doc/v10/log.html
-视频管理,vod/data
-测试插件文件菜单,/application/xxxx.htmlvfed主题设置,/template/vfed/adm/html/index.html
-206云资源,/application/admin/206yun.html
