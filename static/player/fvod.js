@@ -16,7 +16,7 @@ function PlayerStatus() {
 }
 function PlayerNextDown() {
     if (Player.get_CurTaskProcess() > 900 && !bstartnextplay) {
-        Player.StartNextDown( ConvertUrl(MacPlayer.PlayUrlNext) );
+        Player.StartNextDown( ConvertUrl(MacPlayer.PlayUrl1) );
         bstartnextplay = true
     }
 }
@@ -26,7 +26,7 @@ function ConvertUrl(url){
 	return url[0]+"|"+url[1]+"|["+document.domain+"]"+url[2]+"|";
 }
 
-MacPlayer.Html='<object id="Player" classid="clsid:88CAD623-BC08-7321-C3D7-3A9B739BCA88" width="100%" height="100%" onError="MacPlayer.Install();"><param name="URL" value="'+ ConvertUrl(MacPlayer.PlayUrl) +'"><param name="NextWebPage" value="'+ MacPlayer.PlayLinkNext +'"><param name="fvodAdUrl" VALUE="'+MacPlayer.Buffer +'"><param name="NextCacheUrl" value="'+ ConvertUrl(MacPlayer.PlayUrlNext) +'"><param name="Autoplay" value="1"></object>';
+MacPlayer.Html='<object id="Player" classid="clsid:88CAD623-BC08-7321-C3D7-3A9B739BCA88" width="100%" height="'+MacPlayer.Height+'" onError="MacPlayer.Install();"><param name="URL" value="'+ ConvertUrl(MacPlayer.PlayUrl) +'"><param name="NextWebPage" value="'+ MacPlayer.NextUrl +'"><param name="fvodAdUrl" VALUE="'+MacPlayer.Buffer +'"><param name="NextCacheUrl" value="'+ ConvertUrl(MacPlayer.PlayUrl1) +'"><param name="Autoplay" value="1"></object>';
 
 var rMsie = /(msie\s|trident.*rv:)([\w.]+)/;
 var match = rMsie.exec(navigator.userAgent.toLowerCase());
@@ -41,7 +41,7 @@ if(match == null){
 		}
 	}
 	if(ll){
-	MacPlayer.Html = '<object id="Player" name="Player" showcontrol="1" type="application/fvod-plugin" width="100%" height="100%" URL="'+MacPlayer.PlayUrl+'" NextWebPage="'+MacPlayer.PlayLinkNext+'" Autoplay="1"></object>'
+	MacPlayer.Html = '<object id="Player" name="Player" showcontrol="1" type="application/fvod-plugin" width="100%" height="'+MacPlayer.Height+'" URL="'+MacPlayer.PlayUrl+'" NextWebPage="'+MacPlayer.NextUrl+'" Autoplay="1"></object>'
 	}
 	else{
 		MacPlayer.Install();
@@ -51,7 +51,8 @@ MacPlayer.Show();
 setTimeout(function(){
 	if (MacPlayer.Status == true && MacPlayer.Flag==1){
 		setInterval("PlayerStatus()", 1000);
-		if (MacPlayer.PlayLinkNext) {
+		if (MacPlayer.NextUrl) {
+			Player.NextWebPage = MacPlayer.NextUrl;
 			setInterval("PlayerNextDown()", 9333);
 		}
 	}

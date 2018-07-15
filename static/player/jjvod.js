@@ -15,7 +15,7 @@ function PlayStatus() {
 }
 
 
-MacPlayer.Html='<object id="Player" classid="clsid:C56A576C-CC4F-4414-8CB1-9AAC2F535837" width="100%" height="100%" onError="MacPlayer.Install();"><param name="URL" value="'+ MacPlayer.PlayUrl +'"><param name="WEB_URL" value="'+ unescape(window.location.href) +'"><param name="Autoplay" value="1"></object>';
+MacPlayer.Html='<object id="Player" classid="clsid:C56A576C-CC4F-4414-8CB1-9AAC2F535837" width="100%" height="'+MacPlayer.Height+'" onError="MacPlayer.Install();"><param name="URL" value="'+ MacPlayer.PlayUrl +'"><param name="WEB_URL" value="'+ unescape(window.location.href) +'"><param name="Autoplay" value="1"></object>';
 
 var rMsie = /(msie\s|trident.*rv:)([\w.]+)/;
 var match = rMsie.exec(navigator.userAgent.toLowerCase());
@@ -30,7 +30,7 @@ if(match == null){
 		}
 	}
 	if(ll){
-	MacPlayer.Html = '<object id="Player" name="Player" type="application/x-itst-activex" progid="WEBPLAYER.WebPlayerCtrl.2" width="100%" height="100%" param_URL="'+MacPlayer.PlayUrl+'" param_WEB_URL="'+ unescape(window.location.href) +'" param_Autoplay="1"></object>'
+	MacPlayer.Html = '<object id="Player" name="Player" type="application/x-itst-activex" progid="WEBPLAYER.WebPlayerCtrl.2" width="100%" height="'+MacPlayer.Height+'" param_URL="'+MacPlayer.PlayUrl+'" param_WEB_URL="'+ unescape(window.location.href) +'" param_Autoplay="1"></object>'
 	}
 	else{
 		MacPlayer.Install();

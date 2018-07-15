@@ -23,7 +23,7 @@ function QvodStatus() {
 }
 function QvodNextDown() {
     if (Player.get_CurTaskProcess() > 900 && !bstartnextplay) {
-        Player.StartNextDown( QvodUrl(MacPlayer.PlayUrlNext) );
+        Player.StartNextDown( QvodUrl(MacPlayer.PlayUrl1) );
         bstartnextplay = true
     }
 }
@@ -34,7 +34,7 @@ function QvodUrl(url){
 }
 
 
-MacPlayer.Html ='<object id="Player" name="Player" width="100%" height="100%" classid="clsid:F3D0D36F-23F8-4682-A195-74C92B03D4AF" onError="MacPlayer.Install();"><param name="URL" VALUE="'+QvodUrl(MacPlayer.PlayUrl)+'"><param name="Autoplay" VALUE="1"><param name="QvodAdUrl" VALUE="'+MacPlayer.Buffer +'"><param name="NextWebPage" VALUE="'+ MacPlayer.PlayLinkNext +'"></object>';
+MacPlayer.Html ='<object id="Player" name="Player" width="100%" height="'+MacPlayer.Height+'" classid="clsid:F3D0D36F-23F8-4682-A195-74C92B03D4AF" onError="MacPlayer.Install();"><param name="URL" VALUE="'+QvodUrl(MacPlayer.PlayUrl)+'"><param name="Autoplay" VALUE="1"><param name="QvodAdUrl" VALUE="'+MacPlayer.Buffer +'"><param name="NextWebPage" VALUE="'+ MacPlayer.NextUrl +'"></object>';
 
 var rMsie = /(msie\s|trident.*rv:)([\w.]+)/;
 var match = rMsie.exec(navigator.userAgent.toLowerCase());
@@ -49,7 +49,7 @@ if(match == null){
 		}
 	}
 	if(ll){
-		MacPlayer.Html ='<embed id="Player" name="Player" URL="'+MacPlayer.PlayUrl+'" type="application/qvod-plugin" width="100%" height="100%"></embed>';
+		MacPlayer.Html ='<embed id="Player" name="Player" URL="'+MacPlayer.PlayUrl+'" type="application/qvod-plugin" width="100%" height="'+MacPlayer.Height+'"></embed>';
 	}
 	else{
 		MacPlayer.Install();
@@ -60,8 +60,8 @@ MacPlayer.Show();
 setTimeout(function() {
 	if (MacPlayer.Status == true && MacPlayer.Flag==1){
 		setInterval("QvodStatus()", 1000);
-		if (MacPlayer.PlayLinkNext) {
-			Player.NextWebPage = MacPlayer.PlayLinkNext;
+		if (MacPlayer.NextUrl) {
+			Player.NextWebPage = MacPlayer.NextUrl;
 			setInterval("QvodNextDown()", 9333)
 		}
 	}

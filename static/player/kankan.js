@@ -44,7 +44,7 @@ function start(url){
 }
 
 
-MacPlayer.Html = '<embed id="Player" name="Player" URL="" type="application/qvod-plugin" width="100%" height="100%"></embed>';
+MacPlayer.Html = '<embed id="Player" name="Player" URL="" type="application/qvod-plugin" width="100%" height="'+MacPlayer.Height+'"></embed>';
 
 MacPlayer.Install();
 

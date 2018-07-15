@@ -15,8 +15,8 @@ function KKHDStatus() {
          KKHDAdsStart();
     }
     else if(Player.PlayState==6){
-		if(MacPlayer.PlayLinkNext!=''){//播放完成 下一集
-			window.parent.location.href=MacPlayer.PlayLinkNext;
+		if(MacPlayer.NextUrl!=''){//播放完成 下一集
+			window.parent.location.href=MacPlayer.NextUrl;
 		}
 	}
 }
@@ -27,7 +27,7 @@ function ReUrl(url){
 }
 
 
-MacPlayer.Html ='<object id="Player" name="Player" width="100%" height="100%" classid="clsid:e20b2508-8870-5ac0-be7b-fd0ad2f46177" onError="MacPlayer.Install();"><param name="src" VALUE="'+ReUrl(MacPlayer.PlayUrl)+'"><param name="Autoplay" VALUE="1"></object>';
+MacPlayer.Html ='<object id="Player" name="Player" width="100%" height="'+MacPlayer.Height+'" classid="clsid:e20b2508-8870-5ac0-be7b-fd0ad2f46177" onError="MacPlayer.Install();"><param name="src" VALUE="'+ReUrl(MacPlayer.PlayUrl)+'"><param name="Autoplay" VALUE="1"></object>';
 
 var rMsie = /(msie\s|trident.*rv:)([\w.]+)/;
 var match = rMsie.exec(navigator.userAgent.toLowerCase());
@@ -42,7 +42,7 @@ if(match == null){
 		}
 	}
 	if(ll){
-		MacPlayer.Html ='<embed id="Player" name="Player" src="'+MacPlayer.PlayUrl+'" type="application/x-kkvod" progid="WEBPLAYER.WebPlayerCtrl.2" width="100%" height="100%"></embed>';
+		MacPlayer.Html ='<embed id="Player" name="Player" src="'+MacPlayer.PlayUrl+'" type="application/x-kkvod" progid="WEBPLAYER.WebPlayerCtrl.2" width="100%" height="'+MacPlayer.Height+'"></embed>';
 	}
 	else{
 		MacPlayer.Install();

@@ -1,4 +1,4 @@
-MacPlayer.Html = '<OBJECT id="Player" height="100%" width="100%" data=data:application/x-oleobject;base64,Q5uJqr0ka0u70EVVfY0R4AADAAB7TAAATygAAAEAAAA= classid=CLSID:AA899B43-24BD-4B6B-BBD0-45557D8D11E0 VIEWASTEXT onError="MacPlayer.Install();"></OBJECT>';
+MacPlayer.Html = '<OBJECT id="Player" height="'+MacPlayer.Height+'" width="100%" data=data:application/x-oleobject;base64,Q5uJqr0ka0u70EVVfY0R4AADAAB7TAAATygAAAEAAAA= classid=CLSID:AA899B43-24BD-4B6B-BBD0-45557D8D11E0 VIEWASTEXT onError="MacPlayer.Install();"></OBJECT>';
 MacPlayer.Show();
 
 setTimeout(function(){

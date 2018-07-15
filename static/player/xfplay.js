@@ -1,5 +1,5 @@
 
-MacPlayer.Html='<object id="Player" classid="clsid:E38F2429-07FE-464A-9DF6-C14EF88117DD" width="100%" height="100%" onError="MacPlayer.Install();"><param name="URL" value="'+ MacPlayer.PlayUrl +'"><param name="Status" value="1"></object>';
+MacPlayer.Html='<object id="Player" classid="clsid:E38F2429-07FE-464A-9DF6-C14EF88117DD" width="100%" height="'+MacPlayer.Height+'" onError="MacPlayer.Install();"><param name="URL" value="'+ MacPlayer.PlayUrl +'"><param name="Status" value="1"></object>';
 
 var rMsie = /(msie\s|trident.*rv:)([\w.]+)/;
 var match = rMsie.exec(navigator.userAgent.toLowerCase());
@@ -15,7 +15,7 @@ if(match == null){
 		}
 	}
 	if(ll){
-	MacPlayer.Html = '<embed id="Player" name="Player" type="application/xfplay-plugin" width="100%" height="100%"   PARAM_URL="'+MacPlayer.PlayUrl+' PARAM_Status="1" PARAM_Autoplay="1"></embed>'
+	MacPlayer.Html = '<embed id="Player" name="Player" type="application/xfplay-plugin" width="100%" height="'+MacPlayer.Height+'"   PARAM_URL="'+MacPlayer.PlayUrl+' PARAM_Status="1" PARAM_Autoplay="1"></embed>'
 	}
 	else{
 		MacPlayer.Install();
