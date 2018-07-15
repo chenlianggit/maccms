@@ -156,7 +156,7 @@ return array (
     'tip' => '无需安装任何插件',
     'id' => 'youku',
   ),
-  '56_' =>
+  '56_' => 
   array (
     'status' => '1',
     'sort' => '380',
@@ -195,12 +195,12 @@ return array (
   'qq' => 
   array (
     'status' => '1',
-    'sort' => '350',
     'from' => 'qq',
     'show' => '腾讯视频',
     'des' => 'v.qq.com',
-    'parse' => '',
-    'ps' => '0',
+    'ps' => '1',
+    'parse' => 'http://api.wheelhome.cn/api/?url= ',
+    'sort' => '350',
     'tip' => '无需安装任何插件',
     'id' => 'qq',
   ),

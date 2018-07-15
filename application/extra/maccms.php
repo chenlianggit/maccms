@@ -17,8 +17,8 @@ return array (
   ),
   'site' => 
   array (
-    'site_name' => '免费电影网 - 苹果CMS V10',
-    'site_url' => 'localhost',
+    'site_name' => '免费qxz视频网站',
+    'site_url' => 'http://vip.95uk.com/',
     'site_wapurl' => 'www.1.cn',
     'site_keywords' => '最新最快免费电影',
     'site_description' => '国内最大的免费电影网站',
