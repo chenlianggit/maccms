@@ -13,10 +13,10 @@ $MAC = array (
   ),
   'site' => 
   array (
-    'name' => '苹果CMS',
+    'name' => '9k免费在线电影',
     'installdir' => '/',
     'url' => 'vip.95uk.com',
-    'keywords' => '免费在线电影',
+    'keywords' => '9k免费在线电影',
     'description' => '提供最新最快的影视资讯和在线播放',
     'templatedir' => 'chen',
     'htmldir' => 'html',
@@ -24,7 +24,15 @@ $MAC = array (
     'icp' => 'icp123',
     'email' => '123456@maccms.com',
     'qq' => '123456',
-    'tj' => '统计代码',
+    'tj' => '<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?aad58556aa12522d2835c383bb5cb109";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>',
     'mobstatus' => '1',
     'mobtemplatedir' => 'chen',
     'mobhtmldir' => 'html',
