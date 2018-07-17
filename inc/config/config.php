@@ -15,7 +15,7 @@ $MAC = array (
   array (
     'name' => '9k免费在线电影',
     'installdir' => '/',
-    'url' => 'vip.95uk.com',
+    'url' => 'vip.ty2050.com',
     'keywords' => '9k免费在线电影',
     'description' => '提供最新最快的影视资讯和在线播放',
     'templatedir' => 'chen',
@@ -24,14 +24,14 @@ $MAC = array (
     'icp' => 'icp123',
     'email' => '123456@maccms.com',
     'qq' => '123456',
-    'tj' => '<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?aad58556aa12522d2835c383bb5cb109";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+    'tj' => '<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122481435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(\'js\', new Date());
+
+  gtag(\'config\', \'UA-122481435-1\');
 </script>',
     'mobstatus' => '1',
     'mobtemplatedir' => 'chen',
