@@ -16,7 +16,7 @@
 <script>
 var dp = new DPlayer({
     element: document.getElementById('player1'),
-    autoplay:true,
+    autoplay:false,
     video: {
         url: "<?php echo $_GET['url'];?>"
     }
