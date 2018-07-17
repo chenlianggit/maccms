@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="./DPlayer.min.css">
 <script src="./jquery.min.js"></script>
 <div id="player1"></div>
-<script type="text/javascript" src="./hls.min.js"></script>
-<script type="text/javascript" src="./DPlayer.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/m3u8/hls.min.js"></script>
+<script type="text/javascript" src="/js/m3u8/DPlayer.min.js" charset="utf-8"></script>
 <script>
 var dp = new DPlayer({
     element: document.getElementById('player1'),
