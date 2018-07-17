@@ -233,13 +233,13 @@ var _hmt = _hmt || [];
     'vod' => 
     array (
       'status' => 1,
-      'imgurl' => 'http://img.maccms.com/',
+      'imgurl' => 'http://vip.ty2050.com/',
       'typefilter' => 'and t_hide=0',
       'vodfilter' => 'and d_hide=0',
       'pagesize' => 20,
       'cjflag' => '',
       'charge' => '0',
-      'auth' => 'maccms.com#163.com',
+      'auth' => 'maccms.com#163.com#ty2050.com#c1993.com',
     ),
     'art' => 
     array (
@@ -269,18 +269,18 @@ var _hmt = _hmt || [];
   ),
   'weixin' => 
   array (
-    'duijie' => 'wx.maccms.com',
-    'sousuo' => 'wx.maccms.com',
-    'token' => 'qweqwe',
+    'duijie' => 'vip.ty2050.com',
+    'sousuo' => 'vip.95uk.com',
+    'token' => 'chenaa',
     'guanzhu' => '欢迎关注',
     'wuziyuan' => '没找到资源，请更换关键词或等待更新',
-    'wuziyuanlink' => 'demo.maccms.com',
+    'wuziyuanlink' => 'vip.95uk.com',
     'bofang' => '1',
-    'gjc1' => '关键词1',
-    'gjcm1' => '长城',
-    'gjci1' => 'http://img.aolusb.com/im/201610/2016101222371965996.jpg',
-    'gjcl1' => 'http://www.loldytt.com/Dongzuodianying/CC/',
-    'gjc2' => '关键词2',
+    'gjc1' => '我不是药神',
+    'gjcm1' => '我不是药神',
+    'gjci1' => 'https://p1.ssl.qhmsg.com/dr/270_500_/t01591033f317d462f9.png',
+    'gjcl1' => 'http://vip.ty2050.com/?m=vod-play-id-26444-src-1-num-1.html',
+    'gjc2' => '1',
     'gjcm2' => '生化危机6',
     'gjci2' => 'http://img.aolusb.com/im/201702/20172711214866248.jpg',
     'gjcl2' => 'http://www.loldytt.com/Kehuandianying/SHWJ6ZZ/',
