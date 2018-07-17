@@ -16,5 +16,6 @@
 <play status="1" sort="1015" from="link" show="link" des="link"><tip><![CDATA[无需安装任何插件]]></tip></play>
 <play status="1" sort="10016" from="bgy" show="百度云" des="bgy"><tip><![CDATA[无需安装任何插件]]></tip></play>
 <play status="1" sort="10017" from="ckplayer" show="ckplayer" des="ckplayer"><tip><![CDATA[无需安装任何插件]]></tip></play>
+<play status="1" sort="10018" from="gom3u8" show="gom3u8" des="gom3u8"><tip><![CDATA[无需安装任何插件]]></tip></play>
 
 </plays>
