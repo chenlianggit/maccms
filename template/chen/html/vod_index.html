@@ -20,7 +20,7 @@
 <span class="name">热播推荐<i class="ico sjxx"></i></span>
 </div>
 <ul class="ul clearfix">
-{maccms:vod num=9 order=desc by=days level=1,2,3,4,5 type=all} 
+{maccms:vod num=9  by=days level=desc order=desc type=all}
 <li><a class="link" href="[vod:link]" title="[vod:name]">
 <div class="img">
 <img class="lazy" data-original="[vod:pic]" src="{maccms:path_tpl}images/lazyload.gif" alt="[vod:name]"><span class="bgb"><i class="bgbbg"></i>
@@ -212,7 +212,7 @@
 </a></li>{/maccms:vod}
 </ul>
 <ul class="ul clearfix" id="stab[matrix:id]2" style="display:none;">
-{maccms:vod num=10 order=desc by=score type=[matrix:id]} 
+{maccms:vod num=10  order=desc by=score type=[matrix:id]}
 <li class="{if-A:[vod:num]%2==0 }t{endif-A}"><a class="jqr" href="[vod:link]" title="[vod:name]"><i class="bz">[vod:remarks]</i><i class="ico num">[vod:num]</i>[vod:name]
 <div class="lidown clearfix">
 <div class="lidown-l">

@@ -21,7 +21,8 @@ var dp = new DPlayer({
     element: document.getElementById('player1'),
     autoplay:false,
     video: {
-        url: "<?php echo $_GET['url'];?>"
+        url: "<?php echo $_GET['url'];?>",
+        pic: '/js/m3u8/loading.gif'
     },
     contextmenu: [
         {
