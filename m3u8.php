@@ -22,7 +22,18 @@ var dp = new DPlayer({
     autoplay:false,
     video: {
         url: "<?php echo $_GET['url'];?>"
-    }
+    },
+    contextmenu: [
+        {
+            text: '9K影院',
+            link: 'http://vip.ty2050.com/'
+        },
+        {
+            text: '关于9K影院',
+            link: 'http://vip.ty2050.com/'
+
+        }
+    ]
 });
 dp.play();
 </script>
