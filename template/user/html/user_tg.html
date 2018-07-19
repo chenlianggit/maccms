@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>基本资料 -{maccms:name}</title>
+<link href="{maccms:path}template/user/css/css.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="{maccms:path}template/user/css/aui.css" />
+<link rel="stylesheet" href="{maccms:path}template/user/css/main.css" />
+<script type="text/javascript" src="{maccms:path}template/user/css/iconfont.js" ></script>
+<script type="text/javascript" src="{maccms:path_tpl}js/home.js" ></script>
+<script type="text/javascript" src="{maccms:path_tpl}js/main.js" ></script>
+<script src="{maccms:path}js/jquery.js"></script>
+<script src="{maccms:path}js/common.js"></script>
+<script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
+<style type="text/css">
+    .icon {
+     width: 1em; height: 0.8em;
+     font-size: 1.6rem;
+     vertical-align: -0.15em;
+     fill: currentColor;
+     overflow: hidden;
+}
+    .icono {
+     width: 1em; height: 0.8em;
+     font-size: 1.6rem;
+      color:#212121;
+     vertical-align: -0.15em;
+     fill: currentColor;
+     overflow: hidden;
+}
+</style>
+<script>
+function fuckyou(){
+      window.close(); //关闭当前窗口(防抽)
+     window.location="about:blank"; //将当前窗口跳转置空白页
+}
+  function ck() {
+    console.profile();
+    console.profileEnd();
+    //我们判断一下profiles里面有没有东西，如果有，肯定有人按F12了，没错！！
+    if(console.clear) { console.clear() };
+                        if (typeof console.profiles =="object"){
+    return console.profiles.length > 0;
+                        }
+}
+function hehe(){
+if( (window.console && (console.firebug || console.table && /firebug/i.test(console.table()) )) || (typeof opera == 'object' && typeof opera.postError == 'function' && console.profile.length > 0)){
+  fuckyou();
+}
+if(typeof console.profiles =="object"&&console.profiles.length > 0){
+fuckyou();
+}
+}
+hehe();
+window.onresize = function(){
+if((window.outerHeight-window.innerHeight)>200)
+//判断当前窗口内页高度和窗口高度，如果差值大于200，那么呵呵
+   fuckyou();
+}
+</script>
+</head>
+<body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+ 
+ <!-- 头部  -->
+<section class="header"style="margin-top: -2.2rem;">
+	<header class="aui-bar aui-bar-nav" id="aui-header">
+		<a class="aui-pull-left aui-btn" onclick="back();">
+			<span class="aui-iconfont aui-icon-left"></span>
+		</a>
+		<div class="aui-title">基本资料</div>
+	   	<a href="/" class="aui-pull-right aui-btn" aui-popup-for="top-right" tapmode="">
+		<svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-imac1"></use>
+        </svg>
+		</a>
+	    <a onclick="openSearch()" class="aui-pull-right aui-btn">
+	       <svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-search"></use>
+        </svg>
+	    </a>
+	</header>
+</section>
+
+
+<div id="mainContent"style="margin-top: 2.2rem;">
+	<div class="usercenter-top">
+		<div class="usercenter-bg">
+			<div class="avatar-box">
+				<img class="user-avatar" src="/template/user/images/mrtx.jpg">
+			</div>
+			<p class="user-name">
+				<font color="#424242">{u_name}</font>
+			</p>
+		</div>
+		<div class="usercenter-count">
+			<a class="user-money" href="javascript:void(0)">
+				<p class="count">{u_points}</p>
+				<p class="title">我的积分</p>
+			</a>
+			<a class="user-packet" href="javascript:void(0)">
+				<p class="count">{ug_name}</p>
+				<p class="title">等级</p>
+			</a>
+			<a class="user-ticket" href="javascript:void(0)">
+				<p class="count">{u_flag}</p>
+				<p class="title">计费类型</p>
+			</a>
+		</div>
+	</div>
+
+	<div class="i-box-cnt" id="i-cnt">
+		<div id="i-profile">
+			<div class="ui-title i-tab-nav-box">
+				<ul class="i-tab-nav fn-clear">
+					<li>
+						<a href="javascript:void(0)" id="info_1"  onclick="show(1)">基本资料</a></li>
+					<li class="line"></li>
+					<li>
+						<a href="javascript:void(0)" id="info_2" onclick="show(2)">修改信息</a></li>
+					<li class="line"></li>
+				</ul>
+			</div>
+			<div id="base_info">
+			<div class="ui-form-item fn-clear even">
+							<label class="ui-label w130">用户名：</label> <p class="ui-label-checkbox">{u_name}</p>		
+						</div>
+						<div class="ui-form-item fn-clear odd">
+							<label for="nickname" class="ui-label w130">会员组名：</label> <p class="ui-label-checkbox">{ug_name}</p>
+						</div>
+						
+						<div class="ui-form-item fn-clear even">
+							<label for="nickname" class="ui-label w130">计费类型：</label> <p class="ui-label-checkbox">{u_flag}</p>
+						</div>
+						<div class="ui-form-item fn-clear odd">	
+							<label for="nickname" class="ui-label w130">其他限制：</label> <p class="ui-label-checkbox">从 {u_start} 到 {u_end} </p>
+						</div>
+						<div class="ui-form-item fn-clear even">
+							<label for="nickname" class="ui-label w130">QQ号码：</label> <p class="ui-label-checkbox">{u_qq}</p>
+						</div>
+						<div class="ui-form-item fn-clear odd">	
+							<label for="nickname" class="ui-label w130">Email地址：</label> <p class="ui-label-checkbox">{u_email}</p>
+						</div>
+						<div class="ui-form-item fn-clear even">
+							<label for="nickname" class="ui-label w130">账户积分：</label> <p class="ui-label-checkbox">{u_points}</p>
+						</div>
+						<div class="ui-form-item fn-clear odd ">
+							<label for="nickname" class="ui-label w130">登录地址：</label> <p class="ui-label-checkbox">{u_loginip}</p>
+						</div>
+						<div class="ui-form-item fn-clear even">
+							<label for="nickname" class="ui-label w130">推广次数：</label><p>{u_extend}</p>
+
+				</div>
+				
+			</div>
+			<div class="ui-form" id="update_info" style="display:none;">
+				<form id="form1" name="form1" method="post" action="index.php?m=user-save.html">
+					<div class="ui-form-item fn-clear">
+						<label for="u_password1" class="ui-label ">新密码：</label>
+						<input  id="u_password1" name="u_password1" maxlength="20" class="ui-input " value="">
+					</div>
+					<div class="ui-form-item fn-clear">
+						<label for="u_password2" class="ui-label ">重复密码：</label>
+						<input  id="u_password2" name="u_password2" maxlength="20" class="ui-input " value="">
+					</div>
+					<div class="ui-form-item fn-clear">
+						<label class="ui-label ">QQ号码：</label>
+						<input class="ui-input " id="u_qq" value="" name="u_qq">
+					</div>
+					<div class="ui-form-item fn-clear">
+						<label class="ui-label ">邮件地址：</label>
+						<input class="ui-input " id="u_email" value="{u_email}" name="u_email">
+					</div>
+					<div class="ui-form-item fn-clear">
+						<label class="ui-label ">联系电话：</label>
+						<input class="ui-input " id="u_phone" value="" name="u_phone">
+					</div>
+					<div class="ui-form-item fn-clear">
+						<label class="ui-label ">找回密码问题：</label>
+						<input class="ui-input" id="u_question" value="" name="u_question">
+					</div>
+					<div class="ui-form-item fn-clear">
+						<label class="ui-label ">找回密码答案：</label>
+						<input class="ui-input" id="u_answer" value="" name="u_answer">
+					</div>
+					<div class="ui-form-item fn-clear" style="text-align:center">
+						<input type="submit" id="btnSave" class="ui-button " value="保 存" style="width:200px;margin-top: 15px;border-radius: 1.7rem;background-color:#ff6666">
+					</div>
+				</form>
+			</div>
+		</div>
+	
+<script type="text/javascript">
+			$.formValidator.initConfig({
+				formID:"changepsw",
+				debug:false,
+				submitOnce:false,
+				onSuccess:function(){
+					//alert('dddddddddddddd');
+					$("#changepsw").qiresub({
+						curobj:$("#savebt"),
+						txt:'数据提交中,请稍后...',
+						onsucc:function(result){
+							//$.showfloatdiv({offset:$("#register").offset(),txt:'成功注册'});
+							$.hidediv(result);
+							if(parseInt(result.rcode)>0)
+							{
+								$("#u_oldpass").val('');
+								$("#u_password1").val('');
+								$("#u_password2").val('');
+							}
+							//alert(result.msg);
+						}
+					}).post({url:'/user-Center-changepsw'});
+					return false;
+				},
+				onError:function(msg,obj,errorlist){
+					$("#errorlist").empty();
+					$.map(errorlist,function(msg){
+						$("#errorlist").append("<li>" + msg + "</li>")
+					});
+					//alert(msg);
+				},
+				submitAfterAjaxPrompt : '有数据正在异步验证，请稍等...'
+			});
+			
+			$("#u_oldpass").formValidator({
+				onShow:"请输入密码",
+				onFocus:"至少6个长度",
+				onCorrect:"密码输入正确",
+				onError:'密码不能为空'
+			})
+			.inputValidator({
+				min:6,
+				empty:{
+					leftEmpty:false,
+					rightEmpty:false,
+					emptyError:"密码两边不能有空符号"
+				},onError:"密码在6-16位"
+			});
+			
+			$("#u_password1").formValidator({
+				onShow:"请输入密码",
+				onFocus:"至少6个长度",
+				onCorrect:"密码合法"
+			})
+			.inputValidator({
+				min:6,
+				empty:{
+					leftEmpty:false,
+					rightEmpty:false,
+					emptyError:"密码不能为空"
+				},
+				onError:"密码在6-16位"
+			});
+			
+			// Verifyu_oldpass
+			$("#u_password2").formValidator({
+				onShow:"输再次输入密码",
+				onFocus:"至少6个长度",
+				onCorrect:"密码一致"
+			})
+			.inputValidator({
+				min:6,
+				empty:{
+					leftEmpty:false,
+					rightEmpty:false,
+					emptyError:"重复密码必须和新密码一致"
+				},onError:"重复密码必须和新密码一致"
+			})
+			.compareValidator({
+				desID:"u_password1",
+				operateor:"=",
+				onError:"2次密码不一致,请确认"
+			});
+		</script>			
+		<script>function show(o) {
+				if (o == 1) {
+					$("#base_info").show();
+					$("#update_info").hide();
+					$("#info_1").css("color", "#ff6666");
+					$("#info_2").css("color", "");
+				} else {
+					$("#base_info").hide();
+					$("#update_info").show();
+					$("#info_1").css("color", "");
+					$("#info_2").css("color", "#ff6666");
+				}
+
+			}
+		</script>
+	</div>
+</div>
+{foot}
+</body>
+</html>

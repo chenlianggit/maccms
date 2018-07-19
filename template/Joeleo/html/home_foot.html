@@ -1,0 +1,83 @@
+<!-- 特别尾部  -->
+<br><br>
+<footer class="aui-bar aui-bar-tab" id="footer">
+    <div class="aui-bar-tab-item aui-active" tapmode>
+        <a href="" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-imac1"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">首页</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode>
+       <a href="/template/Joeleo/html/label_tv.php" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-radio"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">直播</div>
+    </div>
+   <div class="aui-bar-tab-item" tapmode>
+        <a href="/music/" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-bird1"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">音乐</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode>
+         <a href="/index.php?m=user-index.html" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-avatar"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">我的</div>
+    </div>
+</footer>
+
+
+
+
+<script type="text/javascript" src="/template/Joeleo/js/zepto.min.js"></script>
+<script type="text/javascript" src="/template/Joeleo/js/common.js" ></script>
+<script type="text/javascript" src="/template/Joeleo/js/home.js" ></script>
+<script type="text/javascript" src="/template/Joeleo/js/aui-scroll.js" ></script>
+<script type="text/javascript" src="/template/Joeleo/js/main.js" ></script>
+
+
+
+<div id="search" class="search">
+	<form class="form" action="/index.php?m=vod-search" method="post">
+	
+		<input type="search" class="input" placeholder="想要搜点什么呢？" name="wd"  autocomplete="off">
+		<button type="submit" class="aui-iconfont aui-icon-search"></button>
+	</form>
+	<div onclick="closeSearch()" class="search-cancel">取消</div>
+</div>
+
+<div id="_js_goTop" class="gotop">
+	<i class="aui-iconfont aui-icon-top"></i>
+</div>
+	
+<script type="text/javascript">
+    /*导航条*/
+   var topNav = new Swiper('#header-nav',{freeMode : true,slidesPerView :'auto'});
+    /*图片懒加载初始化*/
+    Echo.init({
+		offset: 0,
+		throttle: 0
+	});
+	/*影片列表TAB初始化*/
+	var tabsSwiper = new Swiper('#tabs-container',{
+	    speed:500,
+	    onSlideChangeStart: function(swiper){
+		    $(".numBox .hd .active").removeClass('active');
+		    $(".numBox .hd li").eq(swiper.activeIndex).addClass('active');
+	    }
+	})
+	$(".numBox .hd li").on('touchstart mousedown',function(e){
+	    e.preventDefault()
+	    $(".numBox .hd .active").removeClass('active')
+	    $(this).addClass('active')
+	    tabsSwiper.slideTo( $(this).index() )
+	})
+	$(".numBox .hd li").click(function(e){
+    	e.preventDefault()
+  	});
+  	function closeTips(){
+		$("#tips-1").remove();
+	}
+</script>
+

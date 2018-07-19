@@ -1,0 +1,44 @@
+
+<section class="header">
+	<header class="aui-bar aui-bar-nav" id="aui-header">
+		<font style="float: left;margin-left: 10px;">Joeleo</font>
+	    <a href="/" class="aui-pull-right aui-btn" aui-popup-for="top-right">
+			 <svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-imac1"></use>
+        </svg>
+		</a>
+	    <a onclick="openSearch()" class="aui-pull-right aui-btn">
+	        <svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-search"></use>
+        </svg>
+	    </a>
+	</header>
+</section>
+
+<section class="header-nav">
+
+	<div class="nav-wrap">
+		<div class="shadow-l"></div>
+		<div class="shadow-r"></div>
+	    <div class="wrap">
+			<ul>
+			
+	   			<li {if-A:{maccms:siteaid}=10} class="active"{endif-A}><a href="/">首页</a></li>
+	           {maccms:menu type=parent order=asc table=vod}
+                <li {if-A:{maccms:curvodtypeid}=[menu:id]} class="active"{endif-A}><a href="[menu:link]">[menu:name]</a></li>
+                {/maccms:menu}								
+								
+
+			</ul>
+		</div>
+	</div>
+	
+	<div class="nav-wrapp">
+	    
+		<div class="more">
+		    <a href="/index.php?m=vod-map.html" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-list"></use>
+        </svg></a>
+		</div>
+	</div>
+</section>

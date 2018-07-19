@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{maccms:name}</title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:description}" />
+    {maccms:include}
+
+
+</head>
+
+    
+<!-- 头部  -->
+<section class="header">
+	<header class="aui-bar aui-bar-nav" id="aui-header">
+		<a class="aui-pull-left aui-btn" onclick="back();">
+			<span class="aui-iconfont aui-icon-left"></span>
+		</a>
+		<div class="aui-title">[vod:name]</div>
+	   	<a href="/" class="aui-pull-right aui-btn" aui-popup-for="top-right" tapmode="">
+		<svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-imac1"></use>
+        </svg>
+		</a>
+	    <a onclick="openSearch()" class="aui-pull-right aui-btn">
+	       <svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-search"></use>
+        </svg>
+	    </a>
+	</header>
+</section>
+<section class="aui-content">
+    
+<!-- 信息条 
+    <div class="aui-tips" id="tips-1">
+	    <i class="aui-iconfont aui-icon-info"></i>
+	    <div class="aui-tips-title">欢迎来访Joeleo影院</div>
+	    <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips()"></i>
+	</div> -->
+	
+<!-- 详细介绍  -->
+		<section class="detail">
+		<div class="detail-wrap">
+			<div class="detail-cover"><img src="{maccms:path_tpl}images/bg-blue.png" alt="[vod:name]"></div>
+			<div class="detail-img">
+				<img src="[vod:pic]" alt="[vod:name]">
+			</div>
+			<div class="detail-txt">
+				<h1 class="aui-ellipsis-2">[vod:name]</h1>
+				<p class="detail-category"><span class="video-year">[vod:year]</span></p>
+				<style>.detail-category span:after, .list-category span:after{display: none;}</style>
+				<p class="detail-actor">    
+				   <span>主演：</span>
+                   <a href="[vod:starringlink]" target="_self" >[vod:starringlink]</a></p>
+                <p class="detail-director">
+                   <span>导演：</span><span>[vod:directedlink]</span></p>
+				<p class="detail-director">
+				   <span>{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></p>
+				
+				<div class="detail-btn">
+					<a href="[vod:playlink]" onclick="goname('pl');return false;" class="greenBtn"><span>播放</span></a>
+										
+					<a href="javascript:void(0)" onclick="MAC.UserFav('[vod:id]','Collection');return false;"><span>收藏</span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+<!--会隐藏的简介  -->
+	<section class="detail-intro" style="margin-bottom: 2.5rem;">
+		<p class="detail-intro-txt aui-ellipsis-2">
+		简介：[vod:content]&hellip;&hellip;		</p>
+		<div id="_js_detail_area" class="more"><i class="aui-iconfont aui-icon-down"></i></div>
+	</section>
+	
+<!-- 播放器  暂定  
+	<section id="Player_Main" style="display:none;">
+		<div id="video-player"></div>
+		<div class="video-loading">
+			<i class="iconload"></i>
+			<p>如果长时间无响应请刷新或切换资源</p>
+		</i></div>
+	</section>-->
+<!-- 信息条  -->	
+	<p style="line-height:1.5;width: 100%;background: #F9F4D9;color: #8F7F5D;padding:10px ;font-size:12px;border-radius: 4px;">如果播放失败可以尝试使用网盘资源观看，网盘资源获取方式请关注微信公众号“{maccms:name}” 即可获得! ^_^</p>
+
+<!-- 播放来源  -->
+	<section class="col-head" style="margin-top: 0;">
+		<div class="title">
+		<svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-zhibo"></use>
+        </svg>影片片源</div>
+		<p style="margin-left: 1rem;float: left;font-size: 12px;color: #FF6666;">下方左右滑动即可切换资源</p>
+	</section>
+
+		<section class="col-main">
+		<!--选集-->
+		<div class="numBox">
+		   
+			<div class="hd">
+				<ul>{maccms:play order=asc}
+					<li  class="active" ><a href="javascript:;">[play:show]</a></li>{/maccms:play}
+				</ul>
+			</div>
+			
+			<div class="bd">
+				<div id="tabs-container" class="swiper-container">
+					<div class="swiper-wrapper">{maccms:play order=asc}
+				        <div class="swiper-slide">
+							<div class="numList">
+								<ul>{maccms:url order=esc }
+								 <li {if-A:[url:num]=[vod:playnum]} class="active"{endif-A}><a data-episode="[url:num]" data-href="[url:link]" href="[url:link]" rel="nofollow">[url:name]{if-B:[url:num]=[play:urlcount]}<i class="iNewIcon"></i>{endif-B}</a></li>
+								 {/maccms:url}</ul>
+							</div>
+						</div>{/maccms:play}
+					</div> 
+				</div>
+			</div>
+		</div>
+	</section>
+	
+<!-- 信息条 	
+		<a class="guanzhu" href="https://mp.weixin.qq.com/s/ZvtbD4S4YbkM2IV8dgGgkg" rel="nofollow">邀你关注“Joeleo影视”，新剧更新提前看</a> -->
+		
+<!-- 相关推荐  -->
+	<section class="col-head">
+		<div class="title">
+		<svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-shenghuo"></use>
+        </svg>猜您喜欢</div>
+	</section>
+	<section class="col-main">
+		<div class="row">
+			<div class="col-3-List">
+				<ul>{maccms:vod num=3 order=desc by=hits type={maccms:curvodtypeid} } 
+				   <li class="item">
+						<a href="[vod:link]" title="[vod:name]" class="item-link">
+							<div class="item-pic item-lazy" style="height:150px;" data-echo="[vod:pic]">
+					<img onerror="this.src='/images/nopic.gif'" src="{maccms:path_tpl}images/Joeleo.png"style= "height:150px;">
+							</div><span class="covericon">相关影片</span>
+					
+							<span class="sBottom"><span>{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></span>
+						</a>
+						<a href="[vod:link]" title="[vod:name]" class="item-info">
+							<span class="sTit">[vod:name]</span>
+							<span class="sDes">[vod:content] </span>
+
+						</a>
+					</li>{/maccms:vod}
+				</ul>
+			</div>
+		</div>
+	</section>
+	
+<!-- 评论  -->
+	<section class="col-head">
+		<div class="title">
+		<svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-guixu"></use>
+        </svg>网友评论</div>
+	</section>
+	<section class="col-main">
+	    <div class="row">
+	[vod:comment]
+    	</div>
+	</section>
+</section>
+
+<!-- 尾部  -->
+{maccms:foot}
+</body>
+</html>

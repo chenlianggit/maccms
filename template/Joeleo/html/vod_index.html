@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+	<title>{maccms:name}</title>
+	<meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:description}" />
+    {maccms:include}
+
+</head>
+
+
+<!-- 头部  -->   
+{maccms:head}
+
+
+<section class="aui-content">
+<!-- 幻灯片  --> 
+	<section id="home-banner" class="swiper-container home-banner">
+		<div class="swiper-wrapper">
+		    {maccms:vod num=5  table=vod type=all by=level level=5 order=desc}
+			<div class="swiper-slide">
+				<a href="[vod:link]" title="[vod:name]">
+				<div class="pic swiper-lazy" style="height:150px;" data-background="[vod:picslide]">
+					<img onerror="this.src='{maccms:path_tpl}/images/loadingbg.png'" src="{maccms:path_tpl}images/Joeleo.png"style="height:150px;"/>
+				</div>
+				<div class="title"><p>《[vod:name]》</p></div>
+				</a>
+			</div>{/maccms:vod} 
+		</div>
+		<div class="swiper-pagination"></div>
+	</section>
+	
+<!-- 热门推荐  --> 
+	<section class="col-head" style="margin-top: 2.7rem;">
+		<div class="title"> 
+		<svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-fanjutuijian"></use>
+        </svg>热门推荐</div>
+		<div class="more"><i class="aui-iconfont aui-icon-paper"></i>&nbsp排行榜 &nbsp<i class="aui-iconfont aui-icon-right"></i></div>
+	</section>
+	<section class="col-main">
+		<div class="row">
+			<div class="col-2-List">
+				<ul>{maccms:vod type=vod num=4 order=desc  level=4}
+					<li class="item">
+						<a href="[vod:link]" title="[vod:name]" class="item-link">
+							<div class="item-pic item-lazy" data-echo="[vod:picslide]"style= "height: 100px;">
+						<img onerror="this.src='{maccms:path_tpl}/images/loadingbg.png'" src="{maccms:path_tpl}images/Joeleo.png"style="height:100px;"/>
+							</div><span class="covericon">热播中</span>
+						</a>
+						<a href="[vod:link]" title="[vod:name]" class="item-info">
+						<span class="sTit">[vod:content]</span>
+						<span class="sDes">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span>	
+						</a>
+					</li>{/maccms:vod}
+				</ul>
+			</div>
+		</div>
+	</section>
+	
+<!-- 热播电影  --> 
+	<section class="col-head" style="margin-top: 0rem;">
+		<div class="title"> <svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-dianying"></use>
+        </svg>热播影院</div>
+		<div class="more"><i class="aui-iconfont aui-icon-location"></i>&nbsp观影更方便 &nbsp</div>
+	</section>
+	<section class="col-main">
+		<div class="row">
+			<div class="col-3-List">
+				<ul>{maccms:vod type=1 num=6 order=desc  by=time}
+					<li class="item">
+						<a href="[vod:link]" title="[vod:name]" class="item-link">
+							<div class="item-pic item-lazy"style="height:150px;" data-echo="[vod:pic]">
+						<img onerror="this.src='/images/nopic.gif'" src="{maccms:path_tpl}images/Joeleo.png"style= "height:150px;">
+							</div>
+							<span class="covericon">热播中</span>
+							<span class="sBottom"><span>{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></span>
+						</a>
+						<a href="[vod:link]" title="[vod:name]" class="item-info">
+							<span class="sTit">[vod:name]</span>
+							<span class="sDes">[vod:content] </span>
+
+						</a>
+					</li>{/maccms:vod}
+				</ul>
+			</div>
+			{maccms:menu type=1}
+			<a class="mod-check-more" href="[menu:link]">更多院线电影</a>
+			{/maccms:menu} 
+		</div>
+	</section>
+	
+<!-- 同步剧场  --> 
+	<section class="col-head" style="margin-top: 0rem;">
+		<div class="title"> <svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-dianshiju"></use>
+        </svg>同步剧场</div>
+		<div class="more"><i class="aui-iconfont aui-icon-location"></i>&nbsp热剧随意追 &nbsp</i></div>
+	</section>
+	<section class="col-main">
+		<div class="row">
+			<div class="col-3-List">
+				<ul>{maccms:vod type=2 num=6 order=desc   by=time }
+					<li class="item">
+						<a href="[vod:link]" title="[vod:name]" class="item-link">
+							<div class="item-pic item-lazy" style="height:150px;" data-echo="[vod:pic]">
+								<img onerror="this.src='/images/nopic.gif'" src="{maccms:path_tpl}images/Joeleo.png"style= "height:150px;">
+							</div><span class="covericon">热播中</span>
+						<span class="covericon">热播中</span>
+							<span class="sBottom"><span>[vod:content len=8]&hellip; </span></span> 
+						</a>
+						<a href="[vod:link]" title="[vod:name]" class="item-info">
+							<span class="sTit">[vod:name]</span>
+							<span class="sDes">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span>
+
+						</a>
+					</li>{/maccms:vod}
+				</ul>
+			</div>
+			{maccms:menu type=2}
+			<a class="mod-check-more" href="[menu:link]">更多热播剧场</a>
+			{/maccms:menu} 
+		</div>
+	</section>
+	
+<!-- 劲爆综艺  --> 
+	<section class="col-head" style="margin-top: 0rem;">
+	<div class="title"> <svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-yule"></use>
+        </svg>劲爆综艺</div>
+		<div class="more"><i class="aui-iconfont aui-icon-location"></i>&nbsp综艺聚多看 &nbsp</i></div>
+	</section>
+	<section class="col-main">
+		<div class="row">
+			<div class="col-3-List">
+				<ul>{maccms:vod type=3 num=6 order=desc  by=time }
+					<li class="item">
+						<a href="[vod:link]" title="[vod:name]" class="item-link">
+							<div class="item-pic item-lazy" style="height:150px;" data-echo="[vod:pic]">
+						<img onerror="this.src='/images/nopic.gif'" src="{maccms:path_tpl}images/Joeleo.png"style= "height:150px;">
+	                        </div><span class="covericon">热播中</span>
+						</a>
+						<a href="[vod:link]" title="[vod:name]" class="item-info">
+						<span class="sTit">[vod:content]</span>
+						<span class="sDes">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span>	
+						</a>
+					</li>{/maccms:vod}
+				</ul>
+			</div>
+			{maccms:menu type=3}
+			<a class="mod-check-more" href="[menu:link]">更多劲爆综艺</a>
+			{/maccms:menu} 
+		</div>
+	</section>
+	
+<!-- 热播动漫  -->
+	<section class="col-head" style="margin-top: 0rem;">
+		<div class="title"> <svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-guochandonghuatuijian"></use>
+        </svg>热播动漫</div>
+		<div class="more"><i class="aui-iconfont aui-icon-location"></i>&nbsp回归纯与真 &nbsp</div>
+	</section>
+	<section class="col-main">
+		<div class="row">
+			<div class="col-3-List">
+			<ul>{maccms:vod type=4 num=6 order=desc  by=time }
+					<li class="item">
+						<a href="[vod:link]" title="[vod:name]" class="item-link">
+							<div class="item-pic item-lazy" style="height:150px;" data-echo="[vod:pic]">
+					<img onerror="this.src='/images/nopic.gif'" src="{maccms:path_tpl}images/Joeleo.png"style= "height:150px;">
+							</div><span class="covericon">热播中</span>
+						<span class="covericon">热播中</span>
+							<span class="sBottom"><span>{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></span>
+						</a>
+						<a href="[vod:link]" title="[vod:name]" class="item-info">
+							<span class="sTit">[vod:name]</span>
+							<span class="sDes">[vod:content] </span>
+
+						</a>
+					</li>{/maccms:vod}
+				</ul>
+			</div>
+			{maccms:menu type=4}
+			<a class="mod-check-more" href="[menu:link]">更多好看动漫</a>
+            {/maccms:menu} 
+		</div>
+	</section>
+</section>
+
+
+<!-- 尾部  -->
+{maccms:foot}
+
+
+</body>
+
+</html>

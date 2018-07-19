@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{maccms:name}</title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:description}" />
+    {maccms:include}
+    <script type="text/javascript" src="{maccms:path_tpl}js/zepto.min.js?20160831"></script>
+    <script type="text/javascript" src="{maccms:path_tpl}js/common.js" ></script>
+    <script type="text/javascript" src="{maccms:path_tpl}js/main.js" ></script>
+
+
+</head>
+<body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+    
+<!-- 头部  -->
+<section class="header">
+	<header class="aui-bar aui-bar-nav" id="aui-header">
+		<a class="aui-pull-left aui-btn" onclick="back();">
+			<span class="aui-iconfont aui-icon-left"></span>
+		</a>
+		<div class="aui-title">[vod:name]</div>
+	   	<a href="/" class="aui-pull-right aui-btn" aui-popup-for="top-right" tapmode="">
+		<svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-imac1"></use>
+        </svg>
+		</a>
+	    <a onclick="openSearch()" class="aui-pull-right aui-btn">
+	       <svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-search"></use>
+        </svg>
+	    </a>
+	</header>
+</section>
+<section class="aui-content">
+    
+<!-- 信息条  -->
+    <div class="aui-tips" id="tips-1">
+	    <i class="aui-iconfont aui-icon-info"></i>
+	    <div class="aui-tips-title">正在播放：[vod:name]&nbsp;&nbsp;[vod:playname]</div>
+	    <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips()"></i>
+	</div>
+<!-- 播放器  -->	
+   <section class="video-box">
+    [vod:playerinfo]
+    [vod:player] 
+   </section>
+   
+        
+        
+        
+<!--会隐藏的简介  -->
+	<section class="detail-intro" style="margin-bottom: 2.5rem;">
+		<p class="detail-intro-txt aui-ellipsis-2">
+		简介：[vod:content]&hellip;&hellip;		</p>
+		<div id="_js_detail_area" class="more"><i class="aui-iconfont aui-icon-down"></i></div>
+	</section>
+	
+
+	
+<!-- 信息条  -->	
+	<p style="line-height:1.5;width: 100%;background: #F9F4D9;color: #8F7F5D;padding:10px ;font-size:12px;border-radius: 4px;">如果播放失败可以尝试使用网盘资源观看，网盘资源获取方式请关注微信公众号“{maccms:name}” 即可获得! ^_^</p>
+
+<!-- 播放来源  -->
+	<section class="col-head" style="margin-top: 0;">
+	<div class="title">
+		<svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-zhibo"></use>
+        </svg>影片片源</div>
+		<p style="margin-left: 1rem;float: left;font-size: 12px;color: #FF6666;">下方左右滑动即可切换资源</p>
+	</section>
+
+		<section class="col-main">
+	<div class="numBox">
+		   
+			<div class="hd">
+				<ul>{maccms:play order=asc}
+					<li  class="active" ><a href="javascript:;">[play:show]</a></li>{/maccms:play}
+				</ul>
+			</div>
+			
+			<div class="bd">
+				<div id="tabs-container" class="swiper-container">
+					<div class="swiper-wrapper">{maccms:play order=asc}
+				        <div class="swiper-slide">
+							<div class="numList">
+								<ul>{maccms:url order=esc }
+								 <li {if-A:[url:num]=[vod:playnum]} class="active"{endif-A}><a data-episode="[url:num]" data-href="[url:link]" href="[url:link]" rel="nofollow">[url:name]{if-B:[url:num]=[play:urlcount]}<i class="iNewIcon"></i>{endif-B}</a></li>
+								 {/maccms:url}</ul>
+							</div>
+						</div>{/maccms:play}
+					</div> 
+				</div>
+			</div>
+		</div>
+	</section>
+	
+<!-- 信息条	-->
+
+		
+<!-- 相关推荐  -->
+	<section class="col-head">
+		<div class="title">
+		<svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-shenghuo"></use>
+        </svg>猜您喜欢</div>
+	</section>
+	<section class="col-main">
+		<div class="row">
+			<div class="col-3-List">
+				<ul>{maccms:vod num=3 order=desc by=hits type={maccms:curvodtypeid} } 
+				   <li class="item">
+						<a href="[vod:link]" title="[vod:name]" class="item-link">
+							<div class="item-pic item-lazy" style="height:150px;" data-echo="[vod:pic]">
+					<img onerror="this.src='/images/nopic.gif'" src="{maccms:path_tpl}images/Joeleo.png"style= "height:150px;">
+							</div>
+						<span class="covericon">相关影片</span>
+							<span class="sBottom"><span>{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></span>
+						</a>
+						<a href="[vod:link]" title="[vod:name]" class="item-info">
+							<span class="sTit">[vod:name]</span>
+							<span class="sDes">[vod:content] </span>
+
+						</a>
+					</li>{/maccms:vod}
+				</ul>
+			</div>
+		</div>
+	</section>
+	
+<!-- 评论  -->
+	<section class="col-head">
+		<div class="title">
+		<svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-guixu"></use>
+        </svg>网友评论</div>
+	</section>
+	<section class="col-main">
+[vod:comment]
+	</section>
+</section>
+
+<!-- 尾部  -->
+<!-- 特别尾部  -->
+<br><br>
+<footer class="aui-bar aui-bar-tab" id="footer">
+    <div class="aui-bar-tab-item aui-active" tapmode>
+        <a href="" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-imac1"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">首页</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode>
+       <a href="/index.php?m=label-tv.html" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-radio"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">直播</div>
+    </div>
+   <div class="aui-bar-tab-item" tapmode>
+        <a href="https://h5.07073.com/wap" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-bird1"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">游戏</div>
+    </div>
+    <div class="aui-bar-tab-item" tapmode>
+         <a href="/index.php?m=user-index.html" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-avatar"></use>
+        </svg></a>
+        <div class="aui-bar-tab-label">我的</div>
+    </div>
+</footer>
+
+
+
+<div id="search" class="search">
+	<form class="form" action="/index.php?m=vod-search" method="post">
+	
+		<input type="search" class="input" placeholder="想要搜点什么呢？" name="wd"  autocomplete="off">
+		<button type="submit" class="aui-iconfont aui-icon-search"></button>
+	</form>
+	<div onclick="closeSearch()" class="search-cancel">取消</div>
+</div>
+
+<div id="_js_goTop" class="gotop">
+	<i class="aui-iconfont aui-icon-top"></i>
+</div>
+	
+<script type="text/javascript">
+    /*导航条*/
+    var topNav = new Swiper('#header-nav',{freeMode : true,slidesPerView : 'auto', });
+    /*图片懒加载初始化*/
+    Echo.init({
+		offset: 0,
+		throttle: 0
+	});
+	/*影片列表TAB初始化*/
+	var tabsSwiper = new Swiper('#tabs-container',{
+	    speed:500,
+	    onSlideChangeStart: function(swiper){
+		    $(".numBox .hd .active").removeClass('active');
+		    $(".numBox .hd li").eq(swiper.activeIndex).addClass('active');
+	    }
+	})
+	$(".numBox .hd li").on('touchstart mousedown',function(e){
+	    e.preventDefault()
+	    $(".numBox .hd .active").removeClass('active')
+	    $(this).addClass('active')
+	    tabsSwiper.slideTo( $(this).index() )
+	})
+	$(".numBox .hd li").click(function(e){
+    	e.preventDefault()
+  	});
+  	function closeTips(){
+		$("#tips-1").remove();
+	}
+</script>
+</body>
+</html>

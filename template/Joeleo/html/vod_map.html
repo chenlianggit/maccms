@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+	<title>{maccms:name}</title>
+	<meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:description}" />
+    {maccms:include}
+
+</head>
+<body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+    
+<!-- 头部  -->   
+<section class="header">
+	<header class="aui-bar aui-bar-nav" id="aui-header">
+		<font style="float: left;margin-left: 10px;">Joeleo</font>
+	    <a href="/" class="aui-pull-right aui-btn" aui-popup-for="top-right">
+			 <svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-imac1"></use>
+        </svg>
+		</a>
+	    <a onclick="openSearch()" class="aui-pull-right aui-btn">
+	        <svg class="icono" aria-hidden="true">
+             <use xlink:href="#icon-search"></use>
+        </svg>
+	    </a>
+	</header>
+</section>
+<section class="header-nav">
+	<div class="nav-wrap">
+		<div class="shadow-l"></div>
+		<div class="shadow-r"></div>
+	    <div class="wrap">
+			<ul>
+	   			<li {if-A:{maccms:siteaid}=10} class="active"{endif-A}><a href="/">首页</a></li>
+	           {maccms:menu type=1,2,3,4,17,16,18 order=asc table=vod}
+                <li {if-A:{maccms:curvodtypeid}=[menu:id]} class="active"{endif-A}><a href="[menu:link]">[menu:name]</a></li>
+                {/maccms:menu}
+			</ul>
+		</div>
+	</div>
+	
+	<div class="nav-wrapp">
+	    
+		<div class="more">
+		    <a href="javascript:history.go(-1);" rel="nofollow" ><svg class="icon" aria-hidden="true">
+             <use xlink:href="#icon-list"></use>
+        </svg></a>
+		</div>
+	</div>
+</section>
+
+<!-- 导航  -->
+<div class="mod_wrap"></div>
+
+	<div class="mod_search_result">
+			<h3 class="result_tit">视频分类</h3>
+			<div class="result_tags">
+				<ul>{maccms:menu type=1,2,3,4,17,16,18 order=asc table=vod}
+				    <li class="js_keyword tag_s"><a href="[menu:link]">[menu:name]</a></li>
+				    
+				{/maccms:menu}
+			
+				</ul>
+			</div>
+		</div>
+
+
+
+		
+		<div class="mod_search_result">
+			
+			<h3 class="result_tit">电影分类</h3>
+		
+			<div class="result_tags">
+				
+				<a href="/?m=vod-type-id-5" class="js_keyword tag_s">动作片</a>
+				
+				<a href="/?m=vod-type-id-6" class="js_keyword tag_s">喜剧片</a>
+				
+				<a href="/?m=vod-type-id-7" class="js_keyword tag_s">爱情片</a>
+				
+				<a href="/?m=vod-type-id-8" class="js_keyword tag_s">科幻片</a>
+				
+				<a href="/?m=vod-type-id-9" class="js_keyword tag_s">恐怖片</a>
+				
+				<a href="/?m=vod-type-id-10" class="js_keyword tag_s">剧情片</a>
+				
+				<a href="/?m=vod-type-id-11" class="js_keyword tag_s">战争片</a>
+				
+			</div>
+		</div>
+		<div class="mod_search_result">
+			<h3 class="result_tit">电视剧分类</h3>
+			<div class="result_tags">
+				
+				<a href="/?m=vod-type-id-12" class="js_keyword tag_s">国产剧</a>
+				
+				<a href="/?m=vod-type-id-13" class="js_keyword tag_s">港台剧</a>
+				
+				<a href="/?m=vod-type-id-14" class="js_keyword tag_s">日韩剧</a>
+				
+				<a href="/?m=vod-type-id-15" class="js_keyword tag_s">欧美剧</a>
+				
+			
+				
+			</div>
+		</div>
+		<div class="mod_search_result">
+			<h3 class="result_tit">地区分类</h3>
+			<div class="result_tags">
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-大陆-lang-.html" class="js_keyword tag_s">大陆</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-香港-lang-.html" class="js_keyword tag_s">香港</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-台湾-lang-.html" class="js_keyword tag_s">台湾</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-美国-lang-.html" class="js_keyword tag_s">美国</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-韩国-lang-.html" class="js_keyword tag_s">韩国</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-日本-lang-.html" class="js_keyword tag_s">日本</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-泰国-lang-.html" class="js_keyword tag_s">泰国</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-新加坡-lang-.html" class="js_keyword tag_s">新加坡</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-0-letter--area-印度-lang-.html" class="js_keyword tag_s">印度</a>
+				
+				
+			</div>
+		</div>
+		<div class="mod_search_result">
+			<h3 class="result_tit">年份分类</h3>
+			<div class="result_tags">
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-2017-letter--area--lang-.html" class="js_keyword tag_s">2017</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-2016-letter--area--lang-.html" class="js_keyword tag_s">2016</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-2015-letter--area--lang-.html" class="js_keyword tag_s">2015</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-2014-letter--area--lang-.html" class="js_keyword tag_s">2014</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-2013-letter--area--lang-.html" class="js_keyword tag_s">2013</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-2012-letter--area--lang-.html" class="js_keyword tag_s">2012</a>
+				
+				<a href="/index.php?m=vod-list-id-1-pg-1-order--by--class-0-year-2011-letter--area--lang-.html" class="js_keyword tag_s">2011</a>
+				
+			</div>
+		</div>
+
+<!-- 尾部  -->
+{maccms:foot}
+
+</body>
+</html>
