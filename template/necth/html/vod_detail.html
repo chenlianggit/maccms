@@ -53,7 +53,7 @@
                             <div class="item tyui" id="playlist">{maccms:play}
                                 <div class="panel clearfix"><a class="option" data-toggle="collapse" data-parent="#playlist" href="#playlist[play:num]">[play:show]在线观看 <span class="text-muted pull-right"><span>[play:tip]</span> <i class="icon iconfont icon-right"></i></span></a>
                                     <div id="playlist[play:num]" class="playlist collapse{if-A:[play:num]<2} in{endif-A}">
-                                        <ul class="playlistlink-[play:num] list-15256 clearfix">{maccms:url order=desc} <li><a title='[url:name]' href='[url:link]' target="_self">[url:name]</a></li>{/maccms:url}
+                                        <ul class="playlistlink-[play:num] list-15256 clearfix">{maccms:url order=asc} <li><a title='[url:name]' href='[url:link]' target="_self">[url:name]</a></li>{/maccms:url}
                                         </ul>
                                     </div>
                                 </div>{/maccms:play}
@@ -177,7 +177,10 @@
                 <!--评论-->
                
                     
-                    
+                      <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2141521"></script>
+<!-- UY END --> 
                             
                         
                 <!--end 评论-->
@@ -187,7 +190,7 @@
                     <div class="hy-details-qrcode side clearfix">
                         <div class="item">
                             <h5 class="text-muted">扫一扫用手机观看</h5>
-                            <p><img src="http://qr.liantu.com/api.php?&w=200&text=http://{maccms:url}[vod:link]" /></p>
+                            <p><img src="http://s.jiathis.com/qrcode.php?url=http://{maccms:url}[vod:link]" /></p>
                             <p class="text-muted">分享到朋友圈</p>
                         </div>
                     </div>
