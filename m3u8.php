@@ -19,7 +19,7 @@
 <script>
 var dp = new DPlayer({
     element: document.getElementById('player1'),
-    autoplay:false,
+    autoplay:true,
     video: {
         url: "<?php echo $_GET['url'];?>",
         pic: '/js/m3u8/loading.gif'
