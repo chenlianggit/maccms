@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{maccms:name}</title>
+    <meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:description}" />
+{maccms:include}
+</head>
+
+<body>
+{maccms:head}
+    <div class="container">
+        <div class="row">
+            <div class="hy-layout clearfix">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <div class="swiper-container hy-slide">
+                        <div class="swiper-wrapper">{maccms:vod num=5 order=desc by=time type=all level=all}
+                            <div class="swiper-slide">
+                                <div class="hy-video-slide"><a class="videopic" href="[vod:link]" title="[vod:name]" style="padding-top: 60%; background: url([vod:picslide])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="title">[vod:name]</span></a></div>
+                            </div>{/maccms:vod}
+                        </div>
+                        <div class="swiper-button-next hidden-xs"><i class="icon iconfont icon-right"></i></div>
+                        <div class="swiper-button-prev hidden-xs"><i class="icon iconfont icon-back"></i></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12 padding-0">
+                    <div class="hy-index-menu clearfix">
+                        <div class="item">
+                            <ul class="clearfix">
+                                <li><a href="{maccms:path}index.php?m=vod-list-id-1.html"><i class="icon iconfont icon-menu1 text-color"></i><span>全部影片</span></a></li>
+                                <li><a href="{maccms:getlink top.html}"><i class="icon iconfont icon-ic_mymatch_ranking text-color"></i><span>影片排行</span></a></li>
+                                <li><a href="{maccms:getlink new.html}"><i class="icon iconfont icon-update text-color"></i><span>最近更新</span></a></li>
+								<li><a href="/index.php?m=user-index.html"><i class="icon iconfont icon-icon_special text-color"></i><span>登录</span></a></li>
+		
+								
+                                <li>
+
+
+											{if-A:{maccms:username}!=''}<a href="/index.php?m=user-index.html"><i class="icon iconfont icon-icon_special text-color"></i><span>{maccms:username} </span></a>
+										
+										
+									{else-A}<a href="/index.php?m=user-index.html"><i class="icon iconfont icon-icon_special text-color"></i><span>登录 </span></a>{else-A}{endif-A}
+								
+								</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hy-index-tags hidden-md clearfix">
+                        <div class="item">
+                            <ul class="clearfix">
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-5.html">动作片</a></li>
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-6.html">喜剧片</a></li>
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-15.html">美剧</a></li>
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-1-year-2018.html">2018电影</a></li>
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-14.html">韩剧</a></li>
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-8.html">科幻片</a></li>
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-9.html">恐怖片</a></li>
+                                <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-1-area-美国.html">好莱坞</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hy-right-qrcode hidden-sm hidden-xs">
+                        <div class="item">
+                            <dl class="clearfix">
+                                <dt><img class="pic-responsive" src="{maccms:path_tpl}i/img/qin52.png" /></dt>
+                                <dd>
+                                    <h4>扫描二维码“关注公众号”追剧永不掉队</h4>
+                                    <p class="text-muted">喜欢{maccms:name}也可以分享到朋友圈哦！</p>
+                                    <p class="margin-0 text-muted">{maccms:url}{maccms:path}</p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--最近更新-->
+            <div class="hy-layout clearfix">
+                <div class="hy-video-head">
+                    <h3 class="margin-0"><i class="icon iconfont icon-update text-color"></i> 最近更新</h3>
+                    <ul class="pull-right">
+                        <li class="active"><a href="{maccms:getlink new.html}" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix">
+                    <div class="hy-video-list cleafix">
+                        <div class="item">{maccms:vod num=9 by=time order=desc type=all}
+                            <div class="col-md-2 col-sm-3 col-xs-4{if-A:[vod:num]>6} visible-sm hidden-md{if-B:[vod:num]>8} visible-sm hidden-md hidden-sm{endif-B}{endif-A}">
+                                <a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                                    <div class="title">
+                                        <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                    <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                                </div>{/maccms:vod}
+                            </div>
+                    </div>
+                    <div class="hy-video-text-list hidden-xs clearfix">
+                            <div class="item">
+                                <ul class="clearfix">{maccms:vod num=12 by=time start=9}
+                                    <li>
+                                        <div class="title text-overflow"><a href="[vod:link]" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
+                                    </li>{/maccms:vod}
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+                <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:getlink new.html}" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+            </div>
+            <!--end 最近更新-->
+            <!--电影 -->{maccms:matrix type=1}
+            <div class="hy-layout clearfix">
+                <div class="hy-video-head">
+                    <ul class="pull-right">{maccms:menu parent=[matrix:id] order=asc table=vod}
+                        <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
+                        <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
+                    </ul>
+                    <h3 class="margin-0"><i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-color"></i> [matrix:name]</h3></div>
+                <div class="clearfix">
+                    <div class="col-md-5 col-sm-12 col-xs-12 padding-0">
+                        <div class="clearfix">
+                            <div class="col-xs-12">
+                                <div class="swiper-container hy-slide">
+                                    <div class="swiper-wrapper">{maccms:vod num=3 by=time type=[matrix:id] level=[matrix:id]}
+                                        <div class="swiper-slide">
+                                            <div class="hy-video-slide"><a class="videopic" href="[vod:link]" title="[vod:name]" style="padding-top: 60%; background: url([vod:picslide])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="title">[vod:name]</span></a></div>
+                                        </div>{/maccms:vod}
+                                    </div>
+                                    <div class="swiper-button-next hidden-xs"><i class="icon iconfont icon-right"></i></div>
+                                    <div class="swiper-button-prev hidden-xs"><i class="icon iconfont icon-back"></i></div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 padding-0">
+                                <div class="hy-index-tags active hidden-md clearfix">
+                                    <div class="item">
+                                        <ul class="clearfix">
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-6.html">喜剧片</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-周星驰.html">周星驰</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-成龙.html">成龙</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-刘德华.html">刘德华</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-5.html">动作片</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-史泰龙.html">史泰龙</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-8.html">科幻片</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-吴京.html">吴京</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-杰森·斯坦森.html">杰森·斯坦森</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-1-year-2018.html">2018</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-1-area-美国.html">好莱坞</a></li>
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-9.html">恐怖片</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden-sm hidden-xs clearfix">
+                            <div class="hy-video-min-head"><a href="{maccms:getlink top.html}#list-{maccms:siteaid}" class="pull-right text-muted">更多 <i class="icon iconfont icon-right"></i></a>
+                                <h4> <i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-color"></i> [matrix:name]排行榜</h4></div>
+                            <div class="clearfix">
+                                <div class="col-lg-4">
+                                    <div class="hy-video-list hidden-md">{maccms:vod num=1 type=[matrix:id] order=desc by=time start=9}
+                                        <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span></a>
+                                        </div>{/maccms:vod}
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 padding-0">
+                                    <div class="hy-video-ranking clearfix" style="padding:0 10px 10px;">
+                                        <div class="item">
+                                            <ul class="clearfix">{maccms:vod num=7 type=[matrix:id] order=desc by=time start=9}
+                                                <li class="text-overflow{if-A:[vod:num]>6} hidden-md{endif-A}"><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12 padding-0">
+                        <div class="hy-video-list clearfix">
+                            <div class="item clearfix">{maccms:vod num=9 type=[matrix:id] order=desc by=dayhitss}
+                                <div class="col-md-3 col-sm-3 col-xs-4{if-A:[vod:num]>8} visible-sm hidden-sm{endif-A}"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                                        <div class="title">
+                                            <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                        <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                                    </div>{/maccms:vod}
+                                </div>
+                            </div>
+                            <div class="hy-video-hit hidden-md hidden-sm hidden-xs clearfix">
+                                <div class="item">
+                                    <ul class="clearfix">{maccms:vod num=8 type=[matrix:id] by=time start=9}
+                                        <li><a href="[vod:link]"><span><i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-muted"></i> [vod:name]</span><p class="text-muted">[vod:typename]</p></a></li>{/maccms:vod}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+            </div>{/maccms:matrix}
+            <!--end 电影 -->
+
+ <!--电影/电视剧 -->{maccms:matrix type=2}
+            <div class="hy-layout clearfix">
+                <div class="hy-video-head">
+                    <ul class="pull-right">{maccms:menu parent=[matrix:id] order=asc table=vod}
+                        <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
+                        <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
+                    </ul>
+                    <h3 class="margin-0"><i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-color"></i> [matrix:name]</h3></div>
+                <div class="clearfix">
+                    <div class="col-md-5 col-sm-12 col-xs-12 padding-0">
+                        <div class="clearfix">
+                            <div class="col-xs-12">
+                                <div class="swiper-container hy-slide">
+                                    <div class="swiper-wrapper">{maccms:vod num=3 by=time type=[matrix:id] level=[matrix:id]}
+                                        <div class="swiper-slide">
+                                            <div class="hy-video-slide"><a class="videopic" href="[vod:link]" title="[vod:name]" style="padding-top: 60%; background: url([vod:picslide])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="title">[vod:name]</span></a></div>
+                                        </div>{/maccms:vod}
+                                    </div>
+                                    <div class="swiper-button-next hidden-xs"><i class="icon iconfont icon-right"></i></div>
+                                    <div class="swiper-button-prev hidden-xs"><i class="icon iconfont icon-back"></i></div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 padding-0">
+                                <div class="hy-index-tags active hidden-md clearfix">
+                                    <div class="item">
+                                        <ul class="clearfix">
+                                            <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-14.html">韩剧</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-2-class-28.html">谍战</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-刘涛.html">刘涛</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-张嘉译.html">张嘉译</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-12.html">国产剧</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-蒋欣.html">蒋欣</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-张国强.html">张国强</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-杨紫.html">杨紫</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-13-year=2018.html">2018新剧</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-2-class-22.html">古装</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-list-id-2-class-19.html">偶像</a></li>
+                                    <li><a class="text-overflow" href="{maccms:path}index.php?m=vod-search-starring-鹿晗.html">鹿晗</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden-sm hidden-xs clearfix">
+                            <div class="hy-video-min-head"><a href="{maccms:getlink top.html}#list-{maccms:siteaid}" class="pull-right text-muted">更多 <i class="icon iconfont icon-right"></i></a>
+                                <h4> <i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-color"></i> [matrix:name]排行榜</h4></div>
+                            <div class="clearfix">
+                                <div class="col-lg-4">
+                                    <div class="hy-video-list hidden-md">{maccms:vod num=1 type=[matrix:id] order=desc by=time start=9}
+                                        <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span></a>
+                                        </div>{/maccms:vod}
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 padding-0">
+                                    <div class="hy-video-ranking clearfix" style="padding:0 10px 10px;">
+                                        <div class="item">
+                                            <ul class="clearfix">{maccms:vod num=7 type=[matrix:id] order=desc by=time start=9}
+                                                <li class="text-overflow{if-A:[vod:num]>6} hidden-md{endif-A}"><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12 padding-0">
+                        <div class="hy-video-list clearfix">
+                            <div class="item clearfix">{maccms:vod num=9 type=[matrix:id] order=desc by=dayhitss }
+                                <div class="col-md-3 col-sm-3 col-xs-4{if-A:[vod:num]>8} visible-sm hidden-sm{endif-A}"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                                        <div class="title">
+                                            <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                        <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                                    </div>{/maccms:vod}
+                                </div>
+                            </div>
+                            <div class="hy-video-hit hidden-md hidden-sm hidden-xs clearfix">
+                                <div class="item">
+                                    <ul class="clearfix">{maccms:vod num=8 type=[matrix:id] by=time }
+                                        <li><a href="[vod:link]"><span><i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-muted"></i> [vod:name]</span><p class="text-muted">[vod:typename]</p></a></li>{/maccms:vod}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+            </div>{/maccms:matrix}
+            <!--end 电影/电视剧 -->
+
+            <!--综艺-->{maccms:matrix type=3}
+            <div class="hy-layout clearfix">
+                <div class="hy-video-head">
+                    <h3 class="margin-0"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</h3>
+                    <ul class="pull-right">
+                        {maccms:menu parent=[matrix:id] order=asc table=vod}
+                        <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
+                        <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix">
+                    <div class="col-md-5 col-sm-12 col-xs-12 padding-0">
+                        <div class="col-xs-12">
+                            <div class="swiper-container hy-slide">
+                                <div class="swiper-wrapper">{maccms:vod num=3 by=time type=[matrix:id] level=[matrix:id]}
+                                    <div class="swiper-slide">
+                                        <div class="hy-video-slide"><a class="videopic" href="[vod:link]" title="[vod:name]" style="padding-top: 60%; background: url([vod:picslide])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="title">[vod:name]</span></a></div>
+                                    </div>{/maccms:vod}
+                                </div>
+                                <div class="swiper-button-next hidden-xs"><i class="icon iconfont icon-right"></i></div>
+                                <div class="swiper-button-prev hidden-xs"><i class="icon iconfont icon-back"></i></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <div class="hidden-sm hidden-xs clearfix">
+                            <div class="col-md-5 col-sm-12">
+                                <div class="hy-video-list clearfix">{maccms:vod num=1 type=[matrix:id] order=desc by=time start=9}
+                                    <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="play hidden-xs"></span></a></div>{/maccms:vod}
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-sm-12 padding-0">
+                                <div class="hy-video-ranking">
+                                    <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-{maccms:siteaid}">更多 <i class="icon iconfont icon-right"></i></a>
+                                        <h4><i class="icon iconfont icon-top text-color"></i> 排行榜</h4></div>
+                                    <div class="item">
+                                        <ul class="clearfix">{maccms:vod num=7 type=[matrix:id] order=desc by=dayhitss start=9}
+                                            <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12 padding-0">
+                        <div class="hy-video-list clearfix">
+                            <div class="item clearfix">{maccms:vod num=9 type=[matrix:id] order=desc by=time}
+                                <div class=" {if-A:[vod:num]>8}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-3 col-sm-3 col-xs-4{endif-A}">
+                                    <a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                                    <div class="title">
+                                        <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                    <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                                </div>{/maccms:vod}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+            </div>{/maccms:matrix}
+            <!--end 综艺-->
+            <!--动漫-->{maccms:matrix type=4}
+            <div class="hy-layout clearfix">
+                <div class="hy-video-head">
+                    <h3 class="margin-0"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</h3>
+                    <ul class="pull-right">
+                        {maccms:menu parent=[matrix:id] order=asc table=vod}
+                        <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
+                        <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix">
+                    <div class="col-md-5 col-sm-12 col-xs-12 padding-0">
+                        <div class="col-xs-12">
+                            <div class="swiper-container hy-slide">
+                                <div class="swiper-wrapper">{maccms:vod num=3 by=time type=[matrix:id] level=[matrix:id]}
+                                    <div class="swiper-slide">
+                                        <div class="hy-video-slide"><a class="videopic" href="[vod:link]" title="[vod:name]" style="padding-top: 60%; background: url([vod:picslide])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="title">[vod:name]</span></a></div>
+                                    </div>{/maccms:vod}
+                                </div>
+                                <div class="swiper-button-next hidden-xs"><i class="icon iconfont icon-right"></i></div>
+                                <div class="swiper-button-prev hidden-xs"><i class="icon iconfont icon-back"></i></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <div class="hidden-sm hidden-xs clearfix">
+                            <div class="col-md-5 col-sm-12">
+                                <div class="hy-video-list clearfix">{maccms:vod num=1 type=[matrix:id] order=desc by=time start=9}
+                                    <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="play hidden-xs"></span></a></div>{/maccms:vod}
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-sm-12 padding-0">
+                                <div class="hy-video-ranking">
+                                    <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-{maccms:siteaid}">更多 <i class="icon iconfont icon-right"></i></a>
+                                        <h4><i class="icon iconfont icon-top text-color"></i> 排行榜</h4></div>
+                                    <div class="item">
+                                        <ul class="clearfix">{maccms:vod num=7 type=[matrix:id] order=desc by=dayhitss start=9}
+                                            <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12 padding-0">
+                        <div class="hy-video-list clearfix">
+                            <div class="item clearfix">{maccms:vod num=9 type=[matrix:id] order=desc by=time}
+                                <div class=" {if-A:[vod:num]>8}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-3 col-sm-3 col-xs-4{endif-A}">
+                                    <a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                                    <div class="title">
+                                        <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                    <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                                </div>{/maccms:vod}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+            </div>{/maccms:matrix}
+            <!--end 动漫-->
+            <!--专题-->
+            <div class="hy-layout clearfix">
+                <div class="hy-video-head">
+                    <h3 class="margin-0"><i class="icon iconfont icon-icon_special text-color"></i> 专题</h3>
+                    <ul class="pull-right">
+                        <li class="active"><a href="{maccms:link_topic_vod}" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
+                    </ul>
+                </div>
+                <div class="hy-topic-list clearfix">
+                    <div class="item">{maccms:topic num=3 by=time table=vod}
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <a class="videopic lazy" href="[topic:link]" title="[topic:name]" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;">
+                                <div class="details textbg"><span class="text"> <i class="icon iconfont icon-icon_special"></i> 专题</span><span class="name">[topic:name]</span><span class="count">—— [topic:count]个影片 ——</span></div>
+                            </a>
+                        </div>{/maccms:topic}
+                    </div>
+                </div>
+                <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:link_topic_vod}" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+            </div>
+            <!--end 专题 -->
+            <!--合作伙伴-->
+            <div class="hy-layout hidden-sm hidden-xs clearfix">
+                <div class="hy-video-head">
+                    <h3 class="margin-0">合作伙伴</h3></div>
+                <div class="hy-footer-partner">
+                    <p><a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0"/></a>
+					<a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0" /></a>
+					<a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0" /></a>
+					<a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0" /></a></p>
+					<p><a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0" /></a> 
+					<a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0" /></a>
+					<a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0" /></a> 
+					<a href="#"><img src="/template/nec/i/img/10827511.gif" width="270" height="60" border="0" /></a></p>
+                <!--#号为广告网址，src=“这是图片地址”-->
+				</div>
+            </div>
+            <!--end 合作伙伴 -->
+            <!--友链-->
+            <div class="hy-layout hidden-sm hidden-xs clearfix">
+                <div class="hy-video-head">
+                    <h3 class="margin-0">友情链接</h3></div>
+                <div class="hy-footer-link">
+                    <div class="item clearfix">
+                        <ul class="clearfix">{maccms:link type=font}
+                            <li><a class="text-color-999" href="[link:link]" target="_blank">[link:name]</a></li>{/maccms:link}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--end 友链 -->
+        </div>
+    </div>
+{maccms:foot}
+</body>
+
+</html>

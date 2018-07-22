@@ -1,11 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!DOCTYPE HTML>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>修改信息 - 会员中心 -{maccms:name}</title>
+<meta charset="utf-8">
+<title>修改资讯 - 会员中心 -{maccms:name}</title>
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
 <meta name="keywords" content="{maccms:keywords}"/>
 <meta name="description" content="{maccms:description}"/>
 <link href="{maccms:path}template/user/css/base.css" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/u.css" type="text/css" rel="stylesheet"/>
 <link href="{maccms:path}template/user/css/i.css?20120915" type="text/css" rel="stylesheet"/>
 <script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
 <script src="{maccms:path}js/jquery.js"></script>
@@ -14,86 +17,33 @@
 </head>
 <body>
 {head}
-<div id="content" class="layout">
-	<div class="ui-box ui-qire fn-clear" id="i-box">
-		<div id="i-bar">
-			<h3>会员控制面板</h3>
-			<div id="user-nav">
-				<ul class="user-nav-list fn-clear">  					
-		            <li class="current"><a href="index.php?m=user-index.html"><span class="icon zl-icon">&nbsp;</span>我的资料</a></li>
-					
-					<li><a href="index.php?m=user-fav.html"><span class="icon sc-icon">&nbsp;</span>我的收藏</a></li>
-					<!--<li><a href="#"><span class="icon dy-icon">&nbsp;</span>我的订阅</a></li>-->
-					<li><a href="index.php?m=user-plays.html"><span class="icon pl-icon">&nbsp;</span>我的播放记录</a></li>
-					<li><a href="index.php?m=user-downs.html"><span class="icon bf-icon">&nbsp;</span>我的下载记录</a></li>
-					<li><a href="index.php?m=user-pay.html"><span class="icon dx-icon">&nbsp;</span>充值卡充值</a></li>
-					<li ><a href="index.php?m=user-upgrade.html"><span class="icon gz-icon">&nbsp;</span>升级会员组</a></li>
-					<!--<li><a href="#"><span class="icon fd-icon">&nbsp;</span>我的留言</li>--></a></li>
-				</ul>
-			</div>
-			<!-- 
-			<div class="user-visitors" id="user-visitors">
-				<h3>最近访客</h3>
-				<ul class="visitor-list">
-				</ul>
-			</div>
-		     -->
-		</div>
-		<!-- // i-bar end -->
-		<div class="i-box-cnt" id="i-cnt">
-		
-			<form id="form1" name="form1" method="post" action="index.php?m=user-save.html" >
-				<div id="i-profile">
-					<div class="ui-title i-tab-nav-box">
-						<ul class="i-tab-nav fn-clear">
-							<li ><a href="index.php?m=user-index.html" >基本资料</a></li>
-							<li class="line"></li>
-							<li class="current"><a href="index.php?m=user-info.html" >修改信息</a></li>
-							<li class="line"></li>
-							<li><a href="index.php?m=user-popedom.html" >我的权限</a></li>
-						</ul>
-					</div>
-					<div class="ui-form">
-	<div class="ui-form-item fn-clear">
-		<label class="ui-label w130">用户名：</label> <p class="ui-label-checkbox">{u_name}</p>
-	</div>
-	<div class="ui-form-item fn-clear">
-		<label for="u_password1" class="ui-label w130">新密码：</label><input type="password" id="u_password1" name="u_password1" maxlength="20" class="ui-input w250" value="">
-		<p class="onShow ui-message" id="u_password1Tip" style="">请输入密码</p>
-	</div>
-	<div class="ui-form-item fn-clear">
-		<label for="u_password2" class="ui-label w130">重复密码：</label><input type="password" id="u_password2" name="u_password2" maxlength="20" class="ui-input w250" value="">
-		<p class="onShow ui-message"  id="u_password2Tip" style="">输再次输入密码</p>
-	</div>
-	<div class="ui-form-item fn-clear">
-		<label class="ui-label w130">QQ号码：</label><input class="ui-input w250" id="u_qq" size="40" value="{u_qq}" name="u_qq">
-	</div>
-	<div class="ui-form-item fn-clear">
-		<label class="ui-label w130">邮件地址：</label><input class="ui-input w250" id="u_email" size="40" value="{u_email}" name="u_email">
-	</div>
-	<div class="ui-form-item fn-clear">
-		<label class="ui-label w130">联系电话：</label><input class="ui-input w250" id="u_phone" size="40" value="{u_phone}" name="u_phone">
-	</div>
-	<div class="ui-form-item fn-clear">
-		<label class="ui-label w130">找回密码问题：</label><input class="ui-input" width="430" id="u_question" size="40" value="{u_question}" name="u_question">
-	</div>
-	<div class="ui-form-item fn-clear">
-		<label class="ui-label w130">找回密码答案：</label><input class="ui-input" width="430"  width="430" id="u_answer" size="40" value="{u_answer}" name="u_answer">
-	</div>	
-	<div class="ui-form-item fn-clear">
-		<label class="ui-label w130"></label><input type="submit" id="btnSave" class="ui-button w150" value="保 存">        <a href="index.php?m=user-findpass.html">忘记密码了？</a>
-	</div>
+<nav class="subNav globalPadding" id="nav_menu" style="display:block">
+<div class="con clearfix">
+<p>
+<a href="index.php?m=user-index.html">首页</a>
+<a href="index.php?m=user-info.html" class="cur">信息</a>
+<a href="index.php?m=user-fav.html">收藏</a>
+<a href="index.php?m=user-plays.html">播放</a>
+<a href="index.php?m=user-pay.html">充值</a>
+<a href="index.php?m=user-upgrade.html">包时</a>
+</p>
 </div>
-					<!-- // ui-form End -->
-				</div>
-				<!-- // ui-box End -->
-			</form>
-		</div>
-		<!-- // i-cnt End -->
-	</div>
-	<!-- // maxBox End -->
+</nav>
+<div class="user_box">
+<ul>
+<form id="form1" name="form1" method="post" action="index.php?m=user-save.html">
+<li><input value="{u_name}" readOnly="true"></li>
+<li><input type="password" id="u_password1" name="u_password1" maxlength="20" value="" placeholder="新密码"></li>
+<li><input type="password" id="u_password2" name="u_password2" maxlength="20" value="" placeholder="输再次输入密码"></li>
+<li><input id="u_qq" size="40" value="{u_qq}" name="u_qq" placeholder="QQ号码"></li>
+<li><input id="u_email" size="40" value="{u_email}" name="u_email" placeholder="邮寄地址"></li>
+<li><input id="u_phone" size="40" value="{u_phone}" name="u_phone" placeholder="联繫电话"></li>
+<li><input id="u_question" size="40" value="{u_question}" name="u_question" placeholder="找回密码问题"></li>
+<li><input id="u_answer" size="40" value="{u_answer}" name="u_answer" placeholder="找回密码答案"></li>
+<a href="javascript:void(0);" onClick="javascript:document.forms[0].submit();" class="btn" id="btnSave">修改</a>
+</form>
+</ul>
 </div>
-<!-- // wrap End -->
 <script type="text/javascript">
 			$.formValidator.initConfig({
 				formID:"changepsw",
@@ -103,7 +53,7 @@
 					//alert('dddddddddddddd');
 					$("#changepsw").qiresub({
 						curobj:$("#savebt"),
-						txt:'数据提交中,请稍后...',
+						txt:'资料提交中,请稍后...',
 						onsucc:function(result){
 							//$.showfloatdiv({offset:$("#register").offset(),txt:'成功注册'});
 							$.hidediv(result);
@@ -125,7 +75,7 @@
 					});
 					//alert(msg);
 				},
-				submitAfterAjaxPrompt : '有数据正在异步验证，请稍等...'
+				submitAfterAjaxPrompt : '有资料正在非同步验证，请稍等...'
 			});
 			
 			$("#u_oldpass").formValidator({
@@ -140,7 +90,7 @@
 					leftEmpty:false,
 					rightEmpty:false,
 					emptyError:"密码两边不能有空符号"
-				},onError:"密码在6-16位"
+				},onError:"密码在6-16位元"
 			});
 			
 			$("#u_password1").formValidator({
@@ -155,12 +105,13 @@
 					rightEmpty:false,
 					emptyError:"密码不能为空"
 				},
-				onError:"密码在6-16位"
+				onError:"密码在6-16位元"
 			});
 			
 			// Verifyu_oldpass
 			$("#u_password2").formValidator({
 				onShow:"输再次输入密码",
+
 				onFocus:"至少6个长度",
 				onCorrect:"密码一致"
 			})
@@ -169,8 +120,8 @@
 				empty:{
 					leftEmpty:false,
 					rightEmpty:false,
-					emptyError:"重复密码必须和新密码一致"
-				},onError:"重复密码必须和新密码一致"
+					emptyError:"重複密码必须和新密码一致"
+				},onError:"重複密码必须和新密码一致"
 			})
 			.compareValidator({
 				desID:"u_password1",

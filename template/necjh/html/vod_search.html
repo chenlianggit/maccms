@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>搜索{page:key}-{maccms:name}</title>
+    <meta name="keywords" content="{page:key},{maccms:keywords}" />
+    <meta name="description" content="{page:key},{maccms:description}" />
+    {maccms:include}
+</head>
+
+<body class="isearch">
+{maccms:head}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 hy-main-content">
+                <div class="hy-layout clearfix">
+                    <div class="hy-video-head"><span class="text-muted pull-right hidden-xs">当前第<span class="text-color">“{page:now}”</span>页</span>
+                        <h4 class="margin-0">搜索到与<span class="text-color">“{page:key}”</span>相关的<span class="text-color">“{page:datacount}”</span>条结果</h4></div>{maccms:vod pagesize=20 order=desc by=time}
+                    <div class="hy-video-details active clearfix">
+                        <div class="item clearfix">
+                            <dl class="content">
+                                <dt><a class="videopic" href="[vod:link]" style="background: url([vod:pic])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span></a></dt>
+                                <dd class="clearfix">
+                                    <div class="head"><h3>[vod:name]</h3></div>
+                                    <div class="score">
+                                        <div class="star"><span class="star-cur" id="score"></span></div><span class="branch">[vod:score]</span>
+                                        <script type="text/javascript">
+                                        var str = "[vod:score]%"
+                                        document.getElementById("score").style.width = (str.replace(".", ""))
+                                        </script>
+                                    </div>
+                                    <ul>
+                                        <li class="one"><span class="text-muted">主演：</span>[vod:starring]</li>
+                                        <li><span class="text-muted">导演：</span>[vod:directed]</li>
+                                        <li class="col-md-6 col-sm-6 hidden-xs padding-0"><span class="text-muted">地区：</span>[vod:area]</li>
+                                        <li class="col-md-6 col-sm-6 hidden-xs padding-0"><span class="text-muted">类型：</span>[vod:typename]</li>
+                                        <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">语言：</span>[vod:lang]</li>
+                                        <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">年份：</span>[vod:year]</li>
+                                        <!-- <li><span class="text-muted">剧情：</span>[vod:tag]&nbsp;&nbsp;</li> -->
+                                    </ul>
+                                    <div class="block"><a class="text-muted" href="[vod:link]">查看详情 <i class="icon iconfont icon-right"></i> </a></div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>{/maccms:vod}
+                    {if-A:{page:count}>1}<div class="hy-page clearfix">{maccms:pages len=6}</div>{endif-A}
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12 hy-main-side hidden-sm hidden-xs">
+                <div class="hy-layout clearfix">
+                    <div class="hy-video-ranking side clearfix">
+                        <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-1">更多 <i class="icon iconfont icon-right"></i></a>
+                            <h4><i class="icon iconfont icon-top text-color"></i> 电影排行榜</h4></div>
+                        <div class="item">
+                            <ul class="clearfix">{maccms:vod num=9 type=1 by=hits}
+                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hy-video-ranking side clearfix">
+                        <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-2">更多 <i class="icon iconfont icon-right"></i></a>
+                            <h4><i class="icon iconfont icon-top text-color"></i> 电视剧排行榜</h4></div>
+                        <div class="item">
+                            <ul class="clearfix">{maccms:vod num=9 type=2 by=hits}
+                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hy-video-list side clearfix">
+                        <div class="head"><a class="pull-right text-muted" href="{maccms:link_topic_vod}">更多 <i class="icon iconfont icon-right"></i></a>
+                            <h4>推荐专题</h4></div>
+                        <div class="item">
+                            <ul class="clearfix">{maccms:topic num=3 order=time}
+                                <li><a class="videopic lazy" href="[topic:link]" title="[topic:name]" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="note textbg text-overflow">[topic:name]</span></a></li>{/maccms:topic}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{maccms:foot}
+</body>
+</html>

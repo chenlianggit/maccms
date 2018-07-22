@@ -1,0 +1,33 @@
+﻿body{
+    font-family: 'Microsoft Yahei',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: rgb(70,70,70) url('../images/qin52.com.jpg') no-repeat fixed top;
+    background-size:100% 100%;
+}
+.form_sign{
+    width:350px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.vcode{
+    display: inline-block;
+    width: 100px;
+    margin-right: 10px;
+}
+.header{
+    font-family: '微软雅黑';
+    margin: 0 0 10px;
+    text-align: center;
+}
+.header img{
+    height: 48px;
+    width: 48px;
+}
+.extra{
+    font-size: 12px;
+    display: inline-block;
+    margin:10px 10px 0 0;
+}

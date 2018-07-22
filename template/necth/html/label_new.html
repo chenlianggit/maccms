@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8" />
+    <title>最近更新 - {maccms:name}</title>
+    <meta name="keywords" content="{maccms:keywords}" />
+    <meta name="description" content="{maccms:des}" />
+    {maccms:include}
+</head>
+
+<body>
+{maccms:head}
+    <!--main-->
+    <div class="container">
+        <div class="row">
+            <div class="hy-layout clearfix">
+                <div class="hy-switch-tabs active">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#list" data-toggle="tab">最近更新</a></li>
+                        <li><a href="#list1" data-toggle="tab">电影</a></li>
+                        <li><a href="#list2" data-toggle="tab">电视剧</a></li>
+                        <li><a href="#list3" data-toggle="tab">综艺</a></li>
+                        <li><a href="#list4" data-toggle="tab">动漫</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="list">
+                        <div class="hy-video-list cleafix">
+                            <div class="item">{maccms:vod num=60 order=desc by=time}
+                                <div class="col-md-2 col-sm-3 col-xs-4">
+                                    <a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style=" background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                                    <div class="title"><h5 class="text-center text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                    <div class="subtitle text-muted text-overflow text-center">[vod:time]</div>
+                                </div>{/maccms:vod}
+                            </div>
+                        </div>
+                    </div>{maccms:matrix type=1,2,3,4}
+                    <div class="tab-pane fade in" id="list[matrix:id]">
+                        <div class="hy-video-list cleafix">
+                            <div class="item">{maccms:vod num=60 by=time order=desc type=[matrix:id]}
+                                <div class="col-md-2 col-sm-3 col-xs-4">
+                                    <a class="videopic" href="[vod:link]" title="[vod:name]" style=" background: url([vod:pic]) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                                    <div class="title"><h5 class="text-center text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                    <div class="subtitle text-muted text-overflow text-center">[vod:time]</div>
+                                </div>{/maccms:vod}
+                            </div>
+                        </div>
+                    </div>{/maccms:matrix}
+                </div>
+            </div>
+        </div>
+    </div>
+{maccms:foot}
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>升级会员组 - 会员中心 -{maccms:name}</title>
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<meta name="keywords" content="{maccms:keywords}"/>
+<meta name="description" content="{maccms:description}"/>
+ <div class="wrapper">
+<div class="mask" id="mask_box"></div>
+<header class="public-header">
+      <section class="headBox">
+       <a class="pull-left logo" href="" title="">
+          <i>
+            <img src="/templets/hanjutv-m/images/logo.png" alt="" title=""></i>
+        </a>
+        <a href="/m/index.php?m=user-index.html" rel="nofollow" class="app_down pull-right">
+          <span>{maccms:username}</span></a>
+        <a href="/m/" rel="nofollow" class="zui-icon iconfont icon-lishijilu pull-right"></a>
+        <a href="/m/index.php?m=vod-search" rel="nofollow" class="zui-icon iconfont icon-sousuo pull-right"></a>
+      </section>
+</header>
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<link href="{maccms:path}template/user/css/login.css" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/reset_6331b55cbd48f0e4f85b0ee87cb10e50.css" rel="stylesheet">
+<script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
+<script type="text/javascript">var Root='{maccms:path}';var Sid='';var Cid='';var Id='';</script>
+<link href="{maccms:path_tpl}/images/icon.jpg" rel="apple-touch-icon-precomposed">
+<link href="{maccms:path_tpl}/images/icon.jpg" rel="apple-touch-icon">
+<link href="{maccms:path_tpl}/css/global.css" rel="stylesheet" type="text/css">
+<link href="{maccms:path_tpl}/css/font_css.css" rel="stylesheet" type="text/css">
+<link href="{maccms:path_tpl}/css/main.css" rel="stylesheet" type="text/css">
+
+<link href="{maccms:path}template/user/css/base.css" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/u.css" type="text/css" rel="stylesheet">
+<link href="{maccms:path}template/user/css/i.css?20120915" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/all_7cd6a06ffa0fb13c21f71ba788236445.css" rel="stylesheet">
+<script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
+<script src="{maccms:path}js/jquery.js"></script>
+<script src="{maccms:path}js/common.js"></script>
+
+<style type="text/css">.shuoming h6{line-height:30px;font-size:14px;font-weight:bold;color:#900;text-align:center;}.TONGZHI{border:1px dotted #900;background-color:#FFE8E8;color:#900;font-size:14px;line-height:25px;padding:10px;margin:10px;}</style>
+
+</head>
+
+<body>
+
+
+
+          <div class="usercenter-top" data-reactid=".0.0.1">
+            <div class="usercenter-bg" data-reactid=".0.0.1.0.0"><div class="avatar-box">
+              <img class="user-avatar" src="/m/template/user/images/default_avatar.jpg">
+              </div>
+              <p class="user-name" >{maccms:username}</p>
+              <span class="item-arrow" data-reactid=".0.0.1.0.0.2"></span>
+            </div>
+            <div class="usercenter-count" data-reactid=".0.0.1.1">
+            <a class="user-money" href="javascript:void(0)http://m.focus.cn/ibank/myAssetsPage" data-reactid=".0.0.1.1.0">
+              <p class="count">{u_points}</p><p class="title">我的积分</p></a>
+              <a class="user-packet" href="javascript:void(0)http://m.focus.cn/user/myRedPacket/" data-reactid=".0.0.1.1.1">
+                <p class="count" data-reactid=".0.0.1.1.1.0">{ug_name}</p><p class="title" data-reactid=".0.0.1.1.1.1">等级</p></a>
+              <a class="user-ticket" href="javascript:void(0)http://m.focus.cn/user/myticket/" data-reactid=".0.0.1.1.2">
+                <p class="count">{u_flag}</p><p class="title" data-reactid=".0.0.1.1.2.1">计费类型</p></a>
+            </div>
+          </div>
+
+<link rel="stylesheet" type="text/css" href="{maccms:path}template/user/css/style.css" />
+
+
+<div class="TONGZHI">包时说明：30积分包周（3元），100积分包月（10元），800积分包年（80元）。如果您不选择包时的话就是一积分可以观看一集电视剧。</div>
+
+<div class="user_box" style="display: none">
+
+<ul>
+
+<form action="{maccms:path}index.php?m=user-upgradesave-flag-1.html" method="post" name="form3" id="form3">
+
+<input type="hidden" name="flag" value="1"><div class="ui-form-item fn-clear"><div class="ui-form-item">
+
+<label for="nickname" class="ui-label w130">所属会员组：</label>
+
+<p class="ui-label-checkbox">普通会员</p>
+
+</div>
+
+<label class="ui-label w130">请选择要升级会员组：</label>
+
+<div class="ui-select">
+
+<select id="u_group" name="u_group">
+
+<option value="">请选择会员组</option>
+
+<option value="1">普通会员 (0积分)</option>
+
+</select>
+
+</div>
+
+<label class="ui-label w130">
+
+<input class="ui-button" type="submit" value="升级" id="btnSave"></label>
+
+</div>
+
+</form>
+</ul>
+
+</div>
+
+<div class="user_box">
+<ul>
+
+<form action="index.php?m=user-upgradesave" method="post" name="form4" id="form4">
+<input type="hidden" name="flag" value="2"/>
+<li><label>计费类型：</label> {u_flag}</li>
+<li><label>选择时长：</label>
+				     <select id="baoshi" name="baoshi">
+					 <option value="">所需时长：</option>
+                     <option value="1">包周会员 ({weekpoint}积分)</option>
+                     <option value="2">包月会员 ({monthpoint}积分)</option>
+                     <option value="3">包年会员 ({yearpoint}积分)</option>
+                     </select>
+</li>
+<li><a href="#" onclick="document.getElementById('form4').submit();" class="btn" id="btnSave">升级</a></li>
+</form>
+</ul>
+</div>
+
+
+
+<div class="TONGZHI">以下为永久会员组升级渠道</div>
+<div class="user_box">
+<ul>
+
+<form action="index.php?m=user-upgradesave-flag-1.html" method="post" name="form3" id="form3">
+<input type="hidden" name="flag" value="1"/>
+<li><label>当前会员组：</label> {ug_name}</li>
+<li><label>升级至：</label>
+   <select id="u_group" name="u_group">
+   <option value="">请选择会员组</option>
+   <!-- BEGIN row -->
+   <option value="{sel_val}">{sel_name} ({sel_upgrade}积分)</option>
+   <!-- END row -->
+   </select>
+</li>
+<a href="javascript:void(0);" onclick="javascript:document.forms[0].submit();" class="btn" id="btnSave">升级</a>
+</form>
+</ul>
+</div>
+
+<div class="shuoming">
+
+<h6>说明：包时成功之后，请登出会员帐号重新登录一次。</h6>
+
+</div>
+
+<footer data-reactid=".0.0.4">
+          <div class="footer-nav" data-reactid=".0.0.4.0"><div class="footer-os" data-reactid=".0.0.4.0.0">
+          
+            
+          </div><div class="footer-company">Copyright © 2017 {maccms:visits}</div></footer>
+
+</body>
+
+</html>
+
+
+
+
+		 					
+		          
+
+
+					
+					
+				
+					
+					
+						
+						 <!-- BEGIN row -->
+					
+						 <!-- END row -->
+					
+				
+					
+			
+					 
+
+
+
+

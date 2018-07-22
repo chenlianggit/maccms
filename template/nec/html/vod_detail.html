@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>[vod:name] - {maccms:name}</title>
+    <meta name="keywords" content="《[vod:name]》高清下载,《[vod:name]》在线观看,《[vod:name]》百度云" />
+    <meta name="description" content="[vod:name]剧情:[vod:contenttext len=60]" /> {maccms:include}
+</head>
+
+<body>
+    {maccms:head}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 hy-main-content">
+                <div class="hy-video-details clearfix">
+                    <div class="item clearfix">
+                        <dl class="content">
+                            <dt><a class="videopic" href="#list1" style="background: url([vod:pic])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="note textbg">[vod:name]</span></a></dt>
+                            <dd class="clearfix">
+                                <div class="head"><h3>[vod:name]</h3></div>
+                                <div class="score">
+                                        <div class="star"><span class="star-cur" id="score"></span></div><span class="branch">[vod:score]</span>
+                                        <script type="text/javascript">
+                                        var str = "[vod:score]%"
+                                        document.getElementById("score").style.width = (str.replace(".", ""))
+                                        </script>
+                                </div>
+                                <ul>
+                                    <li class="one"><span class="text-muted">主演：</span>[vod:starring]</li>
+                                    <li><span class="text-muted">导演：</span>[vod:directed]</li>
+                                    <li class="col-md-6 col-sm-6 hidden-xs padding-0"><span class="text-muted">地区：</span>[vod:area]</li>
+                                    <li class="col-md-6 col-sm-6 hidden-xs padding-0"><span class="text-muted">类型：</span>[vod:typename]</li>
+                                    <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">语言：</span>[vod:lang]</li>
+                                    <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">年份：</span>[vod:year]</li>
+                                    <li><span class="text-muted">剧情：</span>[vod:classlink]</li>
+                                </ul>
+                                <div class="playlink hidden-md hidden-sm hidden-xs"><a class="btn btn-warning" href="[vod:playlink]"><i class="icon iconfont icon-play"></i> 立即播放</a></div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="hy-layout active clearfix">
+                    <div class="hy-switch-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#list1" data-toggle="tab">播放线路</a></li>
+                            <li><a href="#list2" data-toggle="tab">影片下载</a></li>
+                            <li><a href="#list3" data-toggle="tab">剧情介绍</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="hy-play-list tab-pane fade in active" id="list1">
+                            <div class="item tyui" id="playlist">{maccms:play}
+                                <div class="panel clearfix"><a class="option" data-toggle="collapse" data-parent="#playlist" href="#playlist[play:num]">[play:show]在线观看 <span class="text-muted pull-right"><span>[play:tip]</span> <i class="icon iconfont icon-right"></i></span></a>
+                                    <div id="playlist[play:num]" class="playlist collapse{if-A:[play:num]<2} in{endif-A}">
+                                        <ul class="playlistlink-[play:num] list-15256 clearfix">{maccms:url order=desc} <li><a title='[url:name]' href='[url:link]' target="_self">[url:name]</a></li>{/maccms:url}
+                                        </ul>
+                                    </div>
+                                </div>{/maccms:play}
+                            </div>
+                        </div>
+                        <div class="hy-play-list tab-pane fade in" id="list2">
+                            <script src="{maccms:path_tpl}i/xl/xunlei_base.js"></script>
+                            <script src="{maccms:path_tpl}i/xl/xunlei.js"></script>
+                            <script src="{maccms:path_tpl}i/xl/urlconvent.js"></script>
+                            <script src="{maccms:path_tpl}i/xl/webxunlei.js"></script>
+                            <script src="{maccms:path_tpl}i/xl/xflib2.0.js"></script>
+                            {maccms:down}
+                            <div class="item" id="downlist">
+                                <div class="panel">
+                                    <a class="option" data-toggle="collapse" data-parent="#downlist" href="#downlist[down:num]">下载地址[down:num] <span class="text-muted pull-right">需安装迅雷客户端 <i class="icon iconfont icon-right"></i></span></a>
+                                    <div id="downlist[down:num]" class="down collapse{if-A:[down:num]<2} in{endif-A}">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>选择</th>
+                                                    <th class="hidden-xs">下载地址</th>
+                                                    <th style="text-align: right;">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <script>
+                                                var downurls = "{maccms:url order=asc}[url:name]$[url:path]#{/maccms:url}";
+                                                var downarr = downurls.split('#');
+                                                var downinfo, ys_url, thunder_url, qq_url, yb_url, str;
+                                                for (i = 0; i < downarr.length - 1; i++) {
+                                                    downinfo = downarr[i].split('$');
+                                                    ys_url = urlconvert(downinfo[1], 'ys');
+                                                    thunder_url = urlconvert(ys_url, 'xl');
+                                                    qq_url = urlconvert(ys_url, 'qq');
+                                                    yb_url = thunder_url;
+                                                    if (ys_url.indexOf('ed2k') > -1 || ys_url.indexOf('magnet') > -1) {
+                                                        yb_url = encodeURIComponent(decodeURIComponent(ys_url));
+                                                    }
+                                                    str = '<tr><td><label class="text-overflow"><input name="CopyAddr[down:num]" type="checkbox" value="' + thunder_url + '"> &nbsp; <span id="s[down:num]p' + downinfo[0] + '">' + downinfo[0] + '</span></label></td><td class="hidden-xs"><input id="lin[down:num]k' + downinfo[0] + '" class="form-control input-sm" type="text" value="' + thunder_url + '"></td><td align="right"><a class="btn btn-sm btn-success" id="[down:num]thUrlid' + downinfo[0] + '" href="' + thunder_url + '" thunderHref="' + thunder_url + '" thunderPid="38042" thunderResTitle="">迅雷下载</a> <a title="迅雷影音" class="btn btn-sm btn-danger" onclick="javascript:start(\'' + thunder_url + '\');" href="#" target="_self">迅雷影音</a></td></tr>';
+                                                    document.write(str);
+                                                }
+                                                </script>
+                                                <tr>
+                                                    <td><label><input id="allcheck[down:num]" onClick="CheckAll([down:num])" type="checkbox" name="checkall" /> 全选</label></td>
+                                                    <td class="text-muted hidden-xs">使用迅雷下载前请<a href="http://dl.xunlei.com/" rel="nofollow">《安装迅雷》</a>和查看<a href="http://www.seacms.net">《使用帮助》</a>。</td>
+                                                    <td align="right"><a class="btn btn-sm btn-primary" href="javascript:void(0);" onClick="thunderBatchTask([down:num])">迅雷批量下载</a><a class="btn btn-sm btn-primary" href="javascript:void(0);" onClick="CopyToClip([down:num])">复制链接到剪贴板</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {/maccms:down}
+                        </div>
+                        <div class="hy-play-list tab-pane fade in" id="list3">
+                            <div class="item">
+                                <div class="plot">[vod:content]...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--相关-->
+                <div class="hy-layout clearfix">
+                    <div class="hy-video-list">
+                        <div class="hy-video-head"><a class="text-muted pull-right" href="{maccms:path}index.php?m=vod-list-id-{maccms:curvodtypeid}">更多 <i class="icon iconfont icon-right"></i></a>
+                            <h3 class="margin-0">猜你喜欢</h3></div>
+                        <div class="swiper-container hy-switch">
+                            <div class="swiper-wrapper">{maccms:vod num=10  order=desc by=hits type=current}
+                                <div class="swiper-slide">
+                                    <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">[vod:remarks]</span></a>
+                                        <div class="title">
+                                            <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                        <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                                    </div>
+                                </div>{/maccms:vod}
+                            </div>
+                            <div class="swiper-button-next"><i class="icon iconfont icon-right"></i></div>
+                            <div class="swiper-button-prev"><i class="icon iconfont icon-back"></i></div>
+                        </div>
+                        <div class="hy-video-text-list hidden-xs clearfix">
+                            <div class="item">
+                                <ul class="clearfix">
+                                    {maccms:vod num=10 by=similar start=6}
+                                    <li class="list5{if-A:[vod:num]>10} hidden-sm{endif-A}">
+                                        <div class="title text-overflow"><a href="[vod:link]" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
+                                    </li>{/maccms:vod}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hy-layout clearfix">
+                    <div class="hy-video-list">
+                        <div class="hy-video-head"><a class="text-muted pull-right" href="{maccms:path}index.php?m=vod-list-id-{maccms:curvodtypeid}">更多 <i class="icon iconfont icon-right"></i></a>
+                            <h3 class="margin-0">最近更新</h3></div>
+                        <div class="swiper-container hy-switch">
+                            <div class="swiper-wrapper">{maccms:vod num=10 order=desc by=time type=current}
+                                <div class="swiper-slide">
+                                    <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">[vod:remarks]</span></a>
+                                        <div class="title">
+                                            <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
+                                        <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
+                                    </div>
+                                </div>{/maccms:vod}
+                            </div>
+                            <div class="swiper-button-next"><i class="icon iconfont icon-right"></i></div>
+                            <div class="swiper-button-prev"><i class="icon iconfont icon-back"></i></div>
+                        </div>
+                        <div class="hy-video-text-list hidden-xs clearfix">
+                            <div class="item">
+                                <ul class="clearfix">{maccms:vod num=10 by=weekhits type={maccms:curvodtypeid} start=6}
+                                    <li class="list5{if-A:[vod:num]>10} hidden-sm{endif-A}">
+                                        <div class="title text-overflow"><a href="[vod:link]" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
+                                    </li>{/maccms:vod}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end 相关-->
+                <!--评论-->
+               
+                    
+                    
+                            
+                        
+                <!--end 评论-->
+            </div>
+            <div class="col-md-3 col-sm-12 hy-main-side hidden-sm hidden-xs">
+                <div class="hy-layout clearfix">
+                    <div class="hy-details-qrcode side clearfix">
+                        <div class="item">
+                            <h5 class="text-muted">扫一扫用手机观看</h5>
+                            <p><img src="http://qr.liantu.com/api.php?&w=200&text=http://{maccms:url}[vod:link]" /></p>
+                            <p class="text-muted">分享到朋友圈</p>
+                        </div>
+                    </div>
+                    <div class="hy-video-ranking side clearfix">
+                        <div class="head"><a class="text-muted pull-right" href="{maccms:getlink new.html}#list-{maccms:curvodtypeid}">更多 <i class="icon iconfont icon-right"></i></a>
+                            <h4><i class="icon iconfont icon-top text-color"></i> [vod:typename]排行榜</h4></div>
+                        <div class="item">
+                            <ul class="clearfix">{maccms:vod num=9 type={maccms:curvodtypeid} by=hits}
+                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hy-video-list side clearfix">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {maccms:foot}
+</body>
+
+</html>

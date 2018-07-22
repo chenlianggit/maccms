@@ -1,0 +1,142 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>播放记录 - 会员中心 -{maccms:name}</title>
+<meta name="keywords" content="{maccms:keywords}"/>
+<meta name="description" content="{maccms:description}"/>
+ <div class="wrapper">
+<div class="mask" id="mask_box"></div>
+<header class="headerbar">
+      <section class="headBox">
+       <a class="pull-left logo" href="" title="">
+          <i>
+            <img src="/templets/hanjutv-m/images/logo.png" alt="" title=""></i>
+        </a>
+        <a href="/m/index.php?m=user-index.html" rel="nofollow" class="app_down pull-right">
+          <span>{maccms:username}</span></a>
+        <a href="/" rel="nofollow" class="zui-icon iconfont icon-lishijilu pull-right"></a>
+        <a href="/index.php?m=vod-search" rel="nofollow" class="zui-icon iconfont icon-sousuo pull-right"></a>
+      </section>
+</header>
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<link href="{maccms:path}template/user/css/login.css" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/reset_6331b55cbd48f0e4f85b0ee87cb10e50.css" rel="stylesheet">
+<script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
+<script type="text/javascript">var Root='{maccms:path}';var Sid='';var Cid='';var Id='';</script>
+<link href="{maccms:path_tpl}/images/icon.jpg" rel="apple-touch-icon-precomposed">
+<link href="{maccms:path_tpl}/images/icon.jpg" rel="apple-touch-icon">
+<link href="{maccms:path_tpl}/css/global.css" rel="stylesheet" type="text/css">
+<link href="{maccms:path_tpl}/css/font_css.css" rel="stylesheet" type="text/css">
+<link href="{maccms:path_tpl}/css/main.css" rel="stylesheet" type="text/css">
+
+<link href="{maccms:path}template/user/css/base.css" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/i.css?20120915" type="text/css" rel="stylesheet"/>
+        <link href="{maccms:path}template/user/css/reset_6331b55cbd48f0e4f85b0ee87cb10e50.css" rel="stylesheet">
+        <link href="{maccms:path}template/user/css/all_7cd6a06ffa0fb13c21f71ba788236445.css" rel="stylesheet">
+<script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
+<script src="{maccms:path}js/jquery.js"></script>
+<script src="{maccms:path}js/common.js"></script>
+<script>
+$(function(){
+	$("#btnClear").click(function(){
+		if(confirm('确定要清空记录吗')){
+			$("#form1").attr("action","index.php?m=user-del-flag-plays-clear-1.html");
+			$("#form1").submit();
+		}
+		else{return false}
+	});
+	$("#btnDel").click(function(){
+		if(checkCount('d_id[]')==0){
+			alert("请至少选择一个数据");
+			return;
+		}
+		if(confirm('确定要删除吗')){
+			$("#form1").attr("action","index.php?m=user-del-flag-plays.html");
+			$("#form1").submit();
+		}
+		else{return false}
+	});
+});
+</script>
+</head>
+<body>
+        <link href="{maccms:path}template/user/css/reset_6331b55cbd48f0e4f85b0ee87cb10e50.css" rel="stylesheet">
+        <link href="{maccms:path}template/user/css/all_7cd6a06ffa0fb13c21f71ba788236445.css" rel="stylesheet">
+
+
+
+        <div id="mainContent"><div data-reactid=".0">
+          <div class="usercenter-top" data-reactid=".0.0.1">
+            <div class="usercenter-bg" data-reactid=".0.0.1.0.0"><div class="avatar-box">
+              <img class="user-avatar" src="/m/template/user/images/default_avatar.jpg">
+              </div>
+              <p class="user-name">{maccms:username}</p>
+  
+            </div>
+            <div class="usercenter-count" data-reactid=".0.0.1.1">
+			<a class="user-money" href="javascript:void(0)" data-reactid=".0.0.1.1.0">
+              <p class="count">{u_points}</p><p class="title">我的积分</p></a>
+              <a class="user-packet" href="javascript:void(0)" data-reactid=".0.0.1.1.1">
+                <p class="count" data-reactid=".0.0.1.1.1.0">{ug_name}</p><p class="title" data-reactid=".0.0.1.1.1.1">等级</p></q>
+<a class="user-ticket" href="javascript:void(0)http://m.focus.cn/user/myticket/" data-reactid=".0.0.1.1.2">
+              <p class="count">{u_flag}</p><p class="title" data-reactid=".0.0.1.1.2.1">计费类型</p></q>
+            </div>
+          </div>
+			<!-- 
+			<div class="user-visitors" id="user-visitors">
+				<h3>最近访客</h3>
+				<ul class="visitor-list">
+				</ul>
+			</div>
+		     -->
+		</div>
+		<!-- // i-bar end -->
+		<div class="i-box-cnt" id="i-cnt">
+		
+				<div id="i-history">
+	<div class="ui-title i-tab-nav-box fn-clear">
+		<ul class="i-tab-nav">
+			<li class="current">播放记录</li>
+		</ul>
+	</div>
+	<div class="ui-cnt">
+		<ul class="user-txt-list his-list fn-clear" id="xlist">
+		<form id="form1" name="form1" method="post">
+	<!-- BEGIN row -->
+			<li class="">
+			<p class="title"><input name="d_id[]" type="checkbox" value="{d_id}">
+				<a target="_blank" href="{d_link}">{d_name}</a>/{t_name}
+			</p>
+			<p class="morelook">
+				<a target="_blank" href="{d_link}">重新观看</a>
+			</p>
+			<p class="time">
+				消费积分:{d_stint}
+			</p>			
+			</li>
+		<!-- END row -->
+		</ul>		
+		<!-- // i-intro End -->
+		<div class="check-del fn-left">
+		<input class="ui-edit ui-edit-short" type="button" id="btnChkAll" value="全选" class="input" onClick="checkAll('d_id[]');">
+        <input class="ui-edit ui-edit-short"  type="button" id="btnChkOther" value="反选" class="input" onClick="checkOther('d_id[]');">
+	    <input class="ui-edit ui-edit-short"  type="button" id="btnDel" value="删除" class="input" />
+         <input class="ui-edit1 ui-edit-short cleanup" type="button" id="btnClear" value="清空" class="input">
+		</form>
+		</div>
+		<!-- // list-page End -->
+	</div>
+</div>
+				<!-- // ui-box End -->
+	
+		</div>
+		<!-- // i-cnt End -->
+	</div>
+	<!-- // maxBox End -->
+</div>
+<!-- // wrap End -->
+<div class="footer-company">Copyright © 2017 {maccms:visits}</div></footer></body></html>
+</body>
+</html>
