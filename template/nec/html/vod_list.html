@@ -28,12 +28,12 @@
                             <li> <a href="{page:linktype}" {if-A: "{page:pid}"="0" } class="active" {endif-A}>全部</a></li>{maccms:menu type=auto}
                             <li><a href="[menu:link]" {if-A: "{page:id}"="[menu:id]" } class="active" {endif-A}>[menu:name]</a></li>{/maccms:menu}
                         </ul>
-                        <ul class="clearfix">
-                            <li class="text"><span class="text-muted">按剧情</span></li>
+                        <!--<ul class="clearfix">-->
+                            <!--<li class="text"><span class="text-muted">按剧情</span></li>-->
 
-                            <li><a href="{page:linkclass}"{if-A:"{page:class}"=""} class="active"{endif-A}>全部</a></li>{maccms:class type=auto}
-                            <li><a href="[class:link]"{if-A:{page:class}==[class:id]} class="active"{endif-A}>[class:name]</a></li>{/maccms:class}
-                        </ul>
+                            <!--<li><a href="{page:linkclass}"{if-A:"{page:class}"=""} class="active"{endif-A}>全部</a></li>{maccms:class type=auto}-->
+                            <!--<li><a href="[class:link]"{if-A:{page:class}==[class:id]} class="active"{endif-A}>[class:name]</a></li>{/maccms:class}-->
+                        <!--</ul>-->
                         <ul class="clearfix">
                             <li class="text"><span class="text-muted">按地区</span></li>
                             <li><a {if-A: "{page:lang}"="" } class="active" {endif-A} href="{page:linkarea}">全部</a></li>{maccms:area type=auto}
