@@ -18,7 +18,7 @@ $MAC = array (
     'url' => 'vip.ty2050.com',
     'keywords' => '9k免费在线电影',
     'description' => '提供最新最快的影视资讯和在线播放',
-    'templatedir' => 'chen',
+    'templatedir' => 'nec',
     'htmldir' => 'html',
     'adsdir' => 'ads',
     'icp' => 'icp123',
@@ -34,7 +34,7 @@ $MAC = array (
   gtag(\'config\', \'UA-122481435-1\');
 </script>',
     'mobstatus' => '1',
-    'mobtemplatedir' => 'chen',
+    'mobtemplatedir' => 'nec',
     'mobhtmldir' => 'html',
   ),
   'app' => 
