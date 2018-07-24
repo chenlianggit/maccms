@@ -194,7 +194,7 @@
                         <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
                         <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
                     </ul>
-                    <h3 class="margin-0"><i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-color"></i> [matrix:name]</h3></div>
+                    <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]><i class="icon iconfont {if-A:[arealist:num]>1}icon-fdvideo{else-A}icon-film{endif-A} text-color"></i> [matrix:name]</a></h3></div>
                 <div class="clearfix">
                     <div class="col-md-5 col-sm-12 col-xs-12 padding-0">
                         <div class="clearfix">
@@ -279,7 +279,7 @@
             <!--综艺-->{maccms:matrix type=3}
             <div class="hy-layout clearfix">
                 <div class="hy-video-head">
-                    <h3 class="margin-0"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</h3>
+                    <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
                     <ul class="pull-right">
                         {maccms:menu parent=[matrix:id] order=asc table=vod}
                         <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
@@ -338,7 +338,7 @@
             <!--动漫-->{maccms:matrix type=4}
             <div class="hy-layout clearfix">
                 <div class="hy-video-head">
-                    <h3 class="margin-0"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</h3>
+                    <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
                     <ul class="pull-right">
                         {maccms:menu parent=[matrix:id] order=asc table=vod}
                         <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
