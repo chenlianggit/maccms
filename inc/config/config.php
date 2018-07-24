@@ -13,11 +13,11 @@ $MAC = array (
   ),
   'site' => 
   array (
-    'name' => '9k免费在线电影',
+    'name' => 'CL影视-影视vip视频,影院首映超清',
     'installdir' => '/',
     'url' => 'vip.ty2050.com',
-    'keywords' => '9k免费在线电影',
-    'description' => '提供最新最快的影视资讯和在线播放',
+    'keywords' => '首映,CL影视,腾讯视频免vip,爱奇艺视频免vip,CL影视,腾讯视频免vip,爱奇艺视频免vip',
+    'description' => '看各大视频vip免费',
     'templatedir' => 'nec',
     'htmldir' => 'html',
     'adsdir' => 'ads',
