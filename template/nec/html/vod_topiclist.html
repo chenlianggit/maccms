@@ -74,26 +74,26 @@
                             <p class="text-muted">分享到朋友圈</p>
                         </div>
                     </div>
-                    <div class="hy-video-ranking side clearfix">
-                        <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-1">更多 <i class="icon iconfont icon-right"></i></a><h4><i class="icon iconfont icon-top text-color"></i> 电影排行榜</h4></div>
-                        <div class="item">
-                            <ul class="clearfix">{maccms:vod num=9 type=1 by=hits}
-                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="hy-video-ranking side clearfix">
-                        <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-2">更多 <i class="icon iconfont icon-right"></i></a><h4><i class="icon iconfont icon-top text-color"></i> 电视剧排行榜</h4></div>
-                        <div class="item">
-                            <ul class="clearfix">{maccms:vod num=9 type=2 by=hits}
-                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
-                            </ul>
-                        </div>
-                    </div>
+                    <!--<div class="hy-video-ranking side clearfix">-->
+                        <!--<div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-1">更多 <i class="icon iconfont icon-right"></i></a><h4><i class="icon iconfont icon-top text-color"></i> 电影排行榜</h4></div>-->
+                        <!--<div class="item">-->
+                            <!--<ul class="clearfix">{maccms:vod num=9 type=1 by=hits}-->
+                                <!--<li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="hy-video-ranking side clearfix">-->
+                        <!--<div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-2">更多 <i class="icon iconfont icon-right"></i></a><h4><i class="icon iconfont icon-top text-color"></i> 电视剧排行榜</h4></div>-->
+                        <!--<div class="item">-->
+                            <!--<ul class="clearfix">{maccms:vod num=9 type=2 by=hits}-->
+                                <!--<li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <div class="hy-video-list side clearfix">
                         <div class="head"><a class="pull-right text-muted" href="{maccms:link_topic_vod}">更多 <i class="icon iconfont icon-right"></i></a><h4>推荐豆瓣推荐专题</h4></div>
                         <div class="item">
-                            <ul class="clearfix">{maccms:topic num=3 by=hits}
+                            <ul class="clearfix">{maccms:topic num=18 by=hits}
                                 <li><a class="videopic lazy" href="[topic:link]" title="[topic:name]" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="note textbg text-overflow">[topic:name]</span></a></li>{/maccms:topic}
                             </ul>
                         </div>
