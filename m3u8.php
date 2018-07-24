@@ -26,11 +26,11 @@ var dp = new DPlayer({
     },
     contextmenu: [
         {
-            text: '9K影院',
+            text: 'CL影院',
             link: 'http://vip.ty2050.com/'
         },
         {
-            text: '关于9K影院',
+            text: '小伙伴不要点我啦',
             link: 'http://vip.ty2050.com/'
 
         }

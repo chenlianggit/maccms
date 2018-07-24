@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plays>
-<play status="1" sort="1001" from="youku" show="优酷视频" des="youku.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1002" from="qq" show="腾讯视频" des="v.qq.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1003" from="sohu" show="搜狐视频" des="v.sohu.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1004" from="qiyi" show="奇艺视频" des="qiyi.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1005" from="letv" show="乐视视频" des="letv.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1006" from="pptv" show="pptv" des="pptv.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1007" from="27pan" show="27盘" des="www.27pan.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1008" from="mgtv" show="芒果视频" des="www.mgtv.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1009" from="zuidam3u8" show="zuidam3u8" des="zuidam3u8"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1010" from="kuyun" show="kuyun" des="kuyun"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1012" from="131zy" show="131zy" des="131zy"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1013" from="yjyun" show="永久云" des="yjyun"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1014" from="ckm3u8" show="ckm3u8" des="ckm3u8"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="1015" from="link" show="link" des="link"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="10016" from="bgy" show="百度云" des="bgy"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="10017" from="ckplayer" show="ckplayer" des="ckplayer"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="10018" from="gom3u8" show="gom3u8" des="gom3u8"><tip><![CDATA[无需安装任何插件]]></tip></play>
-<play status="1" sort="10019" from="mym3u8" show="mym3u8" des="mym3u8"><tip><![CDATA[无需安装任何插件]]></tip></play>
+<play status="1" sort="1001"    from="youku"        show="优酷视频"       des="youku.com"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1002"    from="qq"           show="腾讯视频"       des="v.qq.com"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1003"    from="sohu"         show="搜狐视频"       des="v.sohu.com"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1004"    from="qiyi"         show="奇艺视频"       des="qiyi.com"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1005"    from="letv"         show="乐视视频"       des="letv.com"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1006"    from="pptv"         show="pptv"         des="pptv.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+<play status="1" sort="1007"    from="27pan"        show="27盘"         des="www.27pan.com"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1008"    from="mgtv"         show="芒果视频"       des="www.mgtv.com"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1009"    from="zuidam3u8"    show="zuidam3u8"    des="zuidam3u8"><tip><![CDATA[CL制作播放器,无广告]]></tip></play>
+<play status="1" sort="1010"    from="kuyun"        show="kuyun"        des="kuyun"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1012"    from="131zy"        show="131zy"        des="131zy"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1013"    from="yjyun"        show="永久云"        des="yjyun"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="1014"    from="ckm3u8"       show="ckm3u8"       des="ckm3u8"><tip><![CDATA[CL制作播放器,无广告]]></tip></play>
+<play status="1" sort="1015"    from="link"         show="link"         des="link"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="10016"   from="bgy"          show="百度云"        des="bgy"><tip><![CDATA[第三方播放器,有一个广告]]></tip></play>
+<play status="1" sort="10017"   from="ckplayer"     show="ckplayer"     des="ckplayer"><tip><![CDATA[CL制作播放器,无广告]]></tip></play>
+<play status="1" sort="10018"   from="gom3u8"       show="gom3u8"       des="gom3u8"><tip><![CDATA[CL自制播放器,无广告]]></tip></play>
+<play status="1" sort="10019"   from="mym3u8"       show="mym3u8"       des="mym3u8"><tip><![CDATA[CL自制播放器,无广告]]></tip></play>
 
 </plays>
