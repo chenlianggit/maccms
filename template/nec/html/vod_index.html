@@ -80,21 +80,21 @@
             <!--专题-->
             <div class="hy-layout clearfix">
                 <div class="hy-video-head">
-                    <h3 class="margin-0"><i class="icon iconfont icon-icon_special text-color"></i> 豆瓣推荐专题</h3>
+                    <h3 class="margin-0"><a href="{maccms:link_topic_vod}" target="_blank"s><i class="icon iconfont icon-icon_special text-color"></i> 豆瓣推荐专题</a></h3>
                     <ul class="pull-right">
                         <li class="active"><a href="{maccms:link_topic_vod}" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
                     </ul>
                 </div>
                 <div class="hy-topic-list clearfix">
-                    <div class="item">{maccms:topic num=3 by=time table=vod}
+                    <div class="item">{maccms:topic num=9 by=time table=vod}
                         <div class="col-md-4 col-sm-12 col-xs-12">
-                            <a class="videopic lazy" href="[topic:link]" title="[topic:name]" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;">
+                            <a class="videopic lazy" href="[topic:link]" title="[topic:name]" target="_blank" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;">
                                 <div class="details textbg"><span class="text"> <i class="icon iconfont icon-icon_special"></i> 豆瓣推荐专题</span><span class="name">[topic:name]</span><span class="count">—— [topic:count]个影片 ——</span></div>
                             </a>
                         </div>{/maccms:topic}
                     </div>
                 </div>
-                <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:link_topic_vod}" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+                <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:link_topic_vod}" target="_blank" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
             </div>
             <!--end 专题 -->
             <!--电影 -->{maccms:matrix type=1}
