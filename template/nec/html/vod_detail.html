@@ -80,7 +80,7 @@
                         <div class="swiper-container hy-switch">
                             <div class="swiper-wrapper">{maccms:vod num=10  order=desc by=hits type=current}
                                 <div class="swiper-slide">
-                                    <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">[vod:remarks]</span></a>
+                                    <div class="item"><a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">[vod:remarks]</span></a>
                                         <div class="title">
                                             <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
                                         <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
@@ -95,7 +95,7 @@
                                 <ul class="clearfix">
                                     {maccms:vod num=10 by=similar start=6}
                                     <li class="list5{if-A:[vod:num]>10} hidden-sm{endif-A}">
-                                        <div class="title text-overflow"><a href="[vod:link]" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
+                                        <div class="title text-overflow"><a href="[vod:link]" target="_blank" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
                                     </li>{/maccms:vod}
                                 </ul>
                             </div>
@@ -109,7 +109,7 @@
                         <div class="swiper-container hy-switch">
                             <div class="swiper-wrapper">{maccms:vod num=10 order=desc by=time type=current}
                                 <div class="swiper-slide">
-                                    <div class="item"><a class="videopic lazy" href="[vod:link]" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">[vod:remarks]</span></a>
+                                    <div class="item"><a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">[vod:remarks]</span></a>
                                         <div class="title">
                                             <h5 class="text-overflow"><a href="[vod:link]">[vod:name]</a></h5></div>
                                         <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
@@ -123,7 +123,7 @@
                             <div class="item">
                                 <ul class="clearfix">{maccms:vod num=10 by=weekhits type={maccms:curvodtypeid} start=6}
                                     <li class="list5{if-A:[vod:num]>10} hidden-sm{endif-A}">
-                                        <div class="title text-overflow"><a href="[vod:link]" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
+                                        <div class="title text-overflow"><a href="[vod:link]" target="_blank" title="[vod:name]"><span class="pull-right"><i class="icon iconfont icon-right text-muted"></i></span>[vod:name]</a></div>
                                     </li>{/maccms:vod}
                                 </ul>
                             </div>
@@ -156,7 +156,7 @@
                             <h4><i class="icon iconfont icon-top text-color"></i> [vod:typename]排行榜</h4></div>
                         <div class="item">
                             <ul class="clearfix">{maccms:vod num=9 type={maccms:curvodtypeid} by=hits}
-                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
                             </ul>
                         </div>
                     </div>

@@ -37,7 +37,7 @@
                     <div class="hy-video-details active clearfix">
                         <div class="item clearfix">
                             <dl class="content">
-                                <dt><a class="videopic" href="[vod:link]" style="background: url([vod:pic])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span></a></dt>
+                                <dt><a class="videopic" href="[vod:link]" target="_blank" style="background: url([vod:pic])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span></a></dt>
                                 <dd class="clearfix">
                                     <div class="head">
                                         <h3>[vod:name]</h3></div>
@@ -78,7 +78,7 @@
                         <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-1">更多 <i class="icon iconfont icon-right"></i></a><h4><i class="icon iconfont icon-top text-color"></i> 电影排行榜</h4></div>
                         <div class="item">
                             <ul class="clearfix">{maccms:vod num=9 type=1 by=hits}
-                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
                             </ul>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-2">更多 <i class="icon iconfont icon-right"></i></a><h4><i class="icon iconfont icon-top text-color"></i> 电视剧排行榜</h4></div>
                         <div class="item">
                             <ul class="clearfix">{maccms:vod num=9 type=2 by=hits}
-                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
+                                <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
                             </ul>
                         </div>
                     </div>
