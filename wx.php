@@ -1,7 +1,7 @@
 <?php
 define("TOKEN", "chendada");//自己定义的token 就是个通信的私钥
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();    //验证  初次对接时不能注释掉 否则不能通过
+//$wechatObj->valid();    //验证  初次对接时不能注释掉 否则不能通过
 $wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
