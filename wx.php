@@ -95,8 +95,8 @@ class wechatCallbackapiTest
 
                                 $title = "".$row['title']."";
                                 $des ="";
-                                $url ="http://vip.ty2050.com".$row['titleurl'];
-                                $picUrl1 ="http://vip.ty2050.com".$row['titlepic']."";
+                                $url ="http://vip.95uk.com".$row['titleurl'];
+                                $picUrl1 ="http://vip.95uk.com".$row['titlepic']."";
                                 $contentStr .= sprintf($newsTplItem, $title, $des, $picUrl1, $url);
                                 ++$itemCount;
                             }
@@ -127,9 +127,9 @@ class wechatCallbackapiTest
 
                             $des1 ="";
 
-                            $picUrl1 ="http://vip.ty2050.com/d/weizhaodao.jpg";
+                            $picUrl1 ="http://vip.95uk.com/d/weizhaodao.jpg";
 
-                            $url="http://vip.ty2050.com/misc/message/";
+                            $url="http://vip.95uk.com/misc/message/";
 
                             $resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 
@@ -162,9 +162,9 @@ class wechatCallbackapiTest
 
                             $des1 ="";
                             //图片地址
-                            $picUrl1 ="http://vip.ty2050.com/help.jpg";
+                            $picUrl1 ="http://vip.95uk.com/help.jpg";
                             //跳转链接
-                            $url="http://vip.ty2050.com";
+                            $url="http://vip.95uk.com";
 
                             $resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 
@@ -176,9 +176,9 @@ class wechatCallbackapiTest
 
                             $des1 ="";
                             //图片地址
-                            $picUrl1 ="http://vip.ty2050.com/help.jpg";
+                            $picUrl1 ="http://vip.95uk.com/help.jpg";
                             //跳转链接
-                            $url="http://vip.ty2050.com";
+                            $url="http://vip.95uk.com";
 
                             $resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 
@@ -190,9 +190,9 @@ class wechatCallbackapiTest
 
                             $des1 ="";
                             //图片地址
-                            $picUrl1 ="http://vip.ty2050.com/d/help.jpg";
+                            $picUrl1 ="http://vip.95uk.com/d/help.jpg";
                             //跳转链接
-                            $url="http://vip.ty2050.com/misc/message/";
+                            $url="http://vip.95uk.com/misc/message/";
 
                             $resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 
@@ -204,9 +204,9 @@ class wechatCallbackapiTest
 
                             $des1 ="";
                             //图片地址
-                            $picUrl1 ="http://vip.ty2050.com/d/help.jpg";
+                            $picUrl1 ="http://vip.95uk.com/d/help.jpg";
                             //跳转链接
-                            $url="http://vip.ty2050.com/misc/message/";
+                            $url="http://vip.95uk.com/misc/message/";
 
                             $resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 
@@ -218,15 +218,15 @@ class wechatCallbackapiTest
 
                             $des1 ="";
                             //图片地址
-                            $picUrl1 ="http://vip.ty2050.com/d/help.jpg";
+                            $picUrl1 ="http://vip.95uk.com/d/help.jpg";
                             //跳转链接
-                            $url="http://vip.ty2050.com/misc/message/";
+                            $url="http://vip.95uk.com/misc/message/";
 
                             $resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 
                             echo $resultStr;
                         }
-                        $contentStr = "\r\n 输入电影名如：我不是药神 如果没有具体想看的，请点击进入主页：vip.ty2050.com";
+                        $contentStr = "\r\n 输入电影名如：我不是药神 如果没有具体想看的，请点击进入主页：vip.95uk.com";
 
 
                         $msgType = 'text';
