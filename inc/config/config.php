@@ -270,11 +270,11 @@ $MAC = array (
   'weixin' => 
   array (
     'duijie' => 'vip.ty2050.com',
-    'sousuo' => 'vip.95uk.com',
+    'sousuo' => '',
     'token' => 'chenaa',
     'guanzhu' => '欢迎关注',
     'wuziyuan' => '没找到资源，请更换关键词或等待更新',
-    'wuziyuanlink' => 'vip.95uk.com',
+    'wuziyuanlink' => '',
     'bofang' => '1',
     'gjc1' => '我不是药神',
     'gjcm1' => '我不是药神',
