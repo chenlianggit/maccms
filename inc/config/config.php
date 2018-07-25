@@ -24,14 +24,14 @@ $MAC = array (
     'icp' => 'icp123',
     'email' => '123456@maccms.com',
     'qq' => '123456',
-    'tj' => '<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122481435-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag(\'js\', new Date());
-
-  gtag(\'config\', \'UA-122481435-1\');
+    'tj' => '<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9b38452641b19b86b07bcb32fbbd0f98";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>',
     'mobstatus' => '1',
     'mobtemplatedir' => 'nec',
