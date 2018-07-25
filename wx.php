@@ -1,7 +1,7 @@
 <?php
 define("TOKEN", "chendada");//自己定义的token 就是个通信的私钥
 $wechatObj = new wechatCallbackapiTest();
-//$wechatObj->valid();    //验证  初次对接时不能注释掉 否则不能通过
+$wechatObj->valid();    //验证  初次对接时不能注释掉 否则不能通过
 $wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
@@ -80,17 +80,17 @@ class wechatCallbackapiTest
                         $newsTplFooter="</Articles>
                                                         </xml>";
 
-                        $con = mysql_connect("127.0.0.1:5506","vip_95uk_com","YTHXt65AFa");
-                        mysql_query("SET NAMES UTF8");
-                        mysql_query("set character_set_client=utf8");
-                        mysql_query("set character_set_results=utf8");
-                        mysql_select_db("vip_95uk_com", $con);
+                        $con = mysqli_connect("127.0.0.1:3306","vip_95uk_com","YTHXt65AFa");
+                        mysqli_query("SET NAMES UTF8");
+                        mysqli_query("set character_set_client=utf8");
+                        mysqli_query("set character_set_results=utf8");
+                        mysqli_select_db("vip_95uk_com", $con);
                         $sql = "SELECT * FROM `phome_ecms_news` WHERE `title` like '%".$keyword."%'  LIMIT 0 , 1";
 
-                        $result = mysql_query($sql);
+                        $result = mysqli_query($sql);
                         $itemCount = 0;
-                        if(mysql_num_rows($result)>0){
-                            while($row = mysql_fetch_assoc($result))
+                        if(mysqli_num_rows($result)>0){
+                            while($row = mysqli_fetch_assoc($result))
                             {
 
                                 $title = "".$row['title']."";
@@ -136,7 +136,7 @@ class wechatCallbackapiTest
                             echo $resultStr;
 
                         }
-                        mysql_close($con);
+                        mysqli_close($con);
 
                     }
                     else
