@@ -24,7 +24,14 @@ $MAC = array (
     'icp' => 'icp123',
     'email' => '123456@maccms.com',
     'qq' => '123456',
-    'tj' => '<script>
+    'tj' => '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6857274579996319",
+    enable_page_level_ads: true
+  });
+</script>
+<script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -131,7 +138,7 @@ var _hmt = _hmt || [];
     'reg' => 1,
     'regpoint' => 1,
     'regstate' => 1,
-    'popularize' => 2,
+    'popularize' => 20,
     'popularizestate' => 1,
     'reggroup' => 1,
     'weekpoint' => 100,
