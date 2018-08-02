@@ -1,0 +1,13 @@
+{
+  "id": 88888888,
+  "name": "帮主",
+  "mobile": "18888888",
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvd3d3LnR1YmFuZ3podS5jb20iLCJhdWQiOiJ0dWJhbmd6aHVfd2Vpc2hhbmciLCJzdWIiOjUwMDAwOTAsImV4cCI6MTUzMzI0NDU5NiwiaWF0IjoxNTMzMjI2NTk2LCJyZWYiOjE1MzQ1MjI1OTYsImRhdGEiOnsicmVmcmVzaFRva2VuIjoiSEdDZWlpZUNsdUlnZHlCeHBYX1RpTUxNeVZaRUtJWGJ5cmNLOVhSTSJ9fQ.TlRcuWSnZ47xusyeu2T4zBvMH_uB_3a54DUjQ6kUnwQniKWgG48vrzQi0OrrBmNuxSOH5nMB3_2RqAdeRRc_QZXk75F9lQ8-r0GS0rkqNpweTVyM2kM91GDjbhrfCkKWLpxDdbXIlSGzE6OrUOORBzGCsCs8f0HyHGHF6fEN-R0zOs_wT-FEFz7IpjDxM3pOJSYMQ1HjLQfHTnQ_MDO0-N2CdxV3lt_pCDKSmO8Q7NviyiXatZWRE87Wj0fntzTzbG3cncjJqYDOz-49CRJbULnuSUfkUtikKKZ5dFSnX69T9PMPEuom9IrV9PiIbXFsqYWBASNBisSZX2jIWoZZNw",
+  "gid": "1",
+  "email": "123456@qq.com",
+  "coin": 0,
+  "province": "zh",
+  "city": "zh",
+  "isVip": true,
+  "vip_expire": "2088-01-01"
+}
