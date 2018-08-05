@@ -20,11 +20,11 @@
                             <dd class="clearfix">
                                 <div class="head"><h3>[vod:name]</h3></div>
                                 <div class="score">
-                                        <div class="star"><span class="star-cur" id="score[vod:score]"></span></div><span class="branch">[vod:score]</span>
-                                        <script type="text/javascript">
+                                    <div class="star"><span class="star-cur" id="score[vod:id]"></span></div><span class="branch">[vod:score]</span>
+                                    <script type="text/javascript">
                                         var str = "[vod:score]%"
-                                        document.getElementById("score[vod:score]").style.width = (str.replace(".", ""))
-                                        </script>
+                                        document.getElementById("score[vod:id]").style.width = (str.replace(".", ""))
+                                    </script>
                                 </div>
                                 <ul>
                                     <li class="one"><span class="text-muted">主演：</span>[vod:starring]</li>
