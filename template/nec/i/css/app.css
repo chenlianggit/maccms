@@ -936,7 +936,7 @@ a:link {
 
 .hy-player .item .sidebar {
     overflow-y: auto;
-    height: 600px
+    height: 640px
 }
 
 .hy-player .item .sidebar::-webkit-scrollbar {
