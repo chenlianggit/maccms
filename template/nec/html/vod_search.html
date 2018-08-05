@@ -27,7 +27,9 @@
                                         <div class="star"><span class="star-cur" id="score" onload="myscore(this)" ></span></div><span class="branch">[vod:score]</span>
                                         <script type="text/javascript">
                                             function myscore(span) {
+                                                console.log(span)
                                                 var str = "{vod:score}%";
+                                                console.log(str)
                                                 span.style.width = (str.replace(".", ""))
                                                 span.value = str
                                             }
