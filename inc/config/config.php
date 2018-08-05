@@ -24,20 +24,27 @@ $MAC = array (
     'icp' => 'icp123',
     'email' => '123456@maccms.com',
     'qq' => '123456',
-    'tj' => '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6857274579996319",
-    enable_page_level_ads: true
-  });
-</script>
-<script>
+    'tj' => '<script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?9b38452641b19b86b07bcb32fbbd0f98";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+(function(){
+    var bp = document.createElement(\'script\');
+    var curProtocol = window.location.protocol.split(\':\')[0];
+    if (curProtocol === \'https\') {
+        bp.src = \'https://zz.bdstatic.com/linksubmit/push.js\';
+    }
+    else {
+        bp.src = \'http://push.zhanzhang.baidu.com/push.js\';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
 })();
 </script>',
     'mobstatus' => '1',
