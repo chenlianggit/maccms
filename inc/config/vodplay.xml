@@ -18,5 +18,6 @@
 <play status="1" sort="10017"   from="ckplayer"     show="ckplayer"     des="ckplayer"><tip><![CDATA[CL制作播放器,无广告]]></tip></play>
 <play status="1" sort="10018"   from="gom3u8"       show="gom3u8"       des="gom3u8"><tip><![CDATA[CL自制播放器,无广告]]></tip></play>
 <play status="1" sort="10019"   from="mym3u8"       show="mym3u8"       des="mym3u8"><tip><![CDATA[CL自制播放器,无广告]]></tip></play>
+<play status="1" sort="10020"   from="dp"           show="dp"           des="dp"><tip><![CDATA[也是自制,最快,无广告]]></tip></play>
 
 </plays>
