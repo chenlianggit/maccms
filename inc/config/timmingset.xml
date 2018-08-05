@@ -11,4 +11,4 @@
 
 
 
-<timming><name>collectday</name><des>采集当天</des><status>1</status><file>collect.php</file><paramets>collect-cj-ac2-day-xt-1-ct--group--flag-jijizycom_-hour-24-apiurl-http://127.0.0.1/maccms8_mfb/inc/api.html</paramets><weeks>1,2,3,4,5,6,0</weeks><hours>00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23</hours><runtime>1532516403</runtime></timming></timmings>
+<timming><name>collectday</name><des>采集当天</des><status>1</status><file>collect.php</file><paramets>collect-cj-ac2-day-xt-1-ct--group--flag-jijizycom_-hour-24-apiurl-http://127.0.0.1/maccms8_mfb/inc/api.html</paramets><weeks>1,2,3,4,5,6,0</weeks><hours>00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23</hours><runtime>1533093288</runtime></timming></timmings>
