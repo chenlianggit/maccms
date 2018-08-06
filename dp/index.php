@@ -56,7 +56,8 @@ if (strstr($_GET['url'], "=2002") == true ) {
                 autoplay: false,
                 mutex: true,
                 lang: 'zh',
-                logo: '/mp4/logo.png',
+                // logo: '/mp4/logo.png',
+                logo: 'https://apis.tianxianle.com/mp4/logo.png',
                 preload: 'auto',
                 video: {
                     quality: [{
