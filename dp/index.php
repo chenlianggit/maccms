@@ -100,7 +100,10 @@ if (strstr($_GET['url'], "=m3u8") == true) {
         <!-- QQ应用模式 -->
         <meta name="x5-page-mode" content="app">
         <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
-        <style type="text/css">.dplayer-menu{display:none !important;}body{background:#000;padding: 0;margin: 0;width:100%;height:100%;}</style>
+        <style type="text/css">
+            .dplayer-menu{display:none !important;}body{background:#000;padding: 0;margin: 0;width:100%;height:100%;}
+            body, .al {padding: 0;margin: 0;width: 100%;height: 100%;background-color:#000;}div{color:#aaa;}a {text-decoration: none;}
+        </style>
     </head>
     <body marginwidth="0" marginheight="0" style="position:absolute;width:100%;top:0;bottom:0;backgroung:#000">
     <link rel="stylesheet" href="dist/DPlayer.min.css">
