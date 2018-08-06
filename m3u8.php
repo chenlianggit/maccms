@@ -19,10 +19,12 @@
 <script>
 var dp = new DPlayer({
     element: document.getElementById('player1'),
-    autoplay:true,
+    autoplay:false,
+    loop: false,
+    screenshot: false,
+    logo: '/mp4/logo.png',
     video: {
-        url: "<?php echo $_GET['url'];?>",
-        pic: '/js/m3u8/loading.gif'
+        url: "<?php echo $_GET['url'];?>"
     },
     contextmenu: [
         {
