@@ -1,22 +1,5 @@
 <?php
-function isMobile() {
-    $useragent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
-    $useragent_commentsblock = preg_match('|\(.*?\)|', $useragent, $matches) > 0 ? $matches[0] : '';
-    function CheckSubstrs($substrs, $text) {
-        foreach ($substrs as $substr) if (false !== strpos($text, $substr)) {
-            return true;
-        }
-        return false;
-    }
-    $mobile_os_list = array('Google Wireless Transcoder', 'Windows CE', 'WindowsCE', 'Symbian', 'Android', 'armv6l', 'armv5', 'Mobile', 'CentOS', 'mowser', 'AvantGo', 'Opera Mobi', 'J2ME/MIDP', 'Smartphone', 'Go.Web', 'Palm', 'iPAQ');
-    $mobile_token_list = array('Profile/MIDP', 'Configuration/CLDC-', '160×160', '176×220', '240×240', '240×320', '320×240', 'UP.Browser', 'UP.Link', 'SymbianOS', 'PalmOS', 'PocketPC', 'SonyEricsson', 'Nokia', 'BlackBerry', 'Vodafone', 'BenQ', 'Novarra-Vision', 'Iris', 'NetFront', 'HTC_', 'Xda_', 'SAMSUNG-SGH', 'Wapaka', 'DoCoMo', 'iPhone', 'iPod');
-    $found_mobile = CheckSubstrs($mobile_os_list, $useragent_commentsblock) || CheckSubstrs($mobile_token_list, $useragent);
-    if ($found_mobile) {
-        return true;
-    } else {
-        return false;
-    }
-}
+
 $use_mp4 = 0 ;
 if(strstr($_GET['url'], ".mp4") == true){
     $use_mp4 = 1;
@@ -29,24 +12,8 @@ if (strstr($_GET['url'], "=2002") == true ) {
     $use_mp4 = 1;
     $u = 'http://' . $_SERVER["HTTP_HOST"] . '/dp/jx/q2002.php?url=' . $_GET['url'];
 }
-
-//if (strstr($_GET['url'], ".m3u8") == true || strstr($_GET['url'], ".mp4") == true || strstr($_GET['url'], ".flv") == true) {
-//    $u = $_GET['url'];
-//} else {
-//    if (strstr($_GET['url'], "=2002") == true || strstr($_GET['url'], "wwwq2002com") == true) {
-//        $u = 'http://' . $_SERVER["HTTP_HOST"] . '/dp/jx/q2002.php?url=' . $_GET['url'];
-//    } else {
-//        if (strstr($_GET['url'], "=mp4") == true) {
-//            $u = 'http://' . $_SERVER["HTTP_HOST"] . '/dp/jx/mp4.php?url=' . $_GET['url'];
-//        } else {
-//            if (strstr($_GET['url'], "=m3u8") == true) {
-//                $u = 'http://' . $_SERVER["HTTP_HOST"] . '/dp/jx/mp42.php?url=' . $_GET['url'];
-//            } else {
-//            }
-//        }
-//    }
-//}
 ?>
+
 
 
     <!DOCTYPE html>
@@ -128,6 +95,3 @@ if (strstr($_GET['url'], "=2002") == true ) {
     <script src="1.js"></script>
     </body>
     </html>
-    <?php
-}
-?>
