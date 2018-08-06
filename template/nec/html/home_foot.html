@@ -16,10 +16,10 @@
 	</ul>
 </div>
 <div class="tabbar"><a href="{maccms:path}" class="item"><i class="icon iconfont icon-home"></i><p class="text">首页</p></a>
-<a href="?m=vod-type-id-1.html" class="item" {if-A:[maccms:curvodtypeid] = 1 } style="color:red"{endif-A} ><i class="icon iconfont icon-film"></i><p class="text">电影 </p></a>
-<a href="?m=vod-type-id-2.html" class="item" {if-A:[maccms:curvodtypeid] = 2 } style="color:red"{endif-A} ><i class="icon iconfont icon-show"></i><p class="text">电视剧 </p></a>
-<a href="?m=vod-type-id-3.html" class="item" {if-A:[maccms:curvodtypeid] = 3 } style="color:red"{endif-A} ><i class="icon iconfont icon-flag"></i><p class="text">综艺 </p></a>
-<a href="?m=vod-type-id-4.html" class="item" {if-A:[maccms:curvodtypeid] = 4 } style="color:red"{endif-A} ><i class="icon iconfont icon-mallanimation"></i><p class="text">动漫 </p></a>
+<a href="?m=vod-type-id-1.html" class="item" {if-A:{maccms:curvodtypeid} == 1 } style="color:red" {endif-A} ><i class="icon iconfont icon-film"></i><p class="text">电影 </p></a>
+<a href="?m=vod-type-id-2.html" class="item" {if-A:{maccms:curvodtypeid} == 2 } style="color:red" {endif-A} ><i class="icon iconfont icon-show"></i><p class="text">电视剧 </p></a>
+<a href="?m=vod-type-id-3.html" class="item" {if-A:{maccms:curvodtypeid} == 3 } style="color:red" {endif-A} ><i class="icon iconfont icon-flag"></i><p class="text">综艺 </p></a>
+<a href="?m=vod-type-id-4.html" class="item" {if-A:{maccms:curvodtypeid} == 4 } style="color:red" {endif-A} ><i class="icon iconfont icon-mallanimation"></i><p class="text">动漫 </p></a>
 
 <a href="{maccms:link_topic_vod}" class="item"><i class="icon iconfont icon-update text-color"></i><p class="text">豆瓣专题</p></a>
 </div>
