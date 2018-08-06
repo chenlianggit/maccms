@@ -1295,7 +1295,6 @@ a:focus,a:hover,a:link {
         bottom:0;
         width:100%;
         height:60px;
-        display:block;
     }
     .tabbar .item {
         display:block;
