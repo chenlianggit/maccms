@@ -46,43 +46,7 @@ if (strstr($_GET['url'], "=2002") == true ) {
 //        }
 //    }
 //}
-if (strstr($_GET['url'], "=m3u8") == true) {
-    if (isMobile()) {
-        $u = 'http://' . $_SERVER["HTTP_HOST"] . '/dp/jx/mp42.php?url=' . $_GET['url'];
-    } else {
-        ?>
-        <html>
-        <head>
-            <script language="javascript">
-                confirm("因版权问题本视频只支持手机端播放");
-            </script>
-        </head>
-        </html><?php exit();
-    }
-    ?>
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>全能视频解析</title>
-
-    </head>
-    <body style="overflow-y:hidden;">
-
-    <div style="margin:-1px auto;width:100%;height:100%;">
-        <iframe id="WANG" scrolling="no" allowtransparency="true" frameborder="0"
-                src="<?php echo $u; ?>"
-                width="100%" height="100%" allowfullscreen="true"></iframe>
-        <script type="text/javascript"> function QQ11(url) {
-                $('#WANG').attr('src', decodeURIComponent(decodeURIComponent(url))).show();
-            } </script>
-    </div>
-    <!--广告代码和统计代码-->
-    </body>
-    </html>
-    <?php
-} else {
-    ?>
+?>
 
 
     <!DOCTYPE html>
@@ -102,7 +66,7 @@ if (strstr($_GET['url'], "=m3u8") == true) {
         <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
         <style type="text/css">
             .dplayer-menu{display:none !important;}body{background:#000;padding: 0;margin: 0;width:100%;height:100%;}
-            body, .al {padding: 0;margin: 0;width: 100%;height: 100%;background-color:#000;}div{color:#aaa;}a {text-decoration: none;}
+            body,html #al {padding: 0;margin: 0;width: 100%;height: 100%;background-color:#000;}div{color:#aaa;}a {text-decoration: none;}
         </style>
     </head>
     <body marginwidth="0" marginheight="0" style="position:absolute;width:100%;top:0;bottom:0;backgroung:#000">
