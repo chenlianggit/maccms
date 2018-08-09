@@ -53,7 +53,7 @@ if (strstr($_GET['url'], "=2002") == true ) {
                 theme: '#b7daff',
                 loop: false,
                 screensloop: false,
-                autoplay: false,
+                autoplay: true,
                 mutex: true,
                 lang: 'zh',
                 logo: '/mp4/logo.png',
