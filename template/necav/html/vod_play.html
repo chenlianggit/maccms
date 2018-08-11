@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>[vod:name] - {maccms:name}</title>
+    <meta name="keywords" content="《[vod:name]》,《[vod:name]》在线观看,《[vod:name]》" />
+    <meta name="description" content="[vod:name]剧情:[vod:contenttext len=60]" />
+    {maccms:include}[vod:history]
+</head>
+
+<body>
+{maccms:head}
+    <div class="container">
+        <div class="row">
+            <div class="hy-player clearfix">
+                <div class="item">
+                    <div class="col-md-9 col-sm-12 padding-0">
+                        <div class="info clearfix" style="height:580px;">[vod:playerinfo][vod:player]</div>
+                        <div class="footer clearfix">
+                            <ul class="cleafix">
+                                <li><a class="btn btn-sm btn-default" onclick="MacPlayer.GoPreUrl();return false;" href="javascript:void()"><i class="icon iconfont icon-rewind1"></i> 上一集</a></li> 
+                                <li><a class="btn btn-sm btn-default" onclick="MacPlayer.GoNextUrl();return false;" href="javascript:void()">下一集 <i class="icon iconfont icon-fastforward"></i></a></li>
+                                <li><a class="btn btn-sm btn-default" onclick="MAC.Fav(document.URL,document.title);return false;" href="javascript:void()"> <i class="icon iconfont icon-collection"></i> 收藏</a></li>
+                                <li><span class="bdsharebuttonbox"><a href="javascript:;" class="btn btn-sm btn-default share" data-cmd="more"><i class="icon iconfont icon-share"></i> 分享</a></span></li>
+                            </ul><span class="text-muted hidden-xs">正在播放：</span><a class="hidden-xs" href="[vod:link]" title="[vod:name]">[vod:name]</a><span class="hidden-xs">【[vod:playname]】</span></div>
+                        <img src="[vod:pic]" style="display: none">
+                        <img src="[vod:picslide]" style="display: none">
+                    </div>
+                    <div class="col-md-3 col-sm-12 padding-0">
+                        <div class="sidebar" >
+                            <div class="hy-play-list play">
+                                <div class="item tyui" id="playlist">{maccms:play}
+                                    <div class="panel clearfix"><a class="option" data-toggle="collapse" data-parent="#playlist" href="#playlist[play:num]">[play:show] <span class="text-muted pull-right">[play:tip] <i class="icon iconfont icon-right"></i></span></a>
+                                        <div id="playlist[play:num]" class="playlist collapse{if-A:[play:num]<2} in{endif-A}">
+                                        <ul class="playlistlink-[play:num] list-15256 clearfix"> {maccms:url order=asc} <li><a title='[url:name]' href='[url:link]' target="_self">[url:name]</a></li>{/maccms:url}
+                                        </ul>
+                                        </div>
+                                    </div>{/maccms:play}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 hy-main-content">
+                <div class="hy-layout clearfix">
+                    <div class="hy-switch-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#list3" data-toggle="tab">剧情介绍</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!--<div class="hy-play-list tab-pane fade in" id="list2">-->
+                            <!--<script src="{maccms:path_tpl}i/xl/xunlei_base.js"></script>-->
+                            <!--<script src="{maccms:path_tpl}i/xl/xunlei.js"></script>-->
+                            <!--<script src="{maccms:path_tpl}i/xl/urlconvent.js"></script>-->
+                            <!--<script src="{maccms:path_tpl}i/xl/webxunlei.js"></script>-->
+                            <!--<script src="{maccms:path_tpl}i/xl/xflib2.0.js"></script>-->
+                        <!--</div>-->
+                        <div class="hy-play-list tab-pane fade in active" id="list3">
+                            <div class="item">
+                                <div class="plot">[vod:content]...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {maccms:foot}
+    <script>
+    window._bd_share_config = {
+        common: {
+            bdText: '',
+            bdDesc: '',
+            bdUrl: '',
+            bdPic: ''
+        },
+        share: [{
+            "bdSize": 24,
+            bdCustomStyle: '/'
+        }]
+    }
+    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '//bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </script>
+</body>
+</html>

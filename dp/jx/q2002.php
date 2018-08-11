@@ -14,26 +14,43 @@ function http_curl($url){
     $response=curl_exec($curl);
     curl_close($curl);
     return $response;
-	} 
-        $url = $_GET['url'];
-		$url   = str_replace("=2002","",$url);  //去掉第*集
-        $url   = str_replace("wwwq2002com","",$url);  //去掉第*集
-	   
-$s2 = http_curl("http://api.tianxianle.com/jx/dapi.php?id=".$url);      
-$json_api222=explode('scrolling="no" src="',$s2);
-$mp45=explode('"',$json_api222[1]);	   
-$s3 = file_get_contents($mp45[0]); 
-$json_api222=explode('vid="',$s3);
-$mp4=explode('"',$json_api222[1]);
-
-if (!empty($mp4[0])){
-	
-}else{	   
-$s2 = http_curl("https://apis.tianxianle.com/dapi.php?id=".$url); 
-$json_api222=explode("url: '",$s2);
-$mp4=explode("'",$json_api222[1]);
 }
-//exit($mp4[0]);
- header("Location:".$mp4[0]);
+
+$url    = $_GET['url'];
+$url    = str_replace("=2002","",$url);  //去掉第*集
+
+$s2             = http_curl("http://api.tianxianle.com/jx/dapi.php?id=".$url);
+$json_api222    = explode('scrolling="no" src="',$s2);
+# 美拍模式
+if(preg_match("/flashvars/",$json_api222[0])){
+    $json_apitype3  = explode('flashvars={f:\'',$s2);
+    $mp4            = explode('\'',$json_apitype3[1]);
+    if(empty($mp4[0])){
+        echo "视频已失效，我会尽快修复";
+    }
+    header("Location:".$mp4[0]);exit();
+}
+
+
+$mp45           = explode('"',$json_api222[1]);
+
+# 平民播放器
+if(isset($json_api222[1]) && preg_match("/^https:\/\/apis.tianxianle.com\/youku/",$json_api222[1]) ){
+    echo "<iframe border=\"0\" frameborder=\"0\" height=\"560px\"  marginheight=\"0\" marginwidth=\"0\" scrolling=\"no\" src=\"{$mp45[0]}\" width=\"100%\"></iframe>";
+    exit;
+}
+
+
+$s3             = file_get_contents($mp45[0]);
+$json_api222    = explode('vid="',$s3);
+$mp4            = explode('"',$json_api222[1]);
+
+if (empty($mp4[0])){
+    $s2         = http_curl("https://apis.tianxianle.com/dapi.php?id=".$url);
+    $json_api222= explode("url: '",$s2);
+    $mp4        = explode("'",$json_api222[1]);
+}
+
+header("Location:".$mp4[0]);
 
 ?>

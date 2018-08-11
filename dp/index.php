@@ -56,7 +56,7 @@ if (strstr($_GET['url'], "=2002") == true ) {
                 autoplay: true,
                 mutex: true,
                 lang: 'zh',
-                logo: '/mp4/logo.png',
+                // logo: '/mp4/logo.png',
                 preload: 'auto',
                 video: {
                     quality: [{
@@ -67,17 +67,20 @@ if (strstr($_GET['url'], "=2002") == true ) {
                         name: '原画',
                         url: '<?php echo $u; ?>',
                         type: 'normal'
-                    },{
-                        name: '高清',
-                        url: '<?php echo $u; ?>',
-                        type: 'hls'
-                    },{
-                        name: '标清',
-                        url: '<?php echo $u; ?>',
-                        type: 'hls'
                     }],
                     defaultQuality: 0,
-                }
+                },
+                contextmenu: [
+                    {
+                        text: 'CL影院',
+                        link: 'http://www.q2017.com/'
+                    },
+                    {
+                        text: '小伙伴不要点我啦',
+                        link: 'http://www.q2017.com/'
+
+                    }
+                ]
             });
             dp.play();
         }

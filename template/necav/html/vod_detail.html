@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>[vod:name] - {maccms:name}</title>
+    <meta name="keywords" content="《[vod:name]》高清下载,《[vod:name]》在线观看,《[vod:name]》百度云" />
+    <meta name="description" content="[vod:name]剧情:[vod:contenttext len=60]" /> {maccms:include}
+</head>
+
+<body>
+    {maccms:head}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 hy-main-content">
+                <div class="hy-video-details clearfix">
+                    <div class="item clearfix">
+                        <dl class="content">
+                            <dt><a class="videopic" href="#list1" style="background: url([vod:pic])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="note textbg">[vod:name]</span></a></dt>
+                            <dd class="clearfix">
+                                <div class="head"><h3>[vod:name]</h3></div>
+                                <div class="score">
+                                    <div class="star"><span class="star-cur" id="score[vod:id]"></span></div><span class="branch">[vod:score]</span>
+                                    <script type="text/javascript">
+                                        var str = "[vod:score]%"
+                                        document.getElementById("score[vod:id]").style.width = (str.replace(".", ""))
+                                    </script>
+                                </div>
+                                <ul>
+                                    <img src="[vod:pic]" style="display: none">
+                                    <img src="[vod:picslide]" style="display: none">
+                                    <li class="one"><span class="text-muted">主演：</span>[vod:starring]</li>
+                                    <li><span class="text-muted">导演：</span>[vod:directed]</li>
+                                    <li class="col-md-6 col-sm-6 hidden-xs padding-0"><span class="text-muted">地区：</span>[vod:area]</li>
+                                    <li class="col-md-6 col-sm-6 hidden-xs padding-0"><span class="text-muted">类型：</span>[vod:typename]</li>
+                                    <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">语言：</span>[vod:lang]</li>
+                                    <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">年份：</span>[vod:year]</li>
+                                    <li><span class="text-muted">剧情：</span>[vod:classlink]</li>
+                                </ul>
+                                <div class="playlink hidden-md hidden-sm hidden-xs"><a class="btn btn-warning" href="[vod:playlink]"><i class="icon iconfont icon-play"></i> 立即播放</a></div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="hy-layout active clearfix">
+                    <div class="hy-switch-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#list1" data-toggle="tab">播放线路</a></li>
+                            <li><a href="#list3" data-toggle="tab">剧情介绍</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="hy-play-list tab-pane fade in active" id="list1">
+                            <div class="item tyui" id="playlist">{maccms:play}
+                                <div class="panel clearfix"><a class="option" data-toggle="collapse" data-parent="#playlist" href="#playlist[play:num]">[play:show]在线观看 <span class="text-muted pull-right"><span>[play:tip]</span> <i class="icon iconfont icon-right"></i></span></a>
+                                    <div id="playlist[play:num]" class="playlist collapse{if-A:[play:num]<2} in{endif-A}">
+                                        <ul class="playlistlink-[play:num] list-15256 clearfix">{maccms:url order=asc} <li><a title='[url:name]' href='[url:link]' target="_self">[url:name]</a></li>{/maccms:url}
+                                        </ul>
+                                    </div>
+                                </div>{/maccms:play}
+                            </div>
+                        </div>
+
+                        <div class="hy-play-list tab-pane fade in" id="list3">
+                            <div class="item">
+                                <div class="plot">[vod:content]...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end 评论-->
+            </div>
+            <div class="col-md-3 col-sm-12 hy-main-side hidden-sm hidden-xs">
+                <div class="hy-layout clearfix">
+                    <div class="hy-details-qrcode side clearfix">
+                        <div class="item">
+                            <h5 class="text-muted">扫一扫用手机观看</h5>
+                            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://{maccms:url}[vod:link]" /></p>
+                            <p class="text-muted">分享到朋友圈</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {maccms:foot}
+</body>
+
+</html>
