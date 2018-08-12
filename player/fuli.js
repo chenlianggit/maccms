@@ -1,0 +1,2 @@
+MacPlayer.Html = '<iframe width="100%" height="'+MacPlayer.Height+'" src="/dp/index.php?url='+MacPlayer.PlayUrl+'=2002" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no"  allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"  msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>';
+MacPlayer.Show();

@@ -45,7 +45,7 @@ if (strstr($_GET['url'], "=2002") == true ) {
     <script type="text/javascript">
 
         var isWap = navigator.userAgent.match(/iPad|iPhone|iPod|Android/i) != null;
-        if(<?php echo $use_mp4; ?> && isWap){
+        if(<?php echo $use_mp4; ?>){
             document.getElementById('al').innerHTML='<video src="'+'<?php echo $u; ?>'+'" type="video/mp4" controls="" poster="/mp4/005yF2tCgy1fn67stcy3wg30jq0dwq2z.gif" preload="none" style="width:100%;height:100%;"></video>';
         }else{
             var dp = new DPlayer({
