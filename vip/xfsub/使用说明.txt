@@ -1,0 +1,31 @@
+﻿
+XFSUB解析插件包使用说明：
+
+1、将解析包内的xfsub文件夹中的xfuser文件打开（用代码编辑器修改，推荐使用 Notepad++），
+将自己的token和uid填写到对应的位置；防盗链建议调试完后填写
+
+2、将解析包内的文件上传到网站根目录；
+
+3、访问你的解析接口，看能否解析成功，调用方式：http://你的域名/xfsub/?url=资源url  
+
+例：http://你的域名/xfsub/?url=https://www.mgtv.com/b/292444/3742056.html
+
+4、能正常播放后，再替换你站点的解析接口，安装完毕！
+
+5、新增百度云解析调用方式：http://你的域名/xfsub/?url=/02.mp4&type=baidupan
+
+百度云解：需要输入完整路径及文件后缀名，根目录/,其他目录例如：?url=/a/b.mp4&type=baidupan
+
+6、新增天翼云解析调用方式：http://你的域名/xfsub/?url=StarCraftv0&type=tyyun
+
+天翼云解析：无需输入路径及文件后缀名！
+
+框架调用：
+
+<iframe width="100%" height="100%" allowTransparency="true" frameborder="0" scrolling="no" src="http://你的域名/xfsub/?url=http://v.youku.com/v_show/id_XMjUyNzQ3OTg4NA==.html"></iframe>
+
+注意：
+
+若无法播放，请检查下config.php文件内的token和uid是否填写正确，是否填写了防盗链，调试期间建议不用填写防盗链，调试没问题以后可以填写对应的防盗链域名，二级域名也需要填写（记得你的接口域名也需要添加授权）
+
+XFSUB视频解析 http://api.xfsub.com/
