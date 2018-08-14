@@ -116,7 +116,7 @@ class wechatCallbackapiTest
 									$title = "".$row['d_name']."";
 									$des ="";
 									//下面为内容页
-									$url ="http://vip.ty2050.com/?m=vod-detail-id-".$row['d_id'].".html";//后面为不可更改?m=vod-detail-id-为网站内容页地址d_id为网站内容页id不可更改
+									$url ="http://www.q2017.com/?m=vod-detail-id-".$row['d_id'].".html";//后面为不可更改?m=vod-detail-id-为网站内容页地址d_id为网站内容页id不可更改
 									$picUrl1 ="内容页图片地址".$row['v_pic']."";//v_pic为图片代码不可更改
 									$contentStr .= sprintf($newsTplItem, $title, $des, $picUrl1, $url);																													
 									++$itemCount;	
@@ -150,7 +150,7 @@ class wechatCallbackapiTest
 										
 										$picUrl1 ="图片代码";//为搜索返回图片代码
 										
-										$url="http://vip.ty2050.com/index.php?m=vod-search";//此为你网站的搜索页地址，一般不需要更改
+										$url="http://www.q2017.com/index.php?m=vod-search";//此为你网站的搜索页地址，一般不需要更改
 
 										$resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 									
@@ -185,7 +185,7 @@ class wechatCallbackapiTest
 										//图片地址
 										$picUrl1 ="图片地址";
 										//跳转链接
-										$url="http://vip.ty2050.com/?m=vod-type-id-1.html";//此为分类目录地址
+										$url="http://www.q2017.com/?m=vod-type-id-1.html";//此为分类目录地址
 
 										$resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 									
@@ -199,7 +199,7 @@ class wechatCallbackapiTest
 										//图片地址
 										$picUrl1 ="图片地址";
 										//跳转链接
-										$url="http://vip.ty2050.com/?m=vod-type-id-2.html";//此为分类目录地址
+										$url="http://www.q2017.com/?m=vod-type-id-2.html";//此为分类目录地址
 
 										$resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 									
@@ -213,7 +213,7 @@ class wechatCallbackapiTest
 										//图片地址
 										$picUrl1 ="图片地址";
 										//跳转链接
-										$url="http://vip.ty2050.com/?m=vod-type-id-4.html";//此为分类目录地址
+										$url="http://www.q2017.com/?m=vod-type-id-4.html";//此为分类目录地址
 
 										$resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 									
@@ -227,7 +227,7 @@ class wechatCallbackapiTest
 										//图片地址
 										$picUrl1 ="图片地址";
 										//跳转链接
-										$url="http://vip.ty2050.com/?m=vod-type-id-16.html";//此为分类目录地址
+										$url="http://www.q2017.com/?m=vod-type-id-16.html";//此为分类目录地址
 
 										$resultStr= sprintf($newsTpl, $fromUsername, $toUsername, $time, $title, $des1, $picUrl1, $url) ;
 									
