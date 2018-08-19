@@ -4,8 +4,6 @@
 //防盗链域名，多个用|隔开，如：123.com|abc.com（不会设置防盗链请留空）请阅读使用说明!
 define('REFERER_URL', 'www.q2017.com|www.sinaav.com|vip.ty2050.com');//填写实例：define('REFERER_URL', '123.com|abc.com');
 
-//此处设置防盗信息及错误提示
-define('ERROR', 'Q2017视频解析已开启防盗！请勿盗用！<a href="http://www.q2017.com" target="_blank">点击进入Q2017官网</a>');
 
 //此处进行用户相关配置
 
@@ -39,7 +37,10 @@ $user = array(
 		'loading' => 'loading.png', //手机端加载视频等待图片!   //填写实例：'loading' => 'loading.png',  //请把图片存储在loading目录下。
 
 		'ad' => '' //用户设置广告代码,例如:xxx.com/xxx,无需添加http,多个广告请用逗号分开
-        )
+        );
 				
 //-----------------------修改区域结束---------------------------------------
+//此处设置防盗信息及错误提示
+define('ERROR', 'Q2017视频解析已开启防盗！请勿盗用！<a href="http://www.q2017.com" target="_blank">点击进入Q2017官网</a>'.$user['tongji']);
+
  ?>
