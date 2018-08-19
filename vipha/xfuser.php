@@ -25,7 +25,16 @@ $user = array(
 		
 		'title' => 'Q2017视频解析API接口', //用户设置解析页面title名称   //填写实例：'title' => 'XFSUB视频解析API接口',
 		
-		'tongji' => '', //用户统计代码!
+		'tongji' => '<script>
+                    var _hmt = _hmt || [];
+                    (function() {
+                      var hm = document.createElement("script");
+                      hm.src = "https://hm.baidu.com/hm.js?f7bda71f29d8bacc8690eece06600a9d";
+                      var s = document.getElementsByTagName("script")[0]; 
+                      s.parentNode.insertBefore(hm, s);
+                    })();
+                    </script>
+                    ', //用户统计代码!
 		
 		'loading' => 'loading.png', //手机端加载视频等待图片!   //填写实例：'loading' => 'loading.png',  //请把图片存储在loading目录下。
 
