@@ -2,7 +2,8 @@
 //-----------------------请修改以下配置------------------------------------
 
 //防盗链域名，多个用|隔开，如：123.com|abc.com（不会设置防盗链请留空）请阅读使用说明!
-define('REFERER_URL', 'www.q2017.com|www.sinaav.com|vip.ty2050.com');//填写实例：define('REFERER_URL', '123.com|abc.com');
+//define('REFERER_URL', 'www.q2017.com|www.sinaav.com|vip.ty2050.com');//填写实例：define('REFERER_URL', '123.com|abc.com');
+define('REFERER_URL', '');//填写实例：define('REFERER_URL', '123.com|abc.com');
 
 
 //此处进行用户相关配置
