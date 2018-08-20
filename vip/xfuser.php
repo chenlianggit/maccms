@@ -28,7 +28,7 @@ $user = array(
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?5ee50335fc60f738be09f0ba154fa191";
+  hm.src = "https://hm.baidu.com/hm.js?fbc64bb2741d2446bc1316a4e694d667";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
