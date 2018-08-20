@@ -39,7 +39,6 @@
                                         <li class="col-md-6 col-sm-6 hidden-xs padding-0"><span class="text-muted">类型：</span>[vod:typename]</li>
                                         <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">语言：</span>[vod:lang]</li>
                                         <li class="col-md-6 hidden-sm hidden-xs padding-0"><span class="text-muted">年份：</span>[vod:year]</li>
-                                        <!-- <li><span class="text-muted">剧情：</span>[vod:tag]&nbsp;&nbsp;</li> -->
                                     </ul>
                                     <div class="block"><a class="text-muted" href="[vod:link]" target="_blank">查看详情 <i class="icon iconfont icon-right"></i> </a></div>
                                 </dd>
@@ -66,15 +65,6 @@
                         <div class="item">
                             <ul class="clearfix">{maccms:vod num=9 type=2 by=hits}
                                 <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="hy-video-list side clearfix">
-                        <div class="head"><a class="pull-right text-muted" href="{maccms:link_topic_vod}">更多 <i class="icon iconfont icon-right"></i></a>
-                            <h4>豆瓣推荐专题</h4></div>
-                        <div class="item">
-                            <ul class="clearfix">{maccms:topic num=3 order=time}
-                                <li><a class="videopic lazy" href="[topic:link]" title="[topic:name]" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="note textbg text-overflow">[topic:name]</span></a></li>{/maccms:topic}
                             </ul>
                         </div>
                     </div>

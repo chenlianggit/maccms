@@ -30,11 +30,11 @@
                     <div class="hy-index-menu clearfix">
                         <div class="item">
                             <ul class="clearfix">
-                                <li id="menu_fenlei"><a href="{maccms:path}index.php?m=vod-list-id-1.html"><i class="icon iconfont icon-menu1 text-color"></i><span>筛选</span></a></li>
+                                <!--<li id="menu_fenlei"><a href="{maccms:path}index.php?m=vod-list-id-1.html"><i class="icon iconfont icon-menu1 text-color"></i><span>筛选</span></a></li>-->
                                 <!--<li><a href="{maccms:getlink top.html}"><i class="icon iconfont icon-ic_mymatch_ranking text-color"></i><span>影片排行</span></a></li>-->
-                                <li id="menu_douban"><a href="{maccms:link_topic_vod}"><i class="icon iconfont icon-ic_mymatch_ranking text-color"></i><span>豆瓣专题</span></a></li>
                                 <li id="menu_zuixin"><a href="{maccms:getlink new.html}"><i class="icon iconfont icon-update text-color"></i><span>最近更新</span></a></li>
-								<li id="menu_denglu"><a href="/index.php?m=user-index.html"><i class="icon iconfont icon-icon_special text-color"></i><span>登录</span></a></li>
+								<!--<li id="menu_denglu"><a href="/index.php?m=user-index.html"><i class="icon iconfont icon-icon_special text-color"></i><span>观看记录</span></a></li>-->
+                                <a href="javascript:()" title="观看记录" id="history"><i class="icon iconfont icon-record1 text-color"></i><span>观看记录</span></a>
 		
 								
                                 <li>
@@ -77,27 +77,7 @@
                     </div>
                 </div>
             </div>
-            <!--专题-->
-            <div class="hy-layout clearfix">
-                <div class="hy-video-head">
-                    <h3 class="margin-0"><a href="{maccms:link_topic_vod}" target="_blank"s><i class="icon iconfont icon-icon_special text-color"></i> 豆瓣推荐专题</a></h3>
-                    <ul class="pull-right">
-                        <li class="active"><a href="{maccms:link_topic_vod}" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
-                    </ul>
-                </div>
-                <div class="hy-topic-list clearfix">
-                    <div class="item">{maccms:topic num=9 by=time table=vod}
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <a class="videopic lazy" href="[topic:link]" title="[topic:name]" target="_blank" data-original="[topic:pic]" style="padding-top: 50%; background: url({maccms:path_tpl}i/img/load_w.gif) no-repeat; background-position:50% 50%; background-size: cover;">
-                                <div class="details textbg"><span class="text"> <i class="icon iconfont icon-icon_special"></i> 豆瓣推荐专题</span><span class="name">[topic:name]</span><span class="count">—— [topic:count]个影片 ——</span></div>
-                            </a>
-                        </div>{/maccms:topic}
-                    </div>
-                </div>
-                <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:link_topic_vod}" target="_blank" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
-            </div>
-            <!--end 专题 -->
-            <!--电影 -->{maccms:matrix type=1}
+            <!--电影 -->{maccms:matrix type=49}
             <div class="hy-layout clearfix">
                 <div class="hy-video-head">
                     <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
@@ -187,7 +167,7 @@
             </div>{/maccms:matrix}
             <!--end 电影 -->
 
- <!--电视剧 -->{maccms:matrix type=2}
+ <!--电视剧 -->{maccms:matrix type=51}
             <div class="hy-layout clearfix">
                 <div class="hy-video-head">
                     <ul class="pull-right">{maccms:menu parent=[matrix:id] order=asc table=vod}
@@ -276,7 +256,7 @@
             </div>{/maccms:matrix}
             <!--end 电影/电视剧 -->
 
-            <!--综艺-->{maccms:matrix type=3}
+            <!--综艺-->{maccms:matrix type=52}
             <div class="hy-layout clearfix">
                 <div class="hy-video-head">
                     <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
@@ -335,7 +315,7 @@
                 <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
             </div>{/maccms:matrix}
             <!--end 综艺-->
-            <!--动漫-->{maccms:matrix type=4}
+            <!--动漫-->{maccms:matrix type=54}
             <div class="hy-layout clearfix">
                 <div class="hy-video-head">
                     <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
