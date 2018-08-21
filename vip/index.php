@@ -11,6 +11,7 @@ if(!is_referer()){
      exit(ERROR);
 }
 $get = $_GET;
+$get['url'] = trim($get['url']);
 if(strstr($get['url'],'v.youku.com')){
     $get['type'] = 'youku';
 } elseif(strstr($get['url'],'v.qq.com')){
