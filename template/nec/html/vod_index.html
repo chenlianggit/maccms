@@ -328,50 +328,14 @@
                     </ul>
                 </div>
                 <div class="clearfix">
-                    <div class="col-md-5 col-sm-12 col-xs-12 padding-0">
-                        <div class="col-xs-12">
-                            <div class="swiper-container hy-slide">
-                                <div class="swiper-wrapper">{maccms:vod num=3 by=time type=[matrix:id] level=[matrix:id]}
-                                    <div class="swiper-slide">
-                                        <div class="hy-video-slide"><a class="videopic" href="[vod:link]" target="_blank" title="[vod:name]" style="padding-top: 60%; background: url([vod:picslide])  no-repeat; background-position:50% 50%; background-size: cover;"><span class="title">[vod:name]</span></a></div>
-                                    </div>{/maccms:vod}
-                                </div>
-                                <div class="swiper-button-next hidden-xs"><i class="icon iconfont icon-right"></i></div>
-                                <div class="swiper-button-prev hidden-xs"><i class="icon iconfont icon-back"></i></div>
-                                <div class="swiper-pagination"></div>
-                            </div>
+                    {maccms:vod num=12 type=[matrix:id] order=desc by=time}
+                        <div class=" {if-A:[vod:num]>8}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-3 col-sm-3 col-xs-4{endif-A}">
+                            <a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                            <div class="title">
+                                <h5 class="text-overflow"><a href="[vod:link]" >[vod:name]</a></h5></div>
+                            <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
                         </div>
-                        <div class="hidden-sm hidden-xs clearfix">
-                            <div class="col-md-5 col-sm-12">
-                                <div class="hy-video-list clearfix">{maccms:vod num=1 type=[matrix:id] order=desc by=time start=9}
-                                    <div class="item"><a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="play hidden-xs"></span></a></div>{/maccms:vod}
-                                </div>
-                            </div>
-                            <div class="col-md-7 col-sm-12 padding-0">
-                                <div class="hy-video-ranking">
-                                    <div class="head"><a class="text-muted pull-right" href="{maccms:getlink top.html}#list-{maccms:siteaid}">更多 <i class="icon iconfont icon-right"></i></a>
-                                        <h4><i class="icon iconfont icon-top text-color"></i> 排行榜</h4></div>
-                                    <div class="item">
-                                        <ul class="clearfix">{maccms:vod num=7 type=[matrix:id] order=desc by=dayhitss start=9}
-                                            <li class="text-overflow "><span class="pull-right text-color">[vod:score]</span><a href="[vod:link]" target="_blank" title="[vod:name]"><em class="number {if-A:[vod:num]<4} active{endif-A}">[vod:num]</em>[vod:name]</a></li>{/maccms:vod}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-7 col-sm-12 col-xs-12 padding-0">
-                        <div class="hy-video-list clearfix">
-                            <div class="item clearfix">{maccms:vod num=9 type=[matrix:id] order=desc by=time}
-                                <div class=" {if-A:[vod:num]>8}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-3 col-sm-3 col-xs-4{endif-A}">
-                                    <a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
-                                    <div class="title">
-                                        <h5 class="text-overflow"><a href="[vod:link]" >[vod:name]</a></h5></div>
-                                    <div class="subtitle text-muted text-muted text-overflow hidden-xs">[vod:starring]</div>
-                                </div>{/maccms:vod}
-                            </div>
-                        </div>
-                    </div>
+                    {/maccms:vod}
                 </div>
                 <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
             </div>{/maccms:matrix}
