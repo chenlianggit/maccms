@@ -7,4 +7,4 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $FH= curl_exec($ch);
 curl_close($ch);
 echo $FH;
-exit; 
+exit;
