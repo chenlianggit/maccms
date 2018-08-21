@@ -329,7 +329,7 @@
                 </div>
                 <div class="clearfix">
                     {maccms:vod num=18 type=[matrix:id] order=desc by=time}
-                        <div class="col-md-2 col-sm-3 col-xs-4 visible-sm hidden-sm">
+                        <div class=" {if-A:[vod:num]>18}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-2 col-sm-3 col-xs-4{endif-A}">
                             <a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
                             <div class="title">
                                 <h5 class="text-overflow"><a href="[vod:link]" >[vod:name]</a></h5></div>
