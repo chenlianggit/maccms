@@ -131,13 +131,11 @@ class upload {
 }
 
 $upload = new upload();
-//for($i=0;$i<200000;$i++){
-//    $res = $upload->updateImg($i);
-//    echo ($res)."\n";
-//}
+for($i=0;$i<200000;$i++){
+    $res = $upload->updateImg($i);
+    echo ($res)."\n";
+}
 
-$res = $upload->updateImg(10001);
-echo $res;exit;
 
 
 
