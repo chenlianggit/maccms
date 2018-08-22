@@ -36,7 +36,9 @@ class upload {
 
         if(preg_match('/^tu/',$result['d_pic'])){
             $url = 'http://'.explode('tu=',$result['d_pic'])[1];
-        }else{
+        }elseif (preg_match('/^upload/',$result['d_pic'])){
+            $url = 'http://www.q2017.com/'.$result['d_pic'];
+        } else{
             $url = $result['d_pic'];
         }
         $img = $this->upload($url);
