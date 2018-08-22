@@ -133,7 +133,7 @@ class upload {
 $upload = new upload();
 for($i=0;$i<200000;$i++){
     $res = $upload->updateImg($i);
-    echo ($res)."\n";
+    echo ($res)."_第{$i}次\n";
 }
 
 
