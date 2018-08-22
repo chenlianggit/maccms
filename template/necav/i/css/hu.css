@@ -1,0 +1,31 @@
+.nav_bar {
+    height: 60px;
+    background: #0086cf;
+    margin: 0 auto;
+}
+
+.nav_bar {
+    color: #fff;
+    font-size: 17px;
+    background: #fff;
+    text-align: left;
+}
+.wrap {
+    margin: 0 auto;
+    width: 980px;
+}
+.nav_bar li a {
+    width: 100px;
+    display: inline-block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    font-family: \5fae\8f6f\96c5\9ed1;
+    font-size: 17px;
+    text-align: center;
+}
+.nav_bar a {
+    color: #fff;
+    text-decoration: none;
+}

@@ -32,7 +32,7 @@ a:hover,.text-color,.hy-cascade .content-meun .item ul li a.active,.hy-cascade .
 
 .hy-switch-tabs .nav-tabs{ border-bottom: 2px solid #e2e2e2;}
 
-.hy-switch-tabs .nav-tabs li.active a,.hy-switch-tabs .nav-tabs li.active a:hover,.hy-switch-tabs .nav-tabs li.active a:focus,.hy-head-menu .item .menulist li.active a{ border: 0; background: none; border-bottom: 2px solid #09BB07; color: #09BB07;}
+.hy-switch-tabs .nav-tabs li.active a,.hy-switch-tabs .nav-tabs li.active a:hover,.hy-switch-tabs .nav-tabs li.active a:focus,.hy-head-menu .item .menulist li.active a{ border: 0; background: none;  color: #09BB07;}
 
 .hy-cascade .left-head li a.active,.hy-video-min-head h5 span,.hy-play-list.play .item .panel .playlist,.hy-play-list.play .item .panel .option,.hy-player .item .footer{ background-color: #fff;}
 
