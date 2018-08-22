@@ -14,8 +14,8 @@ class upload {
 
     function __construct()
     {
-//        $this->pdo      = new pdo('mysql:dbname=vip_95uk_com;host=127.0.0.1','vip_95uk_com','YTHXt65AFa',array(PDO::ATTR_PERSISTENT => true));
-        $this->pdo      = new pdo('mysql:dbname=maccms;host=127.0.0.1','root','cc123456',array(PDO::ATTR_PERSISTENT => true));
+        $this->pdo      = new pdo('mysql:dbname=vip_95uk_com;host=127.0.0.1','vip_95uk_com','YTHXt65AFa',array(PDO::ATTR_PERSISTENT => true));
+//        $this->pdo      = new pdo('mysql:dbname=maccms;host=127.0.0.1','root','cc123456',array(PDO::ATTR_PERSISTENT => true));
         $this->cookie   = "SINAGLOBAL=4659216704418.871.1520910520578; UM_distinctid=1626219463b3aa-01becee071bbf7-336c7b05-1aeaa0-1626219463c33d; wb_view_log=1680*10502; un=13148376456; wb_view_log_6402545227=1680*10502; UOR=,,51.ruyo.net; wvr=6; YF-Ugrow-G0=9642b0b34b4c0d569ed7a372f8823a8e; ALF=1566436957; SSOLoginState=1534900958; SCF=Avhu3tu0EcQZwCk5O-NnDrt3QOllirFHhem-dnypkPuLeNc20CbC0c__8XtxR_TXCsIcBc7ZAIUeQs-png5e1a0.; SUB=_2A252eMqPDeRhGeBK61AU9CvOyTuIHXVVD7tHrDV8PUNbmtBeLXXdkW9NRBCwdlv1DdCpZpOwl2j-8W5tm48joyUg; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WhzC8bYi5ydZbgX539Oh4D35JpX5KzhUgL.FoqXehzfSh-EeoM2dJLoIEBLxKnL1K5L12eLxK.LBKqL1K.LxKnL12qL1hMLxK.L1h-LBo2t; SUHB=0rr7NqMnBYr-wO; YF-V5-G0=c072c6ac12a0526ff9af4f0716396363; _s_tentry=-; Apache=5176288259229.078.1534900962316; YF-Page-G0=c704b1074605efc315869695a91e5996; ULV=1534900962376:26:6:4:5176288259229.078.1534900962316:1534868031252; wb_cmtLike_6402545227=1; TC-V5-G0=ffc89a27ffa5c92ffdaf08972449df02";
 
     }
