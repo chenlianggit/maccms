@@ -23,6 +23,10 @@ class upload {
     public function updateImg($i){
         $result     = $this->pdo->query("select d_id,d_pic from mac_vod limit ".$i.",1;")->fetch();
 
+        if(!$result){
+            echo "执行完成";
+            exit();
+        }
         if(!$result['d_pic']){
             return '查询错误';
         }
