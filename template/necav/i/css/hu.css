@@ -10,10 +10,7 @@
     background: #0086cf;
     text-align: left;
 }
-.wrap {
-    margin: 0 auto;
-    width: 980px;
-}
+
 .nav_bar li a {
     width: 90px;
     display: inline-block;
@@ -28,4 +25,31 @@
 .nav_bar a {
     color: #fff;
     text-decoration: none;
+}
+
+@media (max-width: 767px){
+    .nav_bar {
+        color: #fff;
+        font-size: 14px;
+        background: #0086cf;
+        text-align: left;
+    }
+
+    .nav_bar li a {
+        width: 90px;
+        display: inline-block;
+        /*padding: 0 10px;*/
+        height: 30px;
+        /*line-height: 60px;*/
+        color: #fff;
+        font-family: 微软雅黑;
+        font-size: 17px;
+        text-align: center;
+    }
+    .nav_bar a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+
 }
