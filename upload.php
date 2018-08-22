@@ -30,18 +30,19 @@ class upload {
         if(!$result['d_pic']){
             return '查询错误';
         }
+        if( preg_match('/^http:\/\/wx4/',$result['d_pic']) ){
+            return '';
+        }
 
         if(preg_match('/^tu/',$result['d_pic'])){
             $url = 'http://'.explode('tu=',$result['d_pic'])[1];
-        }elseif( preg_match('/^http:\/\/wx4/',$result['d_pic']) ){
-            return "无需更新";
         }else{
             $url = $result['d_pic'];
         }
         $img = $this->upload($url);
 
         if(!$img){
-            return "失败";
+            return "生成失败";
         }
         $sql    = "UPDATE mac_vod set d_pic='{$img}' WHERE d_id={$result['d_id']}";
         $res    = $this->pdo->exec($sql);
@@ -137,7 +138,9 @@ class upload {
 $upload = new upload();
 for($i=0;$i<200000;$i++){
     $res = $upload->updateImg($i);
-    echo ($res)."_第{$i}次\n";
+    if($res){
+        echo ($res)."_第{$i}次\n";
+    }
 }
 
 
