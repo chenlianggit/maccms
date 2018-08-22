@@ -15,11 +15,11 @@
     width: 980px;
 }
 .nav_bar li a {
-    width: 100px;
+    width: 90px;
     display: inline-block;
     padding: 0 10px;
     height: 60px;
-    line-height: 60px;
+    /*line-height: 60px;*/
     color: #fff;
     font-family: 微软雅黑;
     font-size: 17px;
