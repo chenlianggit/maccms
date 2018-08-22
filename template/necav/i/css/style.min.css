@@ -68,9 +68,7 @@ a:focus,a:hover,a:link {
     height:50px;
     padding:5px 0 0
 }
-.hy-head-menu .item .menulist {
-    margin-left:30px
-}
+
 .hy-head-menu .item .menulist li {
     float:left;
     padding:0 20px
