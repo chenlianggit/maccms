@@ -22,7 +22,7 @@ class upload {
 
     // d_sina 0 未操作 1 success 2生成失败 3 操作过
     public function updateImg(){
-        $result     = $this->pdo->query("select d_id,d_pic from mac_vod where d_sina = 0 limit 1;")->fetch();
+        $result     = $this->pdo->query("select d_id,d_pic from mac_vod where d_sina = 0 order by d_time desc limit 1;")->fetch();
 
         if(!$result){
             echo "执行完成";
