@@ -20,6 +20,7 @@ class upload {
 
     }
 
+    // d_sina 0 未操作 1 success 2生成失败 3 操作过
     public function updateImg(){
         $result     = $this->pdo->query("select d_id,d_pic from mac_vod where d_sina = 0 limit 1;")->fetch();
 
@@ -27,7 +28,10 @@ class upload {
             echo "执行完成";
             exit();
         }
+        $sql3    = "UPDATE mac_vod set d_sina = 3  WHERE d_id={$result['d_id']}"; //只要操作过就是3
+        $this->pdo->exec($sql3);
         if(!$result['d_pic']){
+
             return '查询错误';
         }
         if( preg_match('/^http:\/\/wx4/',$result['d_pic']) ){
@@ -44,12 +48,12 @@ class upload {
         $img = $this->upload($url);
 
         if(!$img){
-            $sql    = "UPDATE mac_vod set d_sina = 2  WHERE d_id={$result['d_id']}";
-            $res    = $this->pdo->exec($sql);
+            $sql2    = "UPDATE mac_vod set d_sina = 2  WHERE d_id={$result['d_id']}";
+            $this->pdo->exec($sql2);
             return "生成失败";
         }
-        $sql    = "UPDATE mac_vod set d_pic='{$img}',d_sina = 1  WHERE d_id={$result['d_id']}";
-        $res    = $this->pdo->exec($sql);
+        $sql1    = "UPDATE mac_vod set d_pic='{$img}',d_sina = 1  WHERE d_id={$result['d_id']}";
+        $res    = $this->pdo->exec($sql1);
         if(!$res){
             return '更新失败';
         }
