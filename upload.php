@@ -20,8 +20,8 @@ class upload {
 
     }
 
-    public function updateImg($i){
-        $result     = $this->pdo->query("select d_id,d_pic from mac_vod where d_sina = 0 limit ".$i.",1;")->fetch();
+    public function updateImg(){
+        $result     = $this->pdo->query("select d_id,d_pic from mac_vod where d_sina = 0 limit 1;")->fetch();
 
         if(!$result){
             echo "执行完成";
@@ -44,6 +44,8 @@ class upload {
         $img = $this->upload($url);
 
         if(!$img){
+            $sql    = "UPDATE mac_vod set d_sina = 2  WHERE d_id={$result['d_id']}";
+            $res    = $this->pdo->exec($sql);
             return "生成失败";
         }
         $sql    = "UPDATE mac_vod set d_pic='{$img}',d_sina = 1  WHERE d_id={$result['d_id']}";
@@ -139,7 +141,7 @@ class upload {
 
 $upload = new upload();
 for($i=0;$i<200000;$i++){
-    $res = $upload->updateImg($i);
+    $res = $upload->updateImg();
     if($res){
         echo ($res)."_第{$i}次\n";
     }
