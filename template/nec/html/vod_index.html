@@ -64,7 +64,7 @@
                         <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
                     </ul>
                 </div>
-                {maccms:vod num=18 type=[matrix:id] order=desc by=level}
+                {maccms:vod num=18 type=[matrix:id] order=desc by=level,time}
                 <div class=" {if-A:[vod:num]>18}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-2 col-sm-3 col-xs-4{endif-A}">
                     <a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
                     <div class="title" style="text-align:center">
@@ -84,7 +84,7 @@
                         <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
                     </ul>
                     <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3></div>
-                {maccms:vod num=18 type=[matrix:id] order=desc by=time}
+                {maccms:vod num=18 type=[matrix:id] order=desc by=level}
                 <div class=" {if-A:[vod:num]>18}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-2 col-sm-3 col-xs-4{endif-A}">
                     <a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
                     <div class="title" style="text-align:center">
@@ -108,7 +108,7 @@
                     </ul>
                 </div>
                 <div class="clearfix">
-                    {maccms:vod num=18 type=[matrix:id] order=desc by=time}
+                    {maccms:vod num=18 type=[matrix:id] order=desc by=level}
                         <div class=" {if-A:[vod:num]>18}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-2 col-sm-3 col-xs-4{endif-A}">
                             <a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
                             <div class="title" style="text-align:center">
