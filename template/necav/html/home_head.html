@@ -5,8 +5,6 @@
                     <ul class="menulist hidden-xs nav_bar">
                         <li{if-A:{maccms:siteaid}==10} class="active"{endif-A}><a href="{maccms:path}">首页</a></li>{maccms:menu type=parent}
                         <li{if-A:{maccms:curvodtypeid}==[menu:id]} class="active" {endif-A}{if-A:{maccms:curvodtypepid}==[menu:id]} class="active" {endif-A}{if-A:[menu:id]=[vod:typepid]} class="active"{endif-A}><a href="[menu:link]">  [menu:name]</a></li>{/maccms:menu}
-                        <li><a href="javascript:()" title="观看记录" id="history"><i class="icon iconfont icon-record1 text-color"></i><span>观看记录</span></a></li>
-
                     </ul>
                 </div>
             </div>
