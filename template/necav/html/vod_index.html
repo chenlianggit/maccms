@@ -7,13 +7,13 @@
     <meta name="keywords" content="{maccms:keywords}" />
     <meta name="description" content="{maccms:description}" />
 {maccms:include}
-</head> 49 51 52 54
+</head>
 
 <body>
 {maccms:head}
 <div class="container">
     <div class="row">
-        {maccms:matrix type=1}
+        {maccms:matrix type=49}
         <div class="hy-layout clearfix">
             <div class="hy-video-head">
                 <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
@@ -32,7 +32,7 @@
             <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id]" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
         </div>{/maccms:matrix}
 
-        {maccms:matrix type=2}
+        {maccms:matrix type=51}
         <div class="hy-layout clearfix">
             <div class="hy-video-head">
                 <ul class="pull-right">{maccms:menu parent=[matrix:id] order=asc table=vod}
@@ -51,7 +51,30 @@
         </div>
         {/maccms:matrix}
 
-        {maccms:matrix type=4}
+        {maccms:matrix type=52}
+        <div class="hy-layout clearfix">
+            <div class="hy-video-head">
+                <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
+                <ul class="pull-right">
+                    {maccms:menu parent=[matrix:id] order=asc table=vod}
+                    <li class="text-muted hidden-md hidden-sm hidden-xs"><a href="[menu:link]" class="text-muted border-right">[menu:name]</a> /</li>{/maccms:menu}
+                    <li class="active"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">更多 <i class="icon iconfont icon-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="clearfix">
+                {maccms:vod num=18 type=[matrix:id] order=desc by=level}
+                <div class=" {if-A:[vod:num]>18}col-md-3 col-sm-3 col-xs-4 visible-sm hidden-sm{else-A}col-md-2 col-sm-3 col-xs-4{endif-A}">
+                    <a class="videopic lazy" href="[vod:link]" target="_blank" title="[vod:name]" data-original="[vod:pic]" style="background: url({maccms:path_tpl}i/img/load.gif) no-repeat; background-position:50% 50%; background-size: cover;"><span class="play hidden-xs"></span><span class="score">{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span></a>
+                    <div class="title" style="text-align:center">
+                        <h5 class="text-overflow"><a href="[vod:link]" >[vod:name]</a></h5></div>
+                </div>
+                {/maccms:vod}
+            </div>
+            <div class="hy-video-footer visible-xs clearfix"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html" class="text-muted">查看更多 <i class="icon iconfont icon-right pull-right"></i></a></div>
+        </div>
+        {/maccms:matrix}
+
+        {maccms:matrix type=54}
         <div class="hy-layout clearfix">
             <div class="hy-video-head">
                 <h3 class="margin-0"><a href="{maccms:path}index.php?m=vod-list-id-[matrix:id].html"><i class="icon iconfont icon-mallanimation text-color"></i> [matrix:name]</a></h3>
