@@ -21,7 +21,7 @@ class upload {
     }
 
     public function updateImg($i){
-        $result     = $this->pdo->query("select d_id,d_pic from mac_vod limit ".$i.",1;")->fetch();
+        $result     = $this->pdo->query("select d_id,d_pic from mac_vod where d_sina = 0 limit ".$i.",1;")->fetch();
 
         if(!$result){
             echo "执行完成";
@@ -31,7 +31,7 @@ class upload {
             return '查询错误';
         }
         if( preg_match('/^http:\/\/wx4/',$result['d_pic']) ){
-            return '';
+            return '无需更新';
         }
 
         if(preg_match('/^tu/',$result['d_pic'])){
@@ -44,7 +44,7 @@ class upload {
         if(!$img){
             return "生成失败";
         }
-        $sql    = "UPDATE mac_vod set d_pic='{$img}' WHERE d_id={$result['d_id']}";
+        $sql    = "UPDATE mac_vod set d_pic='{$img}',d_sina = 1  WHERE d_id={$result['d_id']}";
         $res    = $this->pdo->exec($sql);
         if(!$res){
             return '更新失败';
