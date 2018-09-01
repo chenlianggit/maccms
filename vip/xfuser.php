@@ -24,16 +24,17 @@ $user = array(
 		
 		'title' => 'Q2017视频解析API接口', //用户设置解析页面title名称   //填写实例：'title' => 'XFSUB视频解析API接口',
 		
-		'tongji' => '<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?fbc64bb2741d2446bc1316a4e694d667";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-', //用户统计代码!
+//		'tongji' => '<script>
+//var _hmt = _hmt || [];
+//(function() {
+//  var hm = document.createElement("script");
+//  hm.src = "https://hm.baidu.com/hm.js?fbc64bb2741d2446bc1316a4e694d667";
+//  var s = document.getElementsByTagName("script")[0];
+//  s.parentNode.insertBefore(hm, s);
+//})();
+//</script>
+//', //用户统计代码!
+        'tongji' =>'<script src="https://s22.cnzz.com/z_stat.php?id=1274502674&web_id=1274502674" language="JavaScript"></script>',
 		
 		'loading' => 'loading.png', //手机端加载视频等待图片!   //填写实例：'loading' => 'loading.png',  //请把图片存储在loading目录下。
 
