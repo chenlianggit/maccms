@@ -71,7 +71,7 @@ $shareUrl   = 'http://www.aldzs.com/';
         </div>
         <script type="text/javascript">countDown(5,'<?php echo $finallyUrl; ?>');</script>
         <a href="<?php echo $shareUrl;?>" target="_blank" style="text-decoration:none;">
-            <img src="<?php echo $heng_img; ?>" alt="" width=100% height=85%></a>
+            <img src="<?php echo $heng_img; ?>" alt="" width=100% height=80%></a>
         <?php
 
     }
