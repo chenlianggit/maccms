@@ -69,7 +69,7 @@ $shareUrl   = 'http://www.aldzs.com/';
         <div class="hy-head-menu">
             <span id="jumpTo">5</span>秒后自动跳转到视频播放页,或者直接 <a href="<?php echo $finallyUrl; ?>">跳过</a>
         </div>
-        <!--<script type="text/javascript">countDown(5,'<?php echo $finallyUrl; ?>');</script> -->
+        <script type="text/javascript">countDown(5,'<?php echo $finallyUrl; ?>');</script>
         <a href="<?php echo $shareUrl;?>" target="_blank" style="text-decoration:none;">
             <img src="<?php echo $heng_img; ?>" alt="" width=100% height=100%></a>
         <?php
