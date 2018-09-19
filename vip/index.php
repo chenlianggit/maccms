@@ -13,7 +13,7 @@ if(!preg_match($str,$url)){
 }
 $finallyUrl = '/vip/8923482aebbccd445db4549377613015.php?url='.$url;
 # 跳转的图片
-$heng_img   = 'https://app.c1993.com/ald/heng.png';
+$heng_img   = '/heng.png';
 # 跳转链接
 $shareUrl   = 'http://www.aldzs.com/';
 ?>
