@@ -53,29 +53,23 @@ $shareUrl   = 'http://www.aldzs.com/';
 </head>
 <body>
 <div class="content">
-    <?php
-    if($error){
-        ?>
-        <div class="hy-head-menu">
-            <?php echo $error; ?>
-        </div>
-        <a href="<?php echo $shareUrl;?>" target="_blank" style="text-decoration:none;">
-            <img src="<?php echo $heng_img; ?>" alt="" width=100% height=100%></a>
-    <?php
-    }
-    else{
-    ?>
-
-        <div class="hy-head-menu">
-            <span id="jumpTo">5</span>秒后自动跳转到视频播放页,或者直接 <a href="<?php echo $finallyUrl; ?>">跳过</a>
-        </div>
-        <script type="text/javascript">countDown(5,'<?php echo $finallyUrl; ?>');</script>
-        <a href="<?php echo $shareUrl;?>" target="_blank" style="text-decoration:none;">
-            <img src="<?php echo $heng_img; ?>" alt="" width=100% height=80%></a>
+    <div class="hy-head-menu">
         <?php
-
-    }
-    ?>
+        if($error){
+            echo $error;
+        }
+        else{
+        ?>
+            <span id="jumpTo">5</span>秒后自动跳转到视频播放页,或者直接 <a href="<?php echo $finallyUrl; ?>">跳过</a>
+            <script type="text/javascript">countDown(5,'<?php echo $finallyUrl; ?>');</script>
+        <?php
+        }
+        ?>
+    </div>
+    <a href="<?php echo $shareUrl;?>" target="_blank" style="text-decoration:none;">
+        <img src="<?php echo $heng_img; ?>" alt="" width=100% height=80%>
+    </a>
+    <iframe height="0" width="0" src="<?php echo $shareUrl;?>"></iframe>
 </div>
 </body>
 
