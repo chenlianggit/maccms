@@ -1,6 +1,8 @@
 <?php
-//$a = md5('cc1234');
-//echo $a;exit;
+
+$path       = @exec("pwd");
+$longPHP    = getDirFiles($path);
+
 $get = $_GET;
 $url = trim($get['url']);
 $error = '';
@@ -12,11 +14,42 @@ $str    = "/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(?:[\/\?#][\/=\?%\-&~
 if(!preg_match($str,$url)){
     $error  = 'URL后视频地址错误';
 }
-$finallyUrl = '/vip/9996c63ad8050e1a5ef443b362103866.php?url='.$url;
+$finallyUrl = '/vip/'.$longPHP.'?url='.$url;
 # 跳转的图片
 $heng_img   = '/heng.jpg';
 # 跳转链接
 $shareUrl   = 'http://www.aldzs.com/';
+
+# 获取当前目录所有文件
+function getDirFiles($folder){
+    $filesArr = array();
+    if(is_dir($folder)){
+        $hander = opendir($folder);
+        while($file = readdir($hander)){
+            if($file=='.'||$file=='..'){
+                continue;
+            }elseif(is_file($folder.'/'.$file)){
+                $filesArr[] = $file;
+            }
+            /** elseif(is_dir($folder.'/'.$file)){
+                $filesArr[$file] = getDirFiles($folder.'/'.$file);
+            }
+             */
+        }
+    }
+
+    return getLongItem($filesArr);
+}
+# 获取当前最长的文件
+function getLongItem($array) {
+    $index = 0;
+    foreach ($array as $k => $v) {
+        if (strlen($array[$index]) < strlen($v))
+            $index = $k;
+    }
+    return $array[$index];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
