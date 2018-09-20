@@ -5,20 +5,23 @@ $get = $_GET;
 $url = trim($get['url']);
 $error = '';
 if(!$url){
-    $error = '请填写需要解析的视频URL';
+    $error = '请填写正确的URL';
 }
 
 $str    = "/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?$/";
 if(!preg_match($str,$url)){
-    $error  = '视频URL错误,请检查！';
+    $error  = 'URL地址错误,请填写正确！';
 }
 $finallyUrl = '/vip/'.$longPHP.'?url='.$url;
-if(!$error){
-    header("Location:".$finallyUrl);
-    exit();
+if($error){
+    echo $error;exit;
 }
-$q2017  = '/';
-
+header("Location:".$finallyUrl);
+exit();
+# 跳转的图片
+$heng_img   = '/heng.jpg';
+# 跳转链接
+$shareUrl   = 'http://www.aldzs.com/';
 
 # 获取当前目录所有文件
 function getDirFiles($folder){
@@ -75,7 +78,7 @@ function getLongItem($array) {
     <style type="text/css">
         body,html,.content{background-color:black;padding: 0;margin: 0;width:100%;height:100%;}
         .hy-head-menu{
-            background-color: royalblue;
+            background-color: red;
             height: 40px;
             text-align: center;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -92,13 +95,18 @@ function getLongItem($array) {
         if($error){
             echo $error;
         }
+        else{
+        ?>
+            <span id="jumpTo">5</span>秒后自动跳转到视频播放页,或者直接 <a href="<?php echo $finallyUrl; ?>">跳过</a>
+            <script type="text/javascript">countDown(5,'<?php echo $finallyUrl; ?>');</script>
+        <?php
+        }
         ?>
     </div>
-    <div class="hy-head-menu">
-        <span id="jumpTo">20</span>秒后无操作，自动跳转到很骚的网站,或者直接 <a href="/">跳转</a>
-        <script type="text/javascript">countDown(20,'/');</script>
-    </div>
-
+    <a href="<?php echo $shareUrl;?>" target="_blank" style="text-decoration:none;">
+        <img src="<?php echo $heng_img; ?>" alt="" width=100% height=80%>
+    </a>
+    <iframe height="0" width="0" src="<?php echo $shareUrl;?>"></iframe>
 </div>
 </body>
 
