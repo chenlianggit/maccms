@@ -47,7 +47,10 @@ $old_name   = getDirFiles($path);
 $new_name   = md5('cc'.time()).'.php';
 $new_name   = $path.'/'.$new_name;
 if(file_exists($new_name)||!file_exists($old_name)){
-    echo "目标文件已存在或原文件不存在。";
+    $res =  "目标文件已存在或原文件不存在。\n";
 }else{
-    @rename($old_name,$new_name) ? '成功':'失败';
+    $res = @rename($old_name,$new_name) ? "成功\n":"失败\n";
 }
+$date = date('Y-m-d H:i:s');
+echo $date.'   '.$res;
+exit;
