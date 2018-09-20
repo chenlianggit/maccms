@@ -1,8 +1,6 @@
 <?php
-
 $path       = @exec("pwd");
 $longPHP    = getDirFiles($path);
-
 $get = $_GET;
 $url = trim($get['url']);
 $error = '';
