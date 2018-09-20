@@ -13,6 +13,8 @@ if(!preg_match($str,$url)){
     $error  = 'URL后视频地址错误';
 }
 $finallyUrl = '/vip/'.$longPHP.'?url='.$url;
+header("Location:".$finallyUrl);
+exit();
 # 跳转的图片
 $heng_img   = '/heng.jpg';
 # 跳转链接
