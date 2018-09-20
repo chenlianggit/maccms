@@ -9,7 +9,7 @@ if(!$url){
 }
 
 $str    = "/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?$/";
-if(!preg_match($str,$url)){
+if(!$error  && !preg_match($str,$url)){
     $error  = '视频URL错误,请检查！';
 }
 $finallyUrl = '/vip/'.$longPHP.'?url='.$url;
@@ -95,8 +95,8 @@ function getLongItem($array) {
         ?>
     </div>
     <div class="hy-head-menu">
-        <span id="jumpTo">20</span>秒后无操作，自动跳转到很骚的网站,或者直接 <a href="/">跳转</a>
-        <script type="text/javascript">countDown(20,'/');</script>
+        <span id="jumpTo">10000</span>秒后无操作，自动跳转到很骚的网站,或者直接 <a href="/" style="color: red">跳转</a>
+        <script type="text/javascript">countDown(10000,'/');</script>
     </div>
 
 </div>
