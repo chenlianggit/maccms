@@ -1,5 +1,6 @@
 <?php
-
+//$a = md5('cc1234');
+//echo $a;exit;
 $get = $_GET;
 $url = trim($get['url']);
 $error = '';
@@ -11,7 +12,7 @@ $str    = "/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(?:[\/\?#][\/=\?%\-&~
 if(!preg_match($str,$url)){
     $error  = 'URL后视频地址错误';
 }
-$finallyUrl = '/vip/8923482aebbccd445db4549377613015.php?url='.$url;
+$finallyUrl = '/vip/9996c63ad8050e1a5ef443b362103866.php?url='.$url;
 # 跳转的图片
 $heng_img   = '/heng.jpg';
 # 跳转链接
