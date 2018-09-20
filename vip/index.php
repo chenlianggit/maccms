@@ -95,10 +95,12 @@ function getLongItem($array) {
         ?>
     </div>
     <div class="hy-head-menu">
-        <span id="jumpTo">10000</span>秒后无操作，自动跳转到很骚很骚的网站,或者直接 <a href="/" style="color: red">跳转</a>
+        <span id="jumpTo">10000</span>秒后无操作，自动跳转到很骚很骚的网站
         <script type="text/javascript">countDown(10000,'/');</script>
     </div>
-
+    <div class="hy-head-menu">
+        或者直接 <a href="/" style="color: red">跳转</a>
+    </div>
 </div>
 </body>
 
