@@ -53,6 +53,8 @@ elseif($method=='index'){
 	$plt->set_file('main', $ac.'_'.$method.'.html');
 	$plt->set_block('main', 'list_quickmenu', 'rows_quickmenu');
 	
+	$plt->set_var('levels', getCookie('adminlevels') );
+	
 	$path = 'tpl/config/quickmenu.txt';
 	if(file_exists($path)){
 		$fc = file_get_contents($path);

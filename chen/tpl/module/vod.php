@@ -104,6 +104,8 @@ elseif($method=='typesaveall')
 		if (isN($t_tpl_play)) { $t_tpl_play = 'vodplay.html';}
 		if (isN($t_tpl_down)) { $t_tpl_down = 'voddown.html';}
 		
+		$t_name = strip_tags($t_name);
+		
 		$db->Update ('{pre}vod_type',array('t_name','t_enname', 't_sort','t_tpl','t_tpl_vod','t_tpl_play','t_tpl_down'),array($t_name,$t_enname,$t_sort,$t_tpl,$t_tpl_vod,$t_tpl_play,$t_tpl_down),'t_id='.$id);
 	}
 	updateCacheFile();
@@ -177,6 +179,8 @@ elseif($method=='classsaveall')
 		if (isN($c_name)) { $c_name='未知'; }
 		if (!isNum($c_sort)) { $c_sort=0; }
 		
+		$c_name = strip_tags($c_name);
+			
 		$db->Update ('{pre}vod_class',array('c_name','c_sort'),array($c_name,$c_sort),'c_id='.$id);
 	}
 	updateCacheFile();
@@ -484,7 +488,10 @@ elseif($method=='server')
 	$xp = '../inc/config/vodserver.xml';
 	$doc = new DOMDocument();
 	$doc -> formatOutput = true;
-	$doc -> load($xp);
+	
+	$xml = @file_get_contents($xp);
+	$doc -> loadXML($xml);
+	
 	$xmlnode = $doc -> documentElement;
 	$nodes = $xmlnode->getElementsByTagName('server');
 	
@@ -535,7 +542,9 @@ elseif($method=='serverinfo')
 	if($flag=='edit'){
 		$doc = new DOMDocument();
 		$doc -> formatOutput = true;
-		$doc -> load($xp);
+		$xml = @file_get_contents($xp);
+		$doc -> loadXML($xml);
+	
 		$xmlnode = $doc -> documentElement;
 		$nodes = $xmlnode->getElementsByTagName("server");
 		foreach($nodes as $node){
@@ -588,7 +597,9 @@ elseif($method=='player')
 	$xp = '../inc/config/vodplay.xml';
 	$doc = new DOMDocument();
 	$doc -> formatOutput = true;
-	$doc -> load($xp);
+	$xml = @file_get_contents($xp);
+	$doc -> loadXML($xml);
+	
 	$xmlnode = $doc -> documentElement;
 	$nodes = $xmlnode->getElementsByTagName('play');
 	
@@ -644,7 +655,8 @@ elseif($method=='playerup')
 		$xp = '../inc/config/vodplay.xml';
 		$doc = new DOMDocument();
 		$doc -> formatOutput = true;
-		$doc -> load($xp);
+		$xml = @file_get_contents($xp);
+		$doc -> loadXML($xml);
 		$xmlnode = $doc -> documentElement;
 		$nodes = $xmlnode->getElementsByTagName('play');
 		$flag='add';
@@ -686,7 +698,8 @@ elseif($method=='playerinfo')
 	if($flag=='edit'){
 		$doc = new DOMDocument();
 		$doc -> formatOutput = true;
-		$doc -> load($xp);
+		$xml = @file_get_contents($xp);
+		$doc -> loadXML($xml);
 		$xmlnode = $doc -> documentElement;
 		$nodes = $xmlnode->getElementsByTagName("play");
 		foreach($nodes as $node){

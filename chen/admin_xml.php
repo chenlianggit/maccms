@@ -3,6 +3,7 @@ require(dirname(__FILE__) .'/admin_conn.php');
 chkLogin();
 
 $ac = be("all","ac");
+
 if($ac=='getinfoxml')
 {
 	$tab = be("all","tab");
@@ -24,7 +25,9 @@ if($ac=='getinfoxml')
 			elseif ($tab=="vodserver"){
 				$path="server";
 			}
-			$doc -> load("../inc/config/". $tab.".xml");
+			$xp="../inc/config/". $tab.".xml";
+			$xml = @file_get_contents($xp);
+			$doc -> loadXML($xml);
 			$xmlnode = $doc -> documentElement;
 			$nodes = $xmlnode->getElementsByTagName($path);
 			foreach($nodes as $node){
@@ -48,7 +51,9 @@ if($ac=='getinfoxml')
 			unset($xmlnode);
 			break;
 		case "timming":
-			$doc -> load("../inc/config/timmingset.xml");
+			$xp="../inc/config/timmingset.xml";
+			$xml = @file_get_contents($xp);
+			$doc -> loadXML($xml);
 			$xmlnode = $doc -> documentElement;
 			$nodes = $xmlnode->getElementsByTagName("timming");
 			foreach($nodes as $node){
@@ -102,7 +107,9 @@ elseif($ac=='delxml')
 				$path="server";
 			}
 			$xp="../inc/config/". $tab.".xml";
-			$doc->load($xp);
+			$xml = @file_get_contents($xp);
+			$doc -> loadXML($xml);
+			
 			$xmlnode = $doc->documentElement;
 			$nodes = $xmlnode->getElementsByTagName($path);
 			foreach($nodes as $node){
@@ -118,7 +125,8 @@ elseif($ac=='delxml')
 		case "timming":
 			$cache=false;
 			$xp="../inc/config/timmingset.xml";
-			$doc->load($xp);
+			$xml = @file_get_contents($xp);
+			$doc -> loadXML($xml);
 			$xmlnode = $doc -> documentElement;
 			$nodes = $xmlnode->getElementsByTagName("timming");
 			foreach($nodes as $node){
@@ -169,7 +177,8 @@ elseif($ac=='savexml')
 				$path="server";
 			}
 			$xp="../inc/config/". $tab.".xml";
-			$doc->load($xp);
+			$xml = @file_get_contents($xp);
+			$doc -> loadXML($xml);
 			$xmlnode = $doc -> documentElement;
 			$nodes = $xmlnode->getElementsByTagName($path);
 			
@@ -240,7 +249,8 @@ elseif($ac=='savexml')
 			
 			
 			$xp="../inc/config/timmingset.xml";
-			$doc->load($xp);
+			$xml = @file_get_contents($xp);
+			$doc -> loadXML($xml);
 			$xmlnode = $doc -> documentElement;
 			$nodes = $xmlnode->getElementsByTagName("timming");
 			
@@ -343,7 +353,8 @@ elseif($ac=='exportxml')
 				$path="server";
 			}
 			$xp="../inc/config/". $tab.".xml";
-			$doc->load($xp);
+			$xml = @file_get_contents($xp);
+			$doc -> loadXML($xml);
 			$xmlnode = $doc -> documentElement;
 			$nodes = $xmlnode->getElementsByTagName($path);
 			foreach($nodes as $node){

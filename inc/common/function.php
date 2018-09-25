@@ -806,6 +806,7 @@ function getPage($url,$charset)
 	$content = "";
 	if(!empty($url)) {
 		if( function_exists('curl_init') ){
+			
 			$ch = @curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; )');
@@ -814,6 +815,8 @@ function getPage($url,$charset)
 			curl_setopt($ch, CURLOPT_COOKIE, 'domain=www.baidu.com');
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 120);
 			curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
 			$content = @curl_exec($ch);
 			curl_close($ch);
 		}
@@ -968,7 +971,10 @@ function getVodXml($name,$path)
 	$xmlpath = MAC_ROOT ."/inc/config/" .$name;
 	$doc = new DOMDocument();
 	$doc -> formatOutput = true;
-	$doc -> load($xmlpath);
+	
+	$xml = @file_get_contents($xmlpath);
+	$doc -> loadXML($xml);
+	
 	$xmlnode = $doc -> documentElement;
 	$nodes = $xmlnode->getElementsByTagName($path);
 	foreach($nodes as $node){

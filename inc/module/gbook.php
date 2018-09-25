@@ -26,8 +26,8 @@ if($method=='show')
 elseif($method=='save')
 {
 	$g_vid = intval(be("all", "g_vid"));
-    $g_name = be("all", "g_name"); $g_name = chkSql($g_name);
-    $g_content = be("all", "g_content"); $g_content = chkSql($g_content);
+    $g_name = be("all", "g_name"); $g_name = chkSql(htmlspecialchars($g_name));
+    $g_content = be("all", "g_content"); $g_content = chkSql(htmlspecialchars($g_content));
     $g_code = be("all","g_code"); $g_code = chkSql($g_code); 
     
     if (isN($g_name) || isN($g_content)){ alert('请输入昵称和内容'); exit;}
@@ -38,8 +38,8 @@ elseif($method=='save')
 		alert('内容必须包含中文,请重新输入!'); exit;
 	}
     
-    $g_name = badFilter($g_name); $g_name = strip_tags($g_name);
-    $g_content = badFilter($g_content); $g_content = strip_tags($g_content);
+    $g_name = badFilter($g_name);
+    $g_content = badFilter($g_content);
     $g_ip = ip2long(getIP());
     $g_time = time();
     

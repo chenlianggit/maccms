@@ -87,31 +87,33 @@ elseif($method=='check')
 		$randnum = md5(rand(1,99999999));
 		$u_flag = $row["u_flag"];
 		
-		if ($u_flag == 1){
+		if($u_flag == 1){
 			if ( time() > $row["u_end"] ){
 				$u_flag = 0;
 				$u_start="";
 				$u_end="";
+				$u_group=1;
 			}
 			else{
 				$u_start=$row["u_start"];
 				$u_end=$row["u_end"];
+				$u_group=$row['u_group'];
 			}
 		}
 		else{
-			$ugroup=$row["u_group"];
+			$u_group=$row["u_group"];
 		}
 		$u_start = intval($u_start);
 		$u_end = intval($u_end);
 		
 		$_SESSION["userid"] = $row["u_id"];
 		$_SESSION["username"] = $row["u_name"];
-		$_SESSION["usergroup"] = $row["u_group"];
+		$_SESSION["usergroup"] = $u_group;
 		$_SESSION["usercheck"] = md5($randnum .$row["u_id"]);
 		sCookie('userid',$row["u_id"]);
 		
 		
-		$db->Update ("{pre}user",array("u_logintime","u_loginip","u_random","u_loginnum","u_flag","u_start","u_end"),array(time(),ip2long(getIP()),$randnum,$row["u_loginnum"]+1,$u_flag,$u_start,$u_end),"u_id=".$row["u_id"]);
+		$db->Update ("{pre}user",array("u_logintime","u_loginip","u_random","u_loginnum","u_flag","u_start","u_end",'u_group'),array(time(),ip2long(getIP()),$randnum,$row["u_loginnum"]+1,$u_flag,$u_start,$u_end,$u_group),"u_id=".$row["u_id"]);
 		
 		unset($row);
 		
@@ -192,7 +194,10 @@ elseif($method=='regsave')
 	$u_password1 = be("post","u_password1"); 
 	$u_password2 = be("post","u_password2");
 	$u_email = be("post","u_email"); $u_email = chkSql($u_email);
-	
+    $u_question =  be("post","u_question"); $u_question = chkSql($u_question);
+    $u_answer =  be("post","u_answer"); $u_answer = chkSql($u_answer);
+    $u_phone =  be("post","u_phone"); $u_phone = chkSql($u_phone);
+
 	if(empty($u_name) || empty($u_password1)){
 		alert ("表单信息不完整,请重填!"); exit;
 	}
@@ -311,7 +316,7 @@ elseif($method=='save')
 	$u_email = be("post","u_email"); $u_email = chkSql($u_email);
 	$u_phone = be("post","u_phone"); $u_phone = chkSql($u_phone);
 	$u_question = be("post","u_question"); $u_question = chkSql($u_question);
-	$u_answer = be("post","u_email"); $u_answer = chkSql($u_answer);
+	$u_answer = be("post","u_answer"); $u_answer = chkSql($u_answer);
 	
 	
 	if(empty($password1) || empty($u_email)){
@@ -449,7 +454,7 @@ elseif($method=='paysave')
 	}
 	unset($row);
 	unset($row1);
-	$db->query("update {pre}user_card set c_used=1,c_user=". $user["u_id"] .",c_sale=1,c_usetime='". date('Y-m-d H:i:s',time()) ."' where c_id = ". $c_id);
+	$db->query("update {pre}user_card set c_used=1,c_user=". $user["u_id"] .",c_sale=1,c_usetime='". time() ."' where c_id = ". $c_id);
 	alert ("充值成功");
 }
 
@@ -493,7 +498,7 @@ elseif($method=='paysave')
 	}
 	unset($row);
 	unset($row1);
-	$db->query("update {pre}user_card set c_used=1,c_user=". $user["u_id"] .",c_sale=1,c_usetime='". date('Y-m-d H:i:s',time()) ."' where c_id = ". $c_id);
+	$db->query("update {pre}user_card set c_used=1,c_user=". $user["u_id"] .",c_sale=1,c_usetime='". time() ."' where c_id = ". $c_id);
 	alert ("充值成功");
 }
 
@@ -526,7 +531,8 @@ elseif($method=='reg')
 			$qqid = $qc->get_openid();
 			$userinfo = $qc->get_user_info();
 			$nickname = $userinfo["nickname"]; $nickname=replaceStr($nickname,"'","");
-			$tmpname = $nickname;
+			$tmpname = $nickname; 
+			$tmpname = chkSql($tmpname);
 			
 			$i=0;
 			$rscount = $db->getOne("SELECT count(*) FROM {pre}user where u_qid='" . $qqid . "'");
@@ -553,21 +559,23 @@ elseif($method=='reg')
 						$u_flag = $MAC['user']['reggroup'];
 						$u_start="";
 						$u_end="";
+						$u_group=1;
 					}
 					else{ 
 						$u_flag = $row["u_flag"];
 						$u_start=$row["u_start"];
 						$u_end=$row["u_end"];
+						$u_group=$row['u_group'];
 					}
 				}
 				else{
-					$ugroup=$row["u_group"];
+					$u_group=$row["u_group"];
 				}
-				$db->Update ("{pre}user",array("u_logintime","u_loginip","u_random","u_loginnum","u_flag","u_start","u_end"),array(time(),ip2long(getIP()),$randnum,$row["u_loginnum"]+1,$u_flag,$u_start,$u_end),"u_id=".$row["u_id"]);
+				$db->Update ("{pre}user",array("u_logintime","u_loginip","u_random","u_loginnum","u_flag","u_start","u_end","u_group"),array(time(),ip2long(getIP()),$randnum,$row["u_loginnum"]+1,$u_flag,$u_start,$u_end,$u_group),"u_id=".$row["u_id"]);
 				
 				$_SESSION["userid"] = $row["u_id"];
 				$_SESSION["username"] = $row["u_name"];
-				$_SESSION["usergroup"] = $row["u_group"];
+				$_SESSION["usergroup"] = $u_group;
 				$_SESSION["usercheck"] = md5($randnum . $row["u_id"]);
 				sCookie('userid',$row["u_id"]);
 			}

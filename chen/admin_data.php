@@ -76,6 +76,7 @@ else if($ac=='save')
 				$n=$colarr[$i];
 				$valarr[$n]=be("all",$n);
 			}
+			$valarr['t_name'] = strip_tags($valarr['t_name']);
 			if(isN($valarr['t_enname'])) { $valarr['t_enname'] = Hanzi2Pinyin($valarr['t_name']);}
 			if(!isNum($valarr['t_sort'])) { $valarr['t_sort'] = $db->getOne("SELECT MAX(t_sort) FROM {pre}vod_type")+1; }
 			if(empty($id)){
@@ -92,6 +93,7 @@ else if($ac=='save')
 				$n=$colarr[$i];
 				$valarr[$n]=be("all",$n);
 			}
+			$valarr['c_name'] = strip_tags($valarr['c_name']);
 			if (!isNum($valarr['c_sort'])) { $valarr['c_sort'] = $db->getOne("SELECT MAX(c_sort) FROM {pre}vod_class where c_pid=".$valarr['c_pid'])+1; }
 			$where = "c_id=".$id;
 			$upcache=true;
@@ -105,6 +107,7 @@ else if($ac=='save')
 				$n=$colarr[$i];
 				$valarr[$n]=be("all",$n);
 			}
+			$valarr['t_name'] = strip_tags($valarr['t_name']);
 			if(isN($valarr['t_enname'])) { $valarr['t_enname'] = Hanzi2Pinyin($valarr['t_name']);}
 			if(strlen($valarr['t_addtime'])!=10) { $valarr['t_addtime']=time(); $valarr['t_time']= $valarr['t_addtime']; }
     		if($uptime=='1'){ $valarr['t_time'] =time(); }
@@ -137,6 +140,7 @@ else if($ac=='save')
 				$n=$colarr[$i];
 				$valarr[$n]=be("all",$n);
 			}
+			$valarr['t_name'] = strip_tags($valarr['t_name']);
 			if(isN($valarr['t_enname'])) { $valarr['t_enname'] = Hanzi2Pinyin($valarr['t_name']);}
 			if (!isNum($valarr['t_sort'])) { $valarr['t_sort'] = $db->getOne("SELECT MAX(t_sort) FROM {pre}art_type")+1; }
 			if(empty($id)){
@@ -155,6 +159,7 @@ else if($ac=='save')
 				$n=$colarr[$i];
 				$valarr[$n]=be("all",$n);
 			}
+			$valarr['t_name'] = strip_tags($valarr['t_name']);
 			if(isN($valarr['t_enname'])) { $valarr['t_enname'] = Hanzi2Pinyin($valarr['t_name']);}
 			if(strlen($valarr['t_addtime'])!=10) { $valarr['t_addtime']=time(); $valarr['t_time']= $valarr['t_addtime']; }
     		if($uptime=='1'){ $valarr['t_time'] =time(); }
@@ -353,6 +358,7 @@ else if($ac=='save')
 			
 			if(strlen($valarr['a_addtime'])!=10) { $valarr['a_addtime']=time(); $valarr['a_time']= $valarr['a_addtime']; }
     		if($uptime=='1'){ $valarr['a_time'] =time(); }
+    		$valarr['a_name'] = strip_tags($valarr['a_name']);
     		if(isN($valarr['a_enname'])) { $valarr['a_enname'] = Hanzi2Pinyin($valarr['a_name']);}
 			if(isN($valarr['a_letter'])) { $valarr['a_letter'] = strtoupper(substring($valarr['a_enname'],1)); }
 			$valarr['a_content'] = be('arr','a_content','[art:page]');
@@ -409,6 +415,7 @@ else if($ac=='save')
 			if(strlen($valarr['d_addtime'])!=10) { $valarr['d_addtime']=time(); }
     		if($valarr['d_time']!=''){  $valarr['d_time']= strtotime($valarr['d_time']); } else { $valarr['d_time']= $valarr['d_addtime']; }
     		if($uptime=='1'){ $valarr['d_time'] =time(); }
+    		$valarr['d_name'] = strip_tags($valarr['d_name']);
     		if(isN($valarr['d_enname'])) { $valarr['d_enname'] = Hanzi2Pinyin($valarr['d_name']);}
 			if(isN($valarr['d_letter'])) { $valarr['d_letter'] = strtoupper(substring($valarr['d_enname'],1)); }
 			$valarr['d_level'] = intval($valarr['d_level']);

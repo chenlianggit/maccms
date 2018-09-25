@@ -27,21 +27,22 @@ if($MAC['api']['vod']['charge'] == 1) {
 	}
 }
 
-
 getDbConnect();
 
+$ver = '2017.10.17.11.07';
 $ac = be("get","ac");
 $t = intval(be("get","t"));
 $pg = intval(be("get","pg"));
 $h= intval(be("get","h"));
-$wd = be("get","wd"); $wd = chkSql($wd);
-$ids= be("all","ids"); $ids = chkSql($ids);
+$wd = be("get","wd"); $wd = chkSql(htmlspecialchars($wd));
+$ids= be("all","ids"); $ids = chkSql(htmlspecialchars($ids));
 if ($pg < 1){ $pg=1;}
+$from =''; //不为空时只显示某种资源例如youku
 
 if($ac=='videolist')
 {
 	$cp = 'api';
-	$cn = 'videolist' . $t . "-" . $pg . "-" . $wd . "-" . $h . "-" . str_replace(",","",$ids); ;
+	$cn = 'videolist' . $t . "-" . $pg . "-" . $wd . "-" . $h ."-".$from. "-" . str_replace(",","",$ids); ;
 	echoPageCache($cp,$cn);
 	
 	$xmla = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
@@ -65,14 +66,22 @@ if($ac=='videolist')
 		$sql1 .= " AND d_type =".$t;
 	}
 	if($h>0){
-		$todaydate = date('Y-m-d');
-		if($h==24){ $tommdate = date('Y-m-d',strtotime('+1 day')); }
-		elseif($h==98){ $tommdate = date('Y-m-d',strtotime('+7 day'));  }
+		$todaydate = date('Y-m-d',strtotime('+1 days'));
+		$tommdate = date('Y-m-d',strtotime('-'.$h.' hours')); 
+		
 		$todayunix = strtotime($todaydate);
 		$tommunix = strtotime($tommdate);
-		$whereStr = ' AND d_time>= '. $todayunix . ' AND d_time<='. $tommunix;
+		$whereStr = ' AND d_time>= '. $tommunix . ' AND d_time<'. $todayunix;
 		$sql .=  $whereStr;
 		$sql1 .= $whereStr;
+	}
+	if ($MAC['api']['vod']['vodfilter'] != "") { 
+		$sql .= " ". $MAC['api']['vod']['vodfilter']." "; 
+		$sql1 .= " ". $MAC['api']['vod']['vodfilter']." "; 
+	}
+	if ($from!=''){ 
+		$sql .= " and d_playfrom like '%".$from."%'"; 
+		$sql1 .= " and d_playfrom like '%".$from."%'"; 
 	}
 	
 	$nums = $db->getOne($sql1);
@@ -87,7 +96,7 @@ if($ac=='videolist')
 		
 		while ($row = $db ->fetch_array($rs))
 		{
-			$tempurl = urlDeal($row["d_playurl"],$row["d_playfrom"]);
+			$tempurl = urlDeal($row["d_playurl"],$row["d_playfrom"],$from);
 		    if(substr($row["d_pic"],0,4)=="http"){ $temppic = $row["d_pic"]; } else { $temppic = $MAC['api']['vod']['imgurl'] . $row["d_pic"]; }
 		    
 		    $typearr =  $MAC_CACHE['vodtype'][$row["d_type"]];
@@ -98,7 +107,7 @@ if($ac=='videolist')
 			$xml .= "<name><![CDATA[".$row["d_name"]."]]></name>";
 			$xml .= "<type>".$typearr["t_name"]."</type>";
 			$xml .= "<pic>".$temppic."</pic>";
-			$xml .= "<lang>".$row["d_language"]."</lang>";
+			$xml .= "<lang>".$row["d_lang"]."</lang>";
 			$xml .= "<area>".$row["d_area"]."</area>";
 			$xml .= "<year>".$row["d_year"]."</year>";
 			$xml .= "<state>".$row["d_state"]."</state>";
@@ -113,14 +122,14 @@ if($ac=='videolist')
 	}
 	unset($rs);
 	$xmla .= $xml . "</rss>";
-	setPageCache($cp,$cn,$xml);
+	setPageCache($cp,$cn,$xmla);
 	echo $xmla;
 }
 
 else
 {
 	$cp = 'api';
-	$cn = 'list' . $t . "-" . $pg . "-" . $wd . "-" . $h ;
+	$cn = 'list' . $t . "-" . $pg . "-" . $wd . "-" . $h ."-" .$from;
 	echoPageCache($cp,$cn);
 	
 	$xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
@@ -137,6 +146,7 @@ else
 	if ($t > 0) { $where .= " and d_type=" . $t; }
 	if ($MAC['api']['vod']['vodfilter'] != "") { $where .= " ". $MAC['api']['vod']['vodfilter']." "; }
 	if ($wd !="") { $where .= " and d_name like '%".$wd."%' "; }
+	if ($from!=''){ $where .= " and d_playfrom like '%".$from."%'"; }
 	
 	$sql .= $where. " order by d_time desc";
 	$sql1 .= $where;
@@ -165,7 +175,13 @@ else
 			$xml .= "<tid>".$row["d_type"]."</tid>";
 			$xml .= "<name><![CDATA[".$row["d_name"]."]]></name>";
 			$xml .= "<type>".$typearr["t_name"]."</type>";
-			$xml .= "<dt>".replaceStr($row["d_playfrom"],'$$$',',')."</dt>";
+			if ($from!=''){
+				$xml .= "<dt>".$from."</dt>";
+			}
+			else{
+				$xml .= "<dt>".replaceStr($row["d_playfrom"],'$$$',',')."</dt>";
+			}
+			
 			$xml .= "<note><![CDATA[".$row["d_remarks"]."]]></note>";
 			$xml .= "</video>";
 	  	}
@@ -191,13 +207,20 @@ else
 	echo $xml;
 }
 
-function urlDeal($urls,$froms)
+function urlDeal($urls,$froms,$from)
 {
 	$arr1 = explode("$$$",$urls); $arr1count = count($arr1);
 	$arr2 = explode("$$$",$froms); $arr2count = count($arr2);
 	for ($i=0;$i<$arr2count;$i++){
 		if ($arr1count >= $i){
-			$str = $str . "<dd flag=\"". $arr2[$i] ."\"><![CDATA[" . $arr1[$i]. "]]></dd>";
+			if($from!=''){
+				if($arr2[$i]==$from){
+					$str = $str . "<dd flag=\"". $arr2[$i] ."\"><![CDATA[" . $arr1[$i]. "]]></dd>";
+				}
+			}
+			else{
+				$str = $str . "<dd flag=\"". $arr2[$i] ."\"><![CDATA[" . $arr1[$i]. "]]></dd>";
+			}
 		}
 	}
 	$str = replaceStr($str,chr(10),"#");

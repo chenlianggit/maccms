@@ -49,61 +49,90 @@ elseif($method=='list')
 	
 	$type>0 ? $istype=true : $istype=false;
 	$plt->set_if('main','istype',$istype);
-
-
+	
 	if($xt=='0'){
     	$url = $apiurl . '?action=list&rpage='.$pg.'&rtype='.$type.'&rkey='.urlencode($wd);
+    	$xn_list = '<vods pagesize="([0-9]+)" pagesize="([0-9]+)" recordcount="([0-9]+)">';
+    	$xn_pagesize = 1;
+    	$xn_pagecount = 2;
+    	$xn_recordcount = 3;
+    	$xn_type = '/<type id="([0-9]+)">([\s\S]*?)<\/type>/';
+		$xn_d = '/<vod><id>([0-9]+)<\/id><name><\!\[CDATA\[([\s\S]*?)\]\]><\/name><starring><\!\[CDATA\[([\s\S]*?)\]\]><\/starring><type>([\s\S]*?)<\/type><from>([\s\S]*?)<\/from><time>([\s\S]*?)<\/time><\/vod>/';
+		$xn_d_id=1;
+		$xn_d_name = 2;
+	    $xn_d_starring=3;
+	    $xn_d_type=4;
+	    $xn_d_from=5;
+	    $xn_d_time=6;
 	}
     elseif($xt=='1'){
     	$url = $apiurl . '?ac=list&pg=' . $pg . '&rid='.$group . '&t=' . $type . '&wd=' . urlencode($wd);
+    	$xn_list = '<list page="([\s\S]*?)" pagecount="([0-9]+)" pagesize="([0-9]+)" recordcount="([0-9]+)">';
+    	$xn_pagesize = 3;
+    	$xn_pagecount = 2;
+    	$xn_recordcount = 4;
+    	$xn_type = '/<ty id="([0-9]+)">([\s\S]*?)<\/ty>/';
+		$xn_d = '/<video><last>([\s\S]*?)<\/last><id>([0-9]+)<\/id><tid>([0-9]+)<\/tid><name><\!\[CDATA\[([\s\S]*?)\]\]><\/name><type>([\s\S]*?)<\/type><dt>([\s\S]*?)<\/dt><note><\!\[CDATA\[([\s\S]*?)\]\]><\/note>/';
+		$xn_d_id=2;
+		$xn_d_name = 4;
+	    $xn_d_starring=7;
+	    $xn_d_type=5;
+	    $xn_d_from=6;
+	    $xn_d_time=1;
     }
     elseif($xt=='2'){
     	$url = $apiurl . '-action-list-cid-'. $type . '-h-'. $hour. '-p-' . $pg. '-wd-'. urlencode($wd);
     	$url = str_replace('|','-',$url);
+    	$xn_list = '<list page="([\s\S]*?)" pagecount="([0-9]+)" pagesize="([0-9]+)" recordcount="([0-9]+)">';
+    	$xn_pagesize = 3;
+    	$xn_pagecount = 2;
+    	$xn_recordcount = 4;
+    	$xn_type = '/<ty id="([0-9]+)">([\s\S]*?)<\/ty>/';
+		$xn_d = '/<video><last>([\s\S]*?)<\/last><id>([0-9]+)<\/id><tid>([0-9]+)<\/tid><name><\!\[CDATA\[([\s\S]*?)\]\]><\/name><type>([\s\S]*?)<\/type><pic>([\s\S]*?)<\/pic><lang>([\s\S]*?)<\/lang><area>([\s\S]*?)<\/area><year>([\s\S]*?)<\/year><state>([\s\S]*?)<\/state><note><\!\[CDATA\[([\s\S]*?)\]\]><\/note><actor><\!\[CDATA\[([\s\S]*?)\]\]><\/actor><director><\!\[CDATA\[([\s\S]*?)\]\]><\/director><dl>([\s\S]*?)<\/dl><des><\!\[CDATA\[([\s\S]*?)\]\]><\/des>([\s\S]*?)<\/video>/';
+		
+		$xn_url = '/<dd flag="([\s\S]*?)"><\!\[CDATA\[([\s\S]*?)\]\]><\/dd>/';
+		$xn_d_id=2;
+		$xn_d_name = 4;
+	    $xn_d_starring=6;
+	    $xn_d_type=5;
+	    $xn_d_from=0;
+	    $xn_d_time=1;
+	    $xn_d_urls=14;
     }
-
-    $html = getPage($url, "utf-8");
-	if(empty($html)){
-		echo '连接API资源库失败，通常为服务器网络不稳定或禁用了采集。请刷新重试！';
-		exit;
-	}
+    $html = getPage($url, 'utf-8');
+    
+    
+    preg_match($xn_list ,$html,$array1);
+	$pgsize = $array1[$xn_pagesize];
+	$pgcount = $array1[$xn_pagecount];
+	$recordcount = $array1[$xn_recordcount];
+	unset($array1);
 	
-    $xml = @simplexml_load_string($html);
-    if(empty($xml)){
-		echo 'XML格式不正确，不支持采集';
-		exit;
-    }
-
-    $pgcount = (string)@$xml->list->attributes()->pagecount;
-    $pgsize = (string)@$xml->list->attributes()->pagesize;
-    $recordcount = (string)@$xml->list->attributes()->recordcount;
-
-
-    $key=0;
+    preg_match_all($xn_type,$html,$array2);
     $colarr=array('v','n');
     $rn='type';
-    $plt->set_block('main', 'list_'.$rn, 'rows_'.$rn);
-    foreach($xml->class->ty as $ty){
-        $typeid = (string)@$ty->attributes()->id;
-        $typename = (string)$ty;
-        $isbind = false;
-        $uid = intval( $bindcache[$flag.$typeid] );
+	$plt->set_block('main', 'list_'.$rn, 'rows_'.$rn);
+    foreach($array2[1] as $k=>$v){
+		$typeid = $v;
+		$typename = $array2[2][$k];
+		$isbind = false;
+		$uid = intval( $bindcache[$flag.$typeid] );
         if ($uid>0){
             $isbind=true;
         }
         $valarr=array($typeid,$typename);
         for($i=0;$i<count($colarr);$i++){
-            $n = $colarr[$i];
-            $v = $valarr[$i];
-            $plt->set_var($n,$v);
-        }
-        $plt->parse('rows_'.$rn,'list_'.$rn,true);
-        $plt->set_if('rows_'.$rn,'isbind',$isbind);
-        $key++;
+			$n = $colarr[$i];
+			$v = $valarr[$i];
+			$plt->set_var($n,$v);
+		}
+		$plt->parse('rows_'.$rn,'list_'.$rn,true);
+		$plt->set_if('rows_'.$rn,'isbind',$isbind);
     }
+    unset($array2);
     
-
-    if( count($xml->list->video)==0){
+	preg_match_all($xn_d,$html,$array3);
+    if( count($array3[1])==0){
         $plt->set_if('main','isnull',true);
         return;
     }
@@ -112,31 +141,38 @@ elseif($method=='list')
     $colarr=array('id','name','typename','from','time','chk','nameencode');
     $rn='data';
 	$plt->set_block('main', 'list_'.$rn, 'rows_'.$rn);
-
-    $key=0;
-    foreach($xml->list->video as $video){
-        $id = (string)$video->id;
-        $name = (string)$video->name;
-        $nameencode = urlencode(substring($name,4));
-        $typename = (string)$video->type;
-        $now = date('Y-m-d',time());
-
-        $time = (string)$video->last;
-        $sc = substr_count($time,'-');
-        if($sc==1){ $time = date('Y-',time()).$time; }
-        $time = getColorDay(strtotime($time));
-        $chk = strpos(','.$time,$now)>0 ? 'checked' : '';
-        $from = (string)$video->dt;
-        $valarr=array($id,$name,$typename,$from,$time,$chk,$nameencode);
-        for($i=0;$i<count($colarr);$i++){
-            $n = $colarr[$i];
-            $v = $valarr[$i];
-            $plt->set_var($n,$v);
-        }
-        $plt->parse('rows_'.$rn,'list_'.$rn,true);
-        $key++;
+    foreach($array3[1] as $key=>$value){
+		$id = $array3[$xn_d_id][$key];
+		$name = $array3[$xn_d_name][$key];
+		$nameencode = urlencode(substring($name,4));
+		$typename = $array3[$xn_d_type][$key];
+		$now = date('Y-m-d',time());
+		
+		$time = $array3[$xn_d_time][$key];
+		$sc = substr_count($time,'-');
+		if($sc==1){ $time = date('Y-',time()).$time; }
+		$time = getColorDay(strtotime($time));
+		$chk = strpos(','.$time,$now)>0 ? 'checked' : '';
+		
+		if($xt=='2'){
+			$d_playurls = $array3[$xn_d_urls][$key];
+			preg_match_all($xn_url,$d_playurls,$fromarr);
+			$from = implode('$$$',$fromarr[1]);
+		}
+		else{
+			$from = $array3[$xn_d_from][$key];
+		}
+		
+		$valarr=array($id,$name,$typename,$from,$time,$chk,$nameencode);
+		for($i=0;$i<count($colarr);$i++){
+			$n = $colarr[$i];
+			$v = $valarr[$i];
+			$plt->set_var($n,$v);
+		}
+		$plt->parse('rows_'.$rn,'list_'.$rn,true);
+		
     }
-
+    unset($array3);
     unset($colarr);
     unset($valarr);
     
@@ -200,83 +236,121 @@ elseif($method=='cj'){
 	$url = $apiurl.$url;
     
     if($xt=="0"){
-
+    	$xn_list = '/<pagecount>([0-9]+)<\/pagecount>/';
+    	$xn_pagesize = 1;
+    	$xn_pagecount = 1;
+    	$xn_recordcount = 1;
+    	$xn_d = '/<vod><id>([0-9]+)<\/id><name><\!\[CDATA\[([\s\S]*?)\]\]><\/name><note><\!\[CDATA\[([\s\S]*?)\]\]><\/note><state>([\s\S]*?)<\/state><type>([\s\S]*?)<\/type><starring><\!\[CDATA\[([\s\S]*?)\]\]><\/starring><directed><\!\[CDATA\[([\s\S]*?)\]\]><\/directed><pic>([\s\S]*?)<\/pic><time>([\s\S]*?)<\/time><year>([\s\S]*?)<\/year><area><\!\[CDATA\[([\s\S]*?)\]\]><\/area><language><\!\[CDATA\[([\s\S]*?)\]\]><\/language><urls>([\s\S]*?)<\/urls><des><\!\[CDATA\[([\s\S]*?)\]\]><\/des><\/vod>/';
+    	$xn_url = '/<url from="([\s\S]*?)"><\!\[CDATA\[([\s\S]*?)\]\]><\/url>/';
+    	$xn_d_id=1;
+	    $xn_d_name=2;
+	    $xn_d_remarks=3;
+	    $xn_d_state=4;
+	    $xn_d_type=5;
+	    $xn_d_starring=6;
+	    $xn_d_directed=7;
+	    $xn_d_pic=8;
+	    $xn_d_time=9;
+	    $xn_d_year=10;
+	    $xn_d_area=11;
+	    $xn_d_lang=12;
+	    $xn_d_des=14;
+	    $xn_d_urls=13;
     }
     elseif($xt=="1"){
-
+    	$xn_list = '<list page="([\s\S]*?)" pagecount="([0-9]+)" pagesize="([0-9]+)" recordcount="([0-9]+)">';
+    	$xn_pagesize = 3;
+    	$xn_pagecount = 2;
+    	$xn_recordcount = 4;
+    	$xn_d = '/<video><last>([\s\S]*?)<\/last><id>([0-9]+)<\/id><tid>([0-9]+)<\/tid><name><\!\[CDATA\[([\s\S]*?)\]\]><\/name><type>([\s\S]*?)<\/type><pic>([\s\S]*?)<\/pic><lang>([\s\S]*?)<\/lang><area>([\s\S]*?)<\/area><year>([\s\S]*?)<\/year><state>([\s\S]*?)<\/state><note><\!\[CDATA\[([\s\S]*?)\]\]><\/note><actor><\!\[CDATA\[([\s\S]*?)\]\]><\/actor><director><\!\[CDATA\[([\s\S]*?)\]\]><\/director><dl>([\s\S]*?)<\/dl><des><\!\[CDATA\[([\s\S]*?)\]\]><\/des>([\s\S]*?)<\/video>/';
+    	$xn_url = '/<dd flag="([\s\S]*?)"><\!\[CDATA\[([\s\S]*?)\]\]><\/dd>/';
+    	$xn_d_time=1;
+    	$xn_d_id=2;
+	    $xn_d_type=3;
+	    $xn_d_name=4;
+	    $xn_d_pic=6;
+	    $xn_d_lang=7;
+	    $xn_d_area=8;
+	    $xn_d_year=9;
+	    $xn_d_state=10;
+	    $xn_d_remarks=11;
+	    $xn_d_starring=12;
+	    $xn_d_directed=13;
+	    $xn_d_urls=14;
+	    $xn_d_content=15;
     }
     elseif($xt=="2"){
     	$url = str_replace('|','-',$url);
+    	$xn_list = '<list page="([\s\S]*?)" pagecount="([0-9]+)" pagesize="([0-9]+)" recordcount="([0-9]+)">';
+    	$xn_pagesize = 3;
+    	$xn_pagecount = 2;
+    	$xn_recordcount = 4;
+    	$xn_d = '/<video><last>([\s\S]*?)<\/last><id>([0-9]+)<\/id><tid>([0-9]+)<\/tid><name><\!\[CDATA\[([\s\S]*?)\]\]><\/name><type>([\s\S]*?)<\/type><pic>([\s\S]*?)<\/pic><lang>([\s\S]*?)<\/lang><area>([\s\S]*?)<\/area><year>([\s\S]*?)<\/year><state>([\s\S]*?)<\/state><note><\!\[CDATA\[([\s\S]*?)\]\]><\/note><actor><\!\[CDATA\[([\s\S]*?)\]\]><\/actor><director><\!\[CDATA\[([\s\S]*?)\]\]><\/director><dl>([\s\S]*?)<\/dl><des><\!\[CDATA\[([\s\S]*?)\]\]><\/des>([\s\S]*?)<\/video>/';
+    	$xn_url = '/<dd flag="([\s\S]*?)"><\!\[CDATA\[([\s\S]*?)\]\]><\/dd>/';
+    	$xn_d_time=1;
+    	$xn_d_id=2;
+	    $xn_d_type=3;
+	    $xn_d_name=4;
+	    $xn_d_pic=6;
+	    $xn_d_lang=7;
+	    $xn_d_area=8;
+	    $xn_d_year=9;
+	    $xn_d_state=10;
+	    $xn_d_remarks=11;
+	    $xn_d_starring=12;
+	    $xn_d_directed=13;
+	    $xn_d_urls=14;
+	    $xn_d_content=15;
     }
     
     setBreak ("union", "?m=collect-cj-ac2-".$ac2."-xt-".$xt."-ct-".$ct."-group-".$group."-flag-".$flag."-pg-".$pg."-type-" .$type."-wd-".$wd."-apiurl-".$apiurl);
-    echo '采集地址&nbsp;'.$url.'<br>';
-   	ob_flush();flush();
-   	
+    
     $html = getPage($url, "utf-8");
-	if(empty($html)){
-		echo '连接API资源库失败，通常为服务器网络不稳定或禁用了采集。请刷新重试！';
-		exit;
-	}
-	
-    $xml = @simplexml_load_string($html);
-    if(empty($xml)){
-		$labelRule = '<pic>'."(.*?)".'</pic>';
-		$labelRule = buildregx($labelRule,"is");
-		preg_match_all($labelRule,$html,$tmparr);
-		$ec=false;
-		foreach($tmparr[1] as $tt){
-			if(strpos($tt,'&')!==false){
-				$ec=true;
-				$ne = str_replace('&','&amp;',$tt);
-				$html = str_replace($tt,$ne,$html);
-			}
-		}
-		if($ec) {
-			$xml = @simplexml_load_string($html);
-		}
-    	
-		echo 'XML格式不正确，不支持采集。';
-		exit;
-    }
-    
-    $pgcount = (string)@$xml->list->attributes()->pagecount;
-    $pgsize = (string)@$xml->list->attributes()->pagesize;
-    $recordcount = (string)@$xml->list->attributes()->recordcount;
-    
+    preg_match($xn_list ,$html,$array1);
+	$pgsize = $array1[$xn_pagesize];
+	$pgcount = $array1[$xn_pagecount];
+	$recordcount = $array1[$xn_recordcount];
+	unset($array1);
+
+
+
+
 	if(count($recordcount)==0){
 		echo '没有任何可用数据'. jump('?m=collect-list-xt-'.$xt."-ct-".$ct.'-group-'.$group.'-flag-'.$flag.'-apiurl-'.$apiurl,1);
 		return;
 	}
 	
-	echo '当前采集任务<strong class="green">'.$pg.'</strong>/<span class="green">'.$pgcount.'</span>页<br>';
+	echo '当前采集任务<strong class="green">'.$pg.'</strong>/<span class="green">'.$pgcount.'</span>页 采集地址&nbsp;'.$url;
 	ob_flush();flush();
 	
 	$inrule = $MAC['collect']['vod']['inrule'];
 	$uprule = $MAC['collect']['vod']['uprule'];
 	$filter = $MAC['collect']['vod']['filter'];
-
-    $key=0;
+	
+    preg_match_all($xn_d,$html,$array3);
     $i=0;
-    foreach($xml->list->video as $video){
+    foreach($array3[1] as $key=>$value){
 
     	$i++;
         $rc = false;
-        $d_id = (string)$video->id;
-        $d_name = format_vodname(strip_tags((string)$video->name)); $d_name = str_replace("'", "''",$d_name);
-        $d_remarks = strip_tags((string)$video->note); $d_remarks = str_replace("'", "''",$d_remarks);
-        $d_state = intval((string)$video->state);
-        $d_type = $xt=='0'? (string)$video->tid : $flag.(string)$video->tid;
+        $d_id = $array3[$xn_d_id][$key];
+        $d_name = format_vodname(strip_tags($array3[$xn_d_name][$key])); $d_name = str_replace("'", "''",$d_name);
+        $d_remarks = strip_tags($array3[$xn_d_remarks][$key]); $d_remarks = str_replace("'", "''",$d_remarks);
+        $d_state = intval($array3[$xn_d_state][$key]);
+        $d_type = $xt=='0'? $array3[$xn_d_type][$key] : $flag.$array3[$xn_d_type][$key];
         $d_type = intval( $bindcache[$d_type] );
-        $d_starring = strip_tags((string)$video->actor); $d_starring = str_replace("'", "''",$d_starring);
-        $d_directed = strip_tags((string)$video->director); $d_directed = str_replace("'", "''",$d_directed);
-        $d_pic = strip_tags((string)$video->pic); $d_pic = str_replace("'", "''",$d_pic);
-        $d_time = (string)$video->last;
-        $d_year = intval((string)$video->year);
-        $d_area = strip_tags((string)$video->area); $d_area = str_replace("'", "''",$d_area);
-        $d_lang = strip_tags((string)$video->lang); $d_lang = str_replace("'", "''",$d_lang);
-        $d_content = strip_tags((string)$video->des); $d_content = str_replace("'", "''",$d_content);
-
+        $d_starring = strip_tags($array3[$xn_d_starring][$key]); $d_starring = str_replace("'", "''",$d_starring);
+        $d_directed = strip_tags($array3[$xn_d_directed][$key]); $d_directed = str_replace("'", "''",$d_directed);
+        $d_pic = strip_tags($array3[$xn_d_pic][$key]); $d_pic = str_replace("'", "''",$d_pic);
+        $d_time = $array3[$xn_d_time][$key];
+        $d_year = intval($array3[$xn_d_year][$key]);
+        $d_area = strip_tags($array3[$xn_d_area][$key]); $d_area = str_replace("'", "''",$d_area);
+        $d_lang = strip_tags($array3[$xn_d_lang][$key]); $d_lang = str_replace("'", "''",$d_lang);
+        $d_content = strip_tags($array3[$xn_d_content][$key]); $d_content = str_replace("'", "''",$d_content);
+        $d_playurls = $array3[$xn_d_urls][$key]; $d_playurls = str_replace("'", "",$d_playurls);
+        
+        preg_match_all($xn_url,$d_playurls,$array4);
+        
         $d_enname = Hanzi2PinYin($d_name);
         $d_letter = strtoupper(substring($d_enname,1));
         $d_addtime = time();
@@ -336,30 +410,20 @@ elseif($method=='cj'){
 	        
 	        $row = $db->getRow($sql);
 	        if(!$row){
-                if($count=count($video->dl->dd)) {
-                    for ($j = 0; $j < $count; $j++) {
-                        if ($rc) {
-                            $d_playfrom .= "$$$";
-                            $d_playserver .= "$$$";
-                            $d_playnote .= "$$$";
-                            $d_playurl .= "$$$";
-                        }
-                        $d_playfrom .= strip_tags(getFrom( (string)$video->dl->dd[$j]['flag'] ));
-                        $d_playurl .= strip_tags(getVUrl( (string)$video->dl->dd[$j] ));
-                        $d_playserver .= '0';
-                        $d_playnote .= '';
-                        $rc = true;
-                    }
-                }
-                
+	        	foreach($array4[1] as $key=>$value){
+	        		if ($rc){ $d_playfrom .= "$$$"; $d_playserver .= "$$$"; $d_playnote .= "$$$"; $d_playurl .= "$$$";}
+	        		$d_playfrom .= strip_tags(getFrom($value));
+	        		$d_playurl .=  strip_tags(getVUrl($array4[2][$key]));
+	        		$d_playserver .='0';
+	        		$d_playnote .='';
+	        		$rc = true;
+	        	}
 	        	if($MAC['collect']['vod']['pic']==1){
 		    		$ext = @substr($d_pic,strlen($d_pic)-3);
 		    		if($ext!='jpg' || $ext!='bmp' || $ext!='gif'){ $ext='jpg'; }
 		    		$fname = time() .$i .'.'. $ext;
 		    		$path = "upload/vod/" . getSavePicPath('') . "/";
 		    		$thumbpath = "upload/vodthumb/" . getSavePicPath('vodthumb') . "/";
-		    		
-		    		$ps=false;
 		    		$ps = savepic($d_pic,$path,$thumbpath,$fname,'vod',$msg);
 		    		if($ps){ $d_pic=$path.$fname; $d_picthumb= $thumbpath.$fname; }
 		    	}
@@ -374,7 +438,8 @@ elseif($method=='cj'){
                 }
                 array_push($vals,$d_playfrom,$d_playurl,$d_playserver,$d_playnote,'','','','');
                 
-
+                
+                
 	        	$db->Add ("{pre}vod", $cols, $vals);
 	        	$des= '<font color="green">新加入库，成功。</font>';
 	        }
@@ -396,40 +461,42 @@ elseif($method=='cj'){
 		                $n_url = $row["d_playurl"];
 		            }
                 	$des = '';
-
-                    if($count=count($video->dl->dd)) {
-                        for ($j = 0; $j < $count; $j++) {
-                            $d_playfrom = strip_tags(getFrom((string)$video->dl->dd[$j]['flag']));
-                            $d_playurl = strip_tags(getVUrl((string)$video->dl->dd[$j]));
-                            $rc = false;
-                            if ($n_url == $d_playurl) {
-                                $des .= '<font color="red">地址相同，跳过。</font>';
-                                continue;
-                            } elseif (isN($d_playfrom)) {
-                                $des .= '<font color="red">播放器类型为空，跳过。</font>';
-                                continue;
-                            } elseif (strpos("," . $n_from, $d_playfrom) <= 0) {
-                                $rc = true;
-                                $des .= '<font color="green">播放组(' . $d_playfrom . ')，新增。</font>';
-                                $n_url .= (empty($n_url)? '' : "$$$") . $d_playurl;
-		                        $n_from .= (empty($n_from)? '' : "$$$") . $d_playfrom;
-		                        $n_server .= (empty($n_server)? '' : "$$$") . $d_playserver;
-		                        $n_note .= (empty($n_note)? '' : "$$$") . $d_playnote;
-                            } else {
-                                $arr1 = explode("$$$", $n_url);
-                                $arr2 = explode("$$$", $n_from);
-                                $play_key = array_search($d_playfrom, $arr2);
-                                if ($arr1[$play_key] == $d_playurl) {
-                                    $des .= '<font color="red">播放组(' . $d_playfrom . ')，无需更新。</font>';
-                                } else {
-                                    $rc = true;
-                                    $des .= '<font color="green">播放组(' . $d_playfrom . ')，更新。</font>';
-                                    $arr1[$play_key] = $d_playurl;
-                                }
-                                $n_url = join('$$$', $arr1);
-                            }
-                        }
-                    }
+                	
+	                foreach($array4[1] as $key=>$value){
+						$d_playfrom = strip_tags(getFrom($value));
+						$d_playurl = strip_tags(getVUrl($array4[2][$key]));
+				        $rc = false;
+	                    if($n_url==$d_playurl){
+	                         $des .= '<font color="red">地址相同，跳过。</font>';
+	                         continue;
+	                    }
+	                    elseif(isN($d_playfrom)){
+	                    	$des .= '<font color="red">播放器类型为空，跳过。</font>';
+	                    	continue;
+	                    }
+	                    elseif(strpos(",".$n_from,$d_playfrom) <= 0){
+	                    	$rc=true;
+	                        $des .= '<font color="green">播放组('.$d_playfrom.')，新增。</font>';
+	                        $n_url .= (empty($n_url)? '' : "$$$") . $d_playurl;
+	                        $n_from .= (empty($n_from)? '' : "$$$") . $d_playfrom;
+	                        $n_server .= (empty($n_server)? '' : "$$$") . $d_playserver;
+	                        $n_note .= (empty($n_note)? '' : "$$$") . $d_playnote;
+	                    }
+	                    else{
+	                        $arr1 = explode("$$$",$n_url);
+	                        $arr2 = explode("$$$",$n_from);
+	                        $play_key = array_search($d_playfrom,$arr2);
+	                        if($arr1[$play_key] == $d_playurl){
+								$des .= '<font color="red">播放组('.$d_playfrom.')，无需更新。</font>';
+							}
+							else{
+								$rc=true;
+								$des .= '<font color="green">播放组('.$d_playfrom.')，更新。</font>';
+								$arr1[$play_key] = $d_playurl;
+							}
+							$n_url = join('$$$',$arr1);
+		                }
+		            }
 		        	
 		            if($rc){
 		            	
@@ -487,12 +554,14 @@ elseif($method=='cj'){
 	            }
             }
             unset($row);
+        	unset($array4);
 		}
 echo <<<EOT
 <div>$i.  $d_name  $des  $msg </div>
 EOT;
 ob_flush();flush();
 	}
+	unset($array3);
 	unset($pinyins);
     
     if ($ac2 == "sel"){

@@ -20,16 +20,23 @@
     
     if(empty($ac)){ $ac='vod'; $method='index'; }
     
-    $colnum = array('id','pg','year','typeid','class','classid','src','num','aid','vid');
+    $col_num = array('id','pg','year','type','typeid','class','classid','src','level','num','aid','vid','uid');
+    $col_str = array('wd','ids','pinyin','area','lang','letter','starring','directed','tag','order','by','flag','clear','ref','s','t');
     if($parlen>=2){
     	$method = $par[1];
     	 for($i=2;$i<$parlen;$i+=2){
-            $tpl->P[trim($par[$i])] = in_array($par[$i],$colnum) ? intval($par[$i+1]) : chkSql(urldecode(trim($par[$i+1])));
+    	     if(in_array($par[$i],$col_num)){
+                 $tpl->P[trim($par[$i])] = intval($par[$i+1]);
+             }
+             elseif(in_array($par[$i],$col_str)){
+                 $tpl->P[trim($par[$i])] = chkSql(htmlspecialchars(urldecode(trim($par[$i+1]))));
+             }
         }
     }
     if($tpl->P['pg']<1){ $tpl->P['pg']=1; }
     if(!empty($tpl->P['cp'])){ $tpl->P['cp']=''; }
-    unset($colnum);
+    unset($col_num,$col_str);
+
     $tpl->initData();
     $acs = array('vod','art','map','user','gbook','comment','label');
     if(in_array($ac,$acs)){

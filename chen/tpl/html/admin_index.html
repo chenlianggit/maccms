@@ -81,6 +81,9 @@
 <script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Initializing...';</script>	
 <script type="text/javascript" src="tpl/config/quickmenu.js"></script>
 <script type="text/javascript">
+if($.cookie("adminlevels")==null){
+	levels = 'a,{levels}';
+}
 <!-- BEGIN list_quickmenu -->
 menu.ma.children['{quickid}'] = { "text":"{quickname}","url":"{quickurl}" };
 <!-- END list_quickmenu -->

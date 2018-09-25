@@ -31,9 +31,9 @@ if($method=='show')
 elseif($method=='save')
 {
 	$c_vid = intval(be("all", "vid"));
-    $c_name = be("all", "c_name");  $c_name = chkSql($c_name);
-    $c_type = intval(be("all", "aid"));
-    $c_content = be("all", "c_content");  $c_content = chkSql($c_content); 
+	$c_type = intval(be("all", "aid"));
+    $c_name = be("all", "c_name");  $c_name = chkSql(htmlspecialchars($c_name));
+    $c_content = be("all", "c_content");  $c_content = chkSql(htmlspecialchars($c_content)); 
     $c_code = be("all","c_code");  $c_code = chkSql($c_code);
     
     if($c_type>=16 && $c_type<=18){
@@ -48,8 +48,8 @@ elseif($method=='save')
 		echo '内容必须包含中文,请重新输入!';exit;
 	}
     
-    $c_name = badFilter($c_name); $c_name = strip_tags($c_name);
-    $c_content = badFilter($c_content); $c_content = strip_tags($c_content);
+    $c_name = badFilter($c_name);
+    $c_content = badFilter($c_content);
     $c_ip = ip2long(getIP());
     $c_time = time();
     

@@ -6,7 +6,8 @@ $m = be('get','m');
 $xmlpath = MAC_ROOT ."/inc/config/timmingset.xml";
 $doc = new DOMDocument();
 $doc -> formatOutput = true;
-$doc -> load($xmlpath);
+$xml = @file_get_contents($xmlpath);
+$doc -> loadXML($xml);
 $xmlnode = $doc -> documentElement;
 $timmingnodes = $xmlnode->getElementsByTagName("timming");
 

@@ -94,6 +94,7 @@ elseif($method=='datarep')
 	
 }
 
+
 elseif($method=='datarepexe')
 {
 	$page = intval($p['pg']);
@@ -305,6 +306,430 @@ elseif($method=='bak')
 	$fname = $fpath . '-'.$p.'.sql' ;
 	fwrite(fopen($fname,'wb'),$sql)	;
 	showMsg('备份成功','?m=db-list');
+}
+
+elseif($method=='check')
+{
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+
+        echo '<style type="text/css">body{font-size:12px;color: #333333;line-height:21px;}span{font-weight:bold;color:#FF0000}</style>';
+        ob_flush();flush();
+
+        $check_arr = array('{if-','eval(','_func','base64_',"script>");
+        $rel_val = array("/\{if-(.*?)endif-(.*?)\}/","/eval\((.*?)\)/","/_func(.*?)\)/","/base64_(.*?)\)/","/<(script.*?)>(.*?)<(\/script.*?)>/si",);
+
+        echo "<font color='red'>开始检测文章分类表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}art_type';
+            $col_id = 't_id';
+            $col_name ='t_name';
+            $col_arr = array('t_name','t_enname','t_key','t_des','t_title','t_union','t_tpl','t_tpl_art');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测视频分类表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}vod_type';
+            $col_id = 't_id';
+            $col_name ='t_name';
+            $col_arr = array('t_name','t_enname','t_key','t_des','t_title','t_union','t_tpl','t_tpl_list','t_tpl_vod','t_tpl_play','t_tpl_down');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测文章专题表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}art_topic';
+            $col_id = 't_id';
+            $col_name ='t_name';
+            $col_arr = array('t_name','t_enname','t_tpl','t_pic','t_content','t_key','t_des','t_title');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测视频专题表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}vod_topic';
+            $col_id = 't_id';
+            $col_name ='t_name';
+            $col_arr = array('t_name','t_enname','t_tpl','t_pic','t_content','t_key','t_des','t_title');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测视频扩展分类表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}vod_class';
+            $col_id = 'c_id';
+            $col_name ='c_name';
+            $col_arr = array('c_name');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测评论表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}comment';
+            $col_id = 'c_id';
+            $col_name ='c_name';
+            $col_arr = array('c_name','c_ip','c_content');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+
+        echo "<font color='red'>开始检测留言表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}gbook';
+            $col_id = 'g_id';
+            $col_name ='g_name';
+            $col_arr = array('g_name','g_content','g_reply');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测友情链接表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}link';
+            $col_id = 'l_id';
+            $col_name ='l_name';
+            $col_arr = array('l_name','l_url','l_logo');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+        echo "<font color='red'>开始检测用户表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}user';
+            $col_id = 'u_id';
+            $col_name ='u_name';
+            $col_arr = array('u_name','u_qid','u_password','u_qq','u_email','u_phone','u_question','u_answer','u_random','u_fav','u_plays','u_plays');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测文章表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}art';
+            $col_id = 'a_id';
+            $col_name ='a_name';
+            $col_arr = array('a_name','a_subname','a_enname','a_from','a_author','a_tag','a_pic','a_topic','a_remarks','a_content');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+        echo "<font color='red'>开始检测视频表...</font><br>";
+        foreach($check_arr as $k1=>$v1){
+            $tab='{pre}vod';
+            $col_id = 'd_id';
+            $col_name ='d_name';
+            $col_arr = array('d_name','d_subname','d_enname','d_pic','d_picthumb','d_picthumb','d_starring','d_directed','d_tag','d_remarks','d_area','d_lang','d_type_expand','d_class','d_duration','d_content','d_playfrom','d_playserver','d_playnote','d_playurl','d_downfrom','d_downserver','d_downnote','d_downurl');
+            $col_str = join(',',$col_arr);
+
+            $sql= "select $col_id,$col_str from $tab where ";
+            $rc=false;
+            foreach($col_arr as $b){
+                if($rc){ $sql.=' or '; }
+                $sql .= $b." like '%" . $v1 ."%'";
+                $rc=true;
+            }
+            $sql = str_replace("{pre}",$GLOBALS['MAC']['db']['tablepre'],$sql);
+            echo $sql.'<br>';
+            $rs = $db->queryArray($sql,true);
+            if(!$rs){
+                echo '未发现<br>';
+                continue;
+            }
+            foreach ($rs as $k2=>$v2){
+                $id = $v2[$col_id];
+                $name = $v2[$col_name];
+                foreach($col_arr as $b){
+                    $v2[$b] = preg_replace( $rel_val[$k1],"",$v2[$b]);
+                }
+                $where = "$col_id=".$id;
+                unset($v2[$col_id]);
+                $db->Update($tab,$col_arr,$v2,$where,1);
+                echo $id.'、'. $name .' ok<br>';
+                ob_flush();flush();
+            }
+        }
+
+
+
+        die;
+
+    }
+    $plt->set_file('main', $ac.'_'.$method.'.html');
 }
 
 else

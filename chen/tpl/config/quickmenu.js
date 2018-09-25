@@ -18,7 +18,7 @@ var menu = {
 	
 	"mi":{"text":"采集","default":"maccj","children":{"maccj":{"text":"联盟资源库","url":"?m=collect-union"},"ds":{"text":"定时挂机采集","url":"?m=collect-ds"} }},
 		
-	"mj":{"text":"数据库","default":"database","children":{"database":{"text":"数据库管理","url":"?m=db-list"},"sql":{"text":"执行SQL语句","url":"?m=db-sql"},"datarep":{"text":"数据批量替换","url":"?m=db-datarep"} }}
+	"mj":{"text":"数据库","default":"database","children":{"database":{"text":"数据库管理","url":"?m=db-list"},"sql":{"text":"执行SQL语句","url":"?m=db-sql"},"datarep":{"text":"数据批量替换","url":"?m=db-datarep"},"check":{"text":"挂马检测","url":"?m=db-check"} }}
 };
 var currTab = 'ma';
 var firstOpen = [];

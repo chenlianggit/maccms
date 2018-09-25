@@ -207,7 +207,7 @@ elseif($method=='type')
 		$sql='select distinct a_type from {pre}art where a_time >='.strtotime("today");
 		$rs = $db->queryarray($sql,false);
 		foreach($rs as $a){
-			array_push($typearr,$a['d_type']);
+			array_push($typearr,$a['a_type']);
 		}
 		unset($rs);
 	}

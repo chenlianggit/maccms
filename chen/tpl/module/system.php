@@ -905,7 +905,9 @@ elseif($method=='timminginfo')
 	if($flag=='edit'){
 		$doc = new DOMDocument();
 		$doc -> formatOutput = true;
-		$doc -> load($xp);
+		$xml = @file_get_contents($xp);
+		$doc -> loadXML($xml);
+	
 		$xmlnode = $doc -> documentElement;
 		$nodes = $xmlnode->getElementsByTagName("timming");
 		foreach($nodes as $node){
@@ -988,7 +990,8 @@ elseif($method=='timming')
 	$xp = '../inc/config/timmingset.xml';
 	$doc = new DOMDocument();
 	$doc -> formatOutput = true;
-	$doc -> load($xp);
+	$xml = @file_get_contents($xp);
+	$doc -> loadXML($xml);
 	$xmlnode = $doc -> documentElement;
 	$nodes = $xmlnode->getElementsByTagName('timming');
 	

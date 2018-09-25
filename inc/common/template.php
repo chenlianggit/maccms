@@ -682,6 +682,9 @@ class AppTpl
 		            	$this->P['pagetype'] = 'label';
 		            }
 		            else{
+		            	if($this->P['typeid']>0){
+		            		$where .= ' and d_type = ' . $this->P['typeid'];
+		            	}
 		                //$where = $this->P['where'];
 		                if (!empty($this->P['des'])){ $this->P['pagetype'] = 'search';  }
 		            }
@@ -779,6 +782,7 @@ class AppTpl
 		        	unset($tmp);
 		        }
 				break;
+				
 			case 'art':
 				$tb = 'art';
 				$col = '`a_id`, `a_name`, `a_subname`, `a_enname`, `a_letter`, `a_color`, `a_from`, `a_author`, `a_tag`, `a_pic`, `a_type`, `a_level`, `a_hide`, `a_lock`, `a_hits`, `a_dayhits`, `a_weekhits`, `a_monthhits`, `a_addtime`, `a_time`, `a_hitstime`, `a_maketime`';
@@ -886,6 +890,9 @@ class AppTpl
 		                $this->P['pagetype'] = 'topic';
 		            }
 		            else{
+		            	if($this->P['typeid']>0){
+		            		$where .= ' and d_type = ' . $this->P['typeid'];
+		            	}
 		                //$where = $this->P['where'];
 		                if (!empty($this->P['des'])){ $this->P['pagetype'] = 'search';  }
 		            }
@@ -1366,8 +1373,8 @@ class AppTpl
                     case "num": $val=$mnum; break;
                     case "numfill": $val=$numfill; break;
                     case "id": $val=$mrs["t_id"];break;
-                    case "name": $val=getTextt($m3, $mrs["t_name"]);break;
-                    case "enname": $val=getTextt($m3, $mrs["t_enname"]);break;
+                    case "name": $val=getTextt($m3, $mrs["t_name"]);$val=strip_tags($val);break;
+                    case "enname": $val=getTextt($m3, $mrs["t_enname"]);$val=strip_tags($val);break;
                     case "pid": $val=$mrs["t_pid"];break;
                     case "title": $val=$mrs["t_title"];break;
                     case "key": $val=$mrs["t_key"];break;
@@ -1400,8 +1407,8 @@ class AppTpl
                     case "num": $val=$mnum; break;
                     case "numfill": $val=$numfill; break;
                     case "id": $val=$mrs["c_id"];break;
-                    case "name": $val=getTextt($m3, $mrs["c_name"]);break;
-                    case "enname": $val=getTextt($m3, $mrs["c_enname"]);break;
+                    case "name": $val=getTextt($m3, $mrs["c_name"]);$val=strip_tags($val);break;
+                    case "enname": $val=getTextt($m3, $mrs["c_enname"]);$val=strip_tags($val);break;
                     case "pid": $val=$mrs["c_pid"];break;
                     case "link":
                         if($this->L['type']=='auto'){
@@ -1421,8 +1428,8 @@ class AppTpl
                     case "num": $val=$mnum;break;
                     case "numfill": $val=$numfill;break;
                     case "id": $val=$mrs["t_id"];break;
-                    case "name": $val=getTextt($m3, $mrs["t_name"]);break;
-                    case "enname": $val=getTextt($m3, $mrs["t_enname"]);break;
+                    case "name": $val=getTextt($m3, $mrs["t_name"]);$val=strip_tags($val);break;
+                    case "enname": $val=getTextt($m3, $mrs["t_enname"]);$val=strip_tags($val);break;
                     case "sort": $val=$mrs["t_sort"];break;
                     case "title": $val=$mrs["t_title"];break;
                     case "key": $val=$mrs["t_key"];break;
@@ -1455,7 +1462,7 @@ class AppTpl
             		case "num": $val=$mnum;break;
 				    case "numfill": $val=$numfill;break;
                     case "id": $val=$mrs["l_id"];break;
-                    case "name": $val=getTextt($m3, $mrs["l_name"]);break;
+                    case "name": $val=getTextt($m3, $mrs["l_name"]);$val=strip_tags($val);break;
                     case "type": $val= $mrs["l_type"]==1 ? "图片": "文字";break;
                     case "link": $val=$mrs["l_url"];break;
                     case "pic": $val=$mrs["l_logo"];break;
